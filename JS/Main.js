@@ -1,1 +1,3 @@
-js
+function test () {
+  alert("Hello World");
+}

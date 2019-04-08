@@ -1,1 +1,21 @@
-css
+h1 {
+  color:Black;
+  text-align: center;
+  font-size: 60px;
+}
+
+body {
+  background-color: #95E8DE;
+  text-align: center;
+  font-size: : 55px;
+}
+
+.Introduksjon_div {}
+
+.Oversikt_div {}
+
+.Detaljer_div {}
+
+.Sammenligning_div {
+    font-size: 50px;
+}
