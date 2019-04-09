@@ -7,13 +7,34 @@
   </head>
   <body>
     <h1>Velkommen til _____</h1>
+    </head>
+    <body>
 
-    <div class="Introduksjon_div">Intro</div>
-    <div class="Oversikt_div">Oversikt</div>
-    <div class="Detaljer_div">Detaljer</div>
-    <div class="Sammenligning_div">Sammenligning</div>
+    <button class="button" onclick="Introduksjon_show()">Introduksjon</button>
+    <button class="button button2" onclick="Oversikt_show()">Oversikt</button>
+    <button class="button button3" onclick="Detaljer_show()">Detaljer</button>
+    <button class="button button4" onclick="Sammenlign_()">Sammenlign</button>
 
-    <button onclick="test()">Pop Test</button>
+    <div class="Introduksjon_div">Intro
+      <p>Her er det ting om introduksjonen</p>
+    </div>
+    <br>
+
+    <div class="Oversikt_div">Oversikt
+    </div>
+    <br>
+
+    <div class="Detaljer_div">Detaljer
+    </div>
+    <br>
+
+    <div class="Sammenligning_div">Her kan du sammenligne uviklingen i to kommuner.
+    <input type="text" id="Kommune1_input">
+  </input>
+  <input type="text" id="Kommune2_input">
+  </div>
+
+    <button onclick="Sammenlign()">Sammenlign</button>
 
   </body>
 

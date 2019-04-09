@@ -7,7 +7,14 @@ h1 {
 body {
   background-color: #95E8DE;
   text-align: center;
-  font-size: : 55px;
+  font-size: : 20px;
+}
+
+div {
+  width: 320px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
 }
 
 .Introduksjon_div {}
@@ -17,5 +24,24 @@ body {
 .Detaljer_div {}
 
 .Sammenligning_div {
-    font-size: 50px;
+    font-size: 20px;
 }
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */
+.button5 {background-color: #555555;} /* Black */
