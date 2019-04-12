@@ -17,14 +17,21 @@ div {
   margin: 0;
 }
 
-.Introduksjon_div {}
+.Introduksjon_div {
+  display: none;
+}
 
-.Oversikt_div {}
+.Oversikt_div {
+  display: none;
+}
 
-.Detaljer_div {}
+.Detaljer_div {
+  display: none;
+}
 
 .Sammenligning_div {
-    font-size: 20px;
+  display: none;
+  font-size: 20px;
 }
 
 .button {
