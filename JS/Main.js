@@ -2,6 +2,11 @@ var Beskrivelser_url = "http://wildboy.uib.no/~tpe056/folk/";
 var Befolkning_url = "http://wildboy.uib.no/~tpe056/folk/104857.json";
 var Sysselsatte_url =  "http://wildboy.uib.no/~tpe056/folk/100145.json";
 var Utdanning_url = "http://wildboy.uib.no/~tpe056/folk/85432.json";
+var intro = document.getElementById("Introduksjon_div");
+var oversikt = document.getElementById("Oversikt_div");
+var detaljer = document.getElementById("Detaljer_div");
+var sammenligning = document.getElementById("Sammenligning_div");
+
 
 function getNames(URL, x) {
   var netURL = URL;
@@ -100,41 +105,7 @@ function Sammenlign() {
 }
 
 //Button funksjoner som viser/gjemmer divs
-
-var Beskrivelser_url = "http://wildboy.uib.no/~tpe056/folk/";
-var Befolkning_url = "http://wildboy.uib.no/~tpe056/folk/104857.json";
-var Sysselsatte_url =  "http://wildboy.uib.no/~tpe056/folk/100145.json";
-var Utdanning_url = "http://wildboy.uib.no/~tpe056/folk/85432.json";
-var intro = document.getElementById("Introduksjon_div");
-var oversikt = document.getElementById("Oversikt_div");
-var detaljer = document.getElementById("Detaljer_div");
-var sammenligning = document.getElementById("Sammenligning_div");
-
-              //Funksjon for å hente informasjon fra Wildboy
-function Fetch() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", Befolkning_url);
-  xhr.onreadystatechange = function() {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      var myArr = (JSON.parse(this.responseText));
-      console.log(myArr.elementer.Halden.Menn);
-
-      /*for (i in myArr.elementer)  {
-        x = myArr.elementer[i];
-        console.log(x)
-      }*/
-    }
-  }
-  xhr.send();
-}
-window.onload = Fetch;
-
-$(document).ready(function(){
-  $("button").click(function(){
-    $("Detaljer_div").toggle();
-  });
-});
-
+   
 
 function show(button) {
 
