@@ -101,43 +101,86 @@ function Sammenlign() {
 
 //Button funksjoner som viser/gjemmer divs
 
-function Introduksjon_show() {
-  var x = document.getElementById("Introduksjon_div");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+var Beskrivelser_url = "http://wildboy.uib.no/~tpe056/folk/";
+var Befolkning_url = "http://wildboy.uib.no/~tpe056/folk/104857.json";
+var Sysselsatte_url =  "http://wildboy.uib.no/~tpe056/folk/100145.json";
+var Utdanning_url = "http://wildboy.uib.no/~tpe056/folk/85432.json";
+var intro = document.getElementById("Introduksjon_div");
+var oversikt = document.getElementById("Oversikt_div");
+var detaljer = document.getElementById("Detaljer_div");
+var sammenligning = document.getElementById("Sammenligning_div");
+
+              //Funksjon for å hente informasjon fra Wildboy
+function Fetch() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", Befolkning_url);
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState === 4 && xhr.status === 200) {
+      var myArr = (JSON.parse(this.responseText));
+      console.log(myArr.elementer.Halden.Menn);
+
+      /*for (i in myArr.elementer)  {
+        x = myArr.elementer[i];
+        console.log(x)
+      }*/
+    }
   }
+  xhr.send();
 }
+window.onload = Fetch;
 
-function Oversikt_show() {
-  var x = document.getElementById("Oversikt_div");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+$(document).ready(function(){
+  $("button").click(function(){
+    $("Detaljer_div").toggle();
+  });
+});
 
-function Detaljer_show() {
-  var x = document.getElementById("Detaljer_div");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
 
-function Sammenlign_show() {
-  var x = document.getElementById("Sammenligning_div");
+function show(button) {
 
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  while (button === true) {
+    console.log("du printer ut");
   }
 
-}
+  if (button === 1) {
+    console.log("du trykket på knapp 1");
+
+    intro.style.display = "block";
+    oversikt.style.display = "none";
+    detaljer.style.display = "none";
+    sammenligning.style.display = "none";
+  };
+
+  if (button === 2) {
+    console.log("du trykket på knapp 1");
+
+    intro.style.display = "none";
+    oversikt.style.display = "block";
+    detaljer.style.display = "none";
+    sammenligning.style.display = "none";
+  };
+
+  if (button === 3) {
+    console.log("du trykket på knapp 1");
+
+    intro.style.display = "none";
+    oversikt.style.display = "none";
+    detaljer.style.display = "block";
+    sammenligning.style.display = "none";
+  };
+
+  if (button === 4) {
+    console.log("du trykket på knapp 1");
+
+    intro.style.display = "none";
+    oversikt.style.display = "none";
+    detaljer.style.display = "none";
+    sammenligning.style.display = "block";
+  };
+};
+
+
+
 
 $(document).ready(function(){
   $("button").click(function(){
