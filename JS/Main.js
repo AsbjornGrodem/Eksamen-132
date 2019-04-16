@@ -7,49 +7,48 @@ var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
 
-
-function getNames(URL, x) {
+          //Logger navn på alle kommunene
+function getNames(URL) {
   var netURL = URL;
   var xhr = new XMLHttpRequest();
   xhr.open("GET", netURL);
   xhr.onreadystatechange = function() {
     if(xhr.readyState === 4 && xhr.status === 200) {
       var myArr = (JSON.parse(this.responseText));
-      for (i in myArr.elementer) {
-        console.log(i);
+      for (kommunenavn in myArr.elementer) {
+        var informasjon = myArr.elementer[kommunenavn];
+        console.log (kommunenavn, informasjon);
       }
     }
   }
   xhr.send();
 }
-//getNames(Sysselsatte_url)
+getNames(Sysselsatte_url)
 
-function getIDs(URL) {
+
+          //Logger kommunenummer
+function getIDs(URL, inp) {
   document.getElementById('Detaljer_output').innerHTML = Detaljer_input.value;
-  var inp = Detaljer_input.value;
   var netURL = URL;
   var xhr = new XMLHttpRequest();
   xhr.open("GET", netURL);
   xhr.onreadystatechange = function() {
     if(xhr.readyState === 4 && xhr.status === 200) {
       var myArr = (JSON.parse(this.responseText));
-      var x = myArr.elementer;
-        for (i in x) {
-          if (i===inp) {
-            console.log(x)
-            console.log(x.i)
+        for (i in myArr.elementer) {
+          var x = myArr.elementer[i].kommunenummer;
+          if (inp===x){
+            console.log("Yes")
           }
-          else {
-            console.log("woops")
-          }
+          else{console.log("no")}
         }
     }
   }
   xhr.send();
 }
-getIDs(Befolkning_url)
+//getIDs(Befolkning_url, "2021")
 
-
+        //Henter informasjon om kommunen brukeren har skrevet inn (kommunenr)
 function getInfo(URL) {
   var netURL = URL;
   var xhr = new XMLHttpRequest();
@@ -70,30 +69,10 @@ function load (){
 
 }
 
-              //Funksjon for å hente informasjon fra Wildboy
-function Fetch() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", Befolkning_url);
-  xhr.onreadystatechange = function() {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      var myArr = (JSON.parse(this.responseText));
-      console.log(myArr);
-
-      /*for (i in myArr.elementer)  {
-        x = myArr.elementer[i];
-        console.log(x)
-      }*/
-    }
-  }
-  xhr.send();
-}
-//Fetch();
-
-function Sammenlign() {
+function Sammenlign(URL) {
   document.getElementById('Kommune_output').innerHTML = Sammenlign1_input.value;
-
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", Befolkning_url);
+  xhr.open("GET", URL);
   xhr.onreadystatechange = function() {
     if(xhr.readyState === 4 && xhr.status === 200) {
       var myArr = (JSON.parse(this.responseText));
@@ -103,10 +82,10 @@ function Sammenlign() {
   }
   xhr.send();
 }
+
+
 
 //Button funksjoner som viser/gjemmer divs
-   
-
 function show(button) {
 
   while (button === true) {
@@ -149,7 +128,6 @@ function show(button) {
     sammenligning.style.display = "block";
   };
 };
-
 
 
 
