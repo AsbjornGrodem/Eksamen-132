@@ -7,6 +7,9 @@ var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
 
+    //Konstruktør, fatta ikkje heilt ka han meinte her
+function Kommune (Navn, Kommunenummer, Informasjon) {
+}
           //Logger navn på alle kommunene
 function getNames(URL) {
   var netURL = URL;
@@ -17,18 +20,16 @@ function getNames(URL) {
       var myArr = (JSON.parse(this.responseText));
       for (kommunenavn in myArr.elementer) {
         var informasjon = myArr.elementer[kommunenavn];
-        console.log (kommunenavn, informasjon);
+        console.log(kommunenavn)
       }
     }
   }
   xhr.send();
 }
-getNames(Sysselsatte_url)
-
+//getNames(Sysselsatte_url)
 
           //Logger kommunenummer
-function getIDs(URL, inp) {
-  document.getElementById('Detaljer_output').innerHTML = Detaljer_input.value;
+function getIDs(URL) {
   var netURL = URL;
   var xhr = new XMLHttpRequest();
   xhr.open("GET", netURL);
@@ -36,38 +37,40 @@ function getIDs(URL, inp) {
     if(xhr.readyState === 4 && xhr.status === 200) {
       var myArr = (JSON.parse(this.responseText));
         for (i in myArr.elementer) {
-          var x = myArr.elementer[i].kommunenummer;
-          if (inp===x){
-            console.log("Yes")
-          }
-          else{console.log("no")}
-        }
-    }
-  }
-  xhr.send();
-}
-//getIDs(Befolkning_url, "2021")
-
-        //Henter informasjon om kommunen brukeren har skrevet inn (kommunenr)
-function getInfo(URL) {
-  var netURL = URL;
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", netURL);
-  xhr.onreadystatechange = function() {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      var myArr = (JSON.parse(this.responseText));
-      for (i in myArr.elementer.Berg.Menn) {
-        console.log(i)
+          var kommunenummer = myArr.elementer[i].kommunenummer;
+          console.log(kommunenummer);
       }
     }
   }
   xhr.send();
 }
-//getInfo("http://wildboy.uib.no/~tpe056/folk/100145.json")
+//getIDs(Utdanning_url)
 
-function load (){
-
+//Henter informasjon om kommunen brukeren har skrevet inn (kommunenr)
+function getInfo(URL, input) {
+  var netURL = URL;
+  var xhr = new XMLHttpRequest();
+  //var input = Detaljer_input.value;
+  xhr.open("GET", netURL);
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState === 4 && xhr.status === 200) {
+      var myArr = (JSON.parse(this.responseText));
+      document.getElementById('Detaljer_output').innerHTML = input;
+      for (kommunenavn in myArr.elementer) {
+        var informasjon = myArr.elementer[kommunenavn];
+        var myJSON = JSON.stringify(informasjon);
+        if (input===kommunenavn){
+          var log = JSON.stringify(myArr.elementer[kommunenavn])
+          //document.getElementById('Detaljer_output').innerHTML = log;
+          console.log(informasjon);
+        }
+        else {}
+      }
+    }
+  }
+  xhr.send();
 }
+getInfo(Utdanning_url, "Halden")
 
 function Sammenlign(URL) {
   document.getElementById('Kommune_output').innerHTML = Sammenlign1_input.value;
@@ -77,13 +80,10 @@ function Sammenlign(URL) {
     if(xhr.readyState === 4 && xhr.status === 200) {
       var myArr = (JSON.parse(this.responseText));
       console.log(myArr);
-
     }
   }
   xhr.send();
 }
-
-
 
 //Button funksjoner som viser/gjemmer divs
 function show(button) {
@@ -128,43 +128,3 @@ function show(button) {
     sammenligning.style.display = "block";
   };
 };
-
-
-
-$(document).ready(function(){
-  $("button").click(function(){
-    $("Detaljer_div").toggle();
-  });
-});
-//Løsnigen for den eine oblig oppgaven han viste på tavla
-/*
-function createButton(nettID) {
-  var button = document.createElement("input");
-  button.type = "button";
-  button.value = nettID;
-  button.onclick = function () {
-    var netURL = "http:wildboy.uib/balbaasd" + nettID + ".json";
-    var xhr = ("GET",netURL);
-    xhr.onreadystatechange = function() {
-      if(xhr.readyState === 4 && xhr.status === 200) {
-        displayNetworkInfo(JSON.parse(xhr.responseText));
-      }
-    };
-    xhr.send();
-  }
-  return button;
-}
-*/
-//window.onload = Fetch;
-/*
-function Sammenlign_Fetch () {
-  var xhr = new XMLHttpRequest();
-  xhr.oprn("GET", )
-  xhr.onreadystatechange = function ()  {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      var Sammenlign_array = (JSON.parse(this.responseText));
-      console.log()
-    }
-  }
-}
-*/

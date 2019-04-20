@@ -4,6 +4,9 @@ h1 {
   font-size: 60px;
 }
 
+table, th, td {
+  border: 1px solid black;
+}
 body {
   background-color: #95E8DE;
   text-align: center;
