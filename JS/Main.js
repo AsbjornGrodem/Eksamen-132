@@ -8,43 +8,55 @@ var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
 
     //Konstruktør, fatta ikkje heilt ka han meinte her
-function Kommune (Navn, Kommunenummer, Informasjon) {
+function Kommune (Navn, Kommunenummer, Utdanning, Sysselsatte) {
+  getNames (Sysselsatte_url)
+  console.log(kommunenavn);
 }
+
+
+//async, await ny teknologi
+
           //Logger navn på alle kommunene
-function getNames(URL) {
+function load(URL, cb) {
   var netURL = URL;
   var xhr = new XMLHttpRequest();
   xhr.open("GET", netURL);
   xhr.onreadystatechange = function() {
     if(xhr.readyState === 4 && xhr.status === 200) {
       var myArr = (JSON.parse(this.responseText));
+      var array = myArr.elementer;
       for (kommunenavn in myArr.elementer) {
         var informasjon = myArr.elementer[kommunenavn];
-        console.log(kommunenavn)
       }
-    }
-  }
-  xhr.send();
-}
-//getNames(Sysselsatte_url)
+      getIds(myArr);
+      getNames(array);
 
-          //Logger kommunenummer
-function getIDs(URL) {
-  var netURL = URL;
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", netURL);
-  xhr.onreadystatechange = function() {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      var myArr = (JSON.parse(this.responseText));
-        for (i in myArr.elementer) {
-          var kommunenummer = myArr.elementer[i].kommunenummer;
-          console.log(kommunenummer);
-      }
     }
   }
   xhr.send();
 }
-//getIDs(Utdanning_url)
+
+
+function getNames(array) {
+  var mylist = [];
+  for (kommunenavn in array)
+  {mylist.push(kommunenavn)}
+  data(mylist);
+}
+
+load(Befolkning_url, getNames);
+load(Befolkning_url, getIds);
+
+function data(mylist) {
+  //console.log(mylist);
+}
+          //Logger kommunenummer
+function getIds(array) {
+    for (i in array.elementer){
+      var kommunenummer = array.elementer[i].kommunenummer;
+    //console.log(kommunenummer)
+  }
+}
 
 //Henter informasjon om kommunen brukeren har skrevet inn (kommunenr)
 function getInfo(URL, input) {
@@ -63,6 +75,7 @@ function getInfo(URL, input) {
           var log = JSON.stringify(myArr.elementer[kommunenavn])
           //document.getElementById('Detaljer_output').innerHTML = log;
           console.log(informasjon);
+          return (informasjon)
         }
         else {}
       }
@@ -70,7 +83,7 @@ function getInfo(URL, input) {
   }
   xhr.send();
 }
-getInfo(Utdanning_url, "Halden")
+//getInfo(Sysselsatte_url, "Halden")
 
 function Sammenlign(URL) {
   document.getElementById('Kommune_output').innerHTML = Sammenlign1_input.value;
