@@ -7,13 +7,6 @@ var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
 
-    //Konstruktør, fatta ikkje heilt ka han meinte her
-function Kommune (Navn, Kommunenummer, Utdanning, Sysselsatte) {
-  getNames (Sysselsatte_url)
-  console.log(kommunenavn);
-}
-
-
 //async, await ny teknologi
 
           //Logger navn på alle kommunene
@@ -30,7 +23,7 @@ function load(URL, cb) {
       }
       getIds(myArr);
       getNames(array);
-
+      getInfo(array, "Halden")
     }
   }
   xhr.send();
@@ -44,58 +37,42 @@ function getNames(array) {
   data(mylist);
 }
 
-load(Befolkning_url, getNames);
-load(Befolkning_url, getIds);
+//load(Befolkning_url, getNames);
+//load(Befolkning_url, getIds);
+load(Sysselsatte_url, getInfo);
+load(Utdanning_url, getInfo);
 
 function data(mylist) {
-  //console.log(mylist);
+    //console.log(mylist);
 }
+
           //Logger kommunenummer
 function getIds(array) {
     for (i in array.elementer){
       var kommunenummer = array.elementer[i].kommunenummer;
     //console.log(kommunenummer)
+    return(kommunenummer);
   }
 }
 
 //Henter informasjon om kommunen brukeren har skrevet inn (kommunenr)
-function getInfo(URL, input) {
-  var netURL = URL;
-  var xhr = new XMLHttpRequest();
-  //var input = Detaljer_input.value;
-  xhr.open("GET", netURL);
-  xhr.onreadystatechange = function() {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      var myArr = (JSON.parse(this.responseText));
-      document.getElementById('Detaljer_output').innerHTML = input;
-      for (kommunenavn in myArr.elementer) {
-        var informasjon = myArr.elementer[kommunenavn];
-        var myJSON = JSON.stringify(informasjon);
-        if (input===kommunenavn){
-          var log = JSON.stringify(myArr.elementer[kommunenavn])
-          //document.getElementById('Detaljer_output').innerHTML = log;
-          console.log(informasjon);
-          return (informasjon)
-        }
-        else {}
+function getInfo(array, input) {
+    //document.getElementById('Detaljer_output').innerHTML = input;
+    for (i in array) {
+      if (i===input)  {
+        var kom_info = array[i];
+        var menn = (JSON.stringify(kom_info.Menn));
+        var kvinner = (JSON.stringify(kom_info.Kvinner));
+        console.log(kvinner);
+        //console.log(kom_info)
+        var info = (JSON.stringify(kom_info));
       }
-    }
+    }document.getElementById("Table").innerHTML = kvinner;
   }
-  xhr.send();
-}
-//getInfo(Sysselsatte_url, "Halden")
 
 function Sammenlign(URL) {
   document.getElementById('Kommune_output').innerHTML = Sammenlign1_input.value;
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", URL);
-  xhr.onreadystatechange = function() {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      var myArr = (JSON.parse(this.responseText));
       console.log(myArr);
-    }
-  }
-  xhr.send();
 }
 
 //Button funksjoner som viser/gjemmer divs
