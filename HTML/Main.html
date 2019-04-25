@@ -11,60 +11,80 @@
     </head>
     <body>
 
-<table style="width:100%">
-  <tr id="Table">
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-</table>
+<button class="button" onclick="show(1)">Introduksjon</button>
+      <button class="button button2" onclick="show(2)">Oversikt</button>
+      <button class="button button3" onclick="show(3)">Detaljer</button>
+      <button class="button button4" onclick="show(4)">Sammenlign</button>
 
+<div id="Introduksjon_div" class="Introduksjon_div">Intro
+        <p>Her er det ting om introduksjonen
+          Introduksjonsteksten skal bestå av tekst som beskriver produktet deres. Det skal også inneholde
+    lenker til SSB-sine offisielle sider, og en notis om at dataene kan inneholde feil.</p>
+      </div>
+      <br>
 
-    <button class="button" onclick="show(1)">Introduksjon</button>
-    <button class="button button2" onclick="show(2)">Oversikt</button>
-    <button class="button button3" onclick="show(3)">Detaljer</button>
-    <button class="button button4" onclick="show(4)">Sammenlign</button>
+<div id="Oversikt_div" class="Oversikt_div">Oversikt
+      </div>
+      <br>
 
-    <div id="Introduksjon_div" class="Introduksjon_div">Intro
-      <p>Her er det ting om introduksjonen
-        Introduksjonsteksten skal bestå av tekst som beskriver produktet deres. Det skal også inneholde
-  lenker til SSB-sine offisielle sider, og en notis om at dataene kan inneholde feil.</p>
-    </div>
-    <br>
+<div id="Detaljer_div" class="Detaljer_div">Detaljer
+        <input type="text" id="Detaljer_input">
+      </input>
+      <button id="Detaljer_button" onclick="getInfo(Sysselsatte_url)">Last inn</button>
 
-    <div id="Oversikt_div" class="Oversikt_div">Oversikt
-    </div>
-    <br>
+      </div>
+      <br>
 
-    <div id="Detaljer_div" class="Detaljer_div">Detaljer
-      <input type="text" id="Detaljer_input">
+<div id="Sammenligning_div" class="Sammenligning_div">Her kan du sammenligne uviklingen i to kommuner.
+      <input type="text" id="Sammenlign1_input">
     </input>
-    <button id="Detaljer_button" onclick="getInfo(Sysselsatte_url)">Last inn</button>
-
-    <table id="Detaljer_output">Hei</table>
-
+    <input type="text" id="Sammenlign2_input">
+    <button onclick="Sammenlign()">Sammenlign</button>
+    <p id="Kommune_output"></p>
     </div>
+
+<div id="Table_Menn_div">
+      <p>Menn som jobber</p>
+    <table id="Table_Menn">
+        <tr>
+        </tr>
+        <tr>
+          <td>Hei</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>Test1</td>
+          <td>Test2</td>
+        </tr>
+      </table>
+    </div>
+    </div>
+
     <br>
 
-    <div id="Sammenligning_div" class="Sammenligning_div">Her kan du sammenligne uviklingen i to kommuner.
-    <input type="text" id="Sammenlign1_input">
-  </input>
-  <input type="text" id="Sammenlign2_input">
-  <button onclick="Sammenlign()">Sammenlign</button>
-  <p id="Kommune_output"></p>
-</div>
+<div id="Table_Kvinner_div">
+  <p>Kvinner som jobber</p>
+    <table id="Table_Kvinner">
+      <tr>
+        <td>
+        </td>
+      </tr>
+    </table>
 
-</body>
+    </div>
+
+<div id="Table_Begge_div">
+      <p>Begge jobber;</p>
+        <table id="Table_Begge">
+          <tr>
+            <td>
+            </td>
+          </tr>
+        </table>
+
+        </div>
+
+  </body>
 
 <script src="../JS/Main.js"></script>
 </html>
