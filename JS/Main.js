@@ -11,6 +11,27 @@ var sammenligning = document.getElementById("Sammenligning_div");
 
 function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenr) {
 
+        function load(URL) {
+          var netURL = URL;
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", netURL);
+          xhr.onreadystatechange = function() {
+            if(xhr.readyState === 4 && xhr.status === 200) {
+              var myArr = (JSON.parse(this.responseText));
+              let array = myArr.elementer;
+              for (kommunenavn in myArr.elementer) {
+                var informasjon = myArr.elementer[kommunenavn];
+              }
+              //document.getElementById('Detaljer_output').innerHTML = input;
+              //Konstruktør(array, "Halden")
+              getInfo(array, input);
+              getNames(array);
+            }
+          }
+          xhr.send();
+        }
+        load(URL);
+
       function getIds(array, kommunenr) {
         let nummerliste = [];
             for (i in array){
@@ -62,28 +83,6 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenr) {
               }
       }
 
-      function load(URL) {
-        var netURL = URL;
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", netURL);
-        xhr.onreadystatechange = function() {
-          if(xhr.readyState === 4 && xhr.status === 200) {
-            var myArr = (JSON.parse(this.responseText));
-            let array = myArr.elementer;
-            for (kommunenavn in myArr.elementer) {
-              var informasjon = myArr.elementer[kommunenavn];
-            }
-            //document.getElementById('Detaljer_output').innerHTML = input;
-            //Konstruktør(array, "Halden")
-            getIds(array, input);
-            getInfo(array, input);
-            getNames(array);
-          }
-        }
-        xhr.send();
-      }
-
-      load(URL);
       getIds(array, kommunenr);
       getInfo(array, input);
       getNames(array, navnliste);
