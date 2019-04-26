@@ -9,35 +9,29 @@ var sammenligning = document.getElementById("Sammenligning_div");
 
 //async, await ny teknologi
 
-          //Laster ned, lager array
-function load(URL, cb) {
-  var netURL = URL;
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", netURL);
-  xhr.onreadystatechange = function() {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      var myArr = (JSON.parse(this.responseText));
-      var array = myArr.elementer;
-      for (kommunenavn in myArr.elementer) {
-        var informasjon = myArr.elementer[kommunenavn];
-      }
-      //document.getElementById('Detaljer_output').innerHTML = input;
-      Konstruktør(array, "Halden")
-    }
-  }
-  xhr.send();
-}
+function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenr) {
 
-function Konstruktør(array, input, kommunenr) {
-      this.kommunenummer = kommunenr;
-      function getIds(array) {
+      function getIds(array, kommunenr) {
+        let nummerliste = [];
             for (i in array){
               if (i === input) {
-              //console.log(array[i].kommunenummer);
-              return kommunenummer
+                var kommunenr = array[i].kommunenummer;
+                console.log(kommunenr);
+              this.kommunenummer = kommunenr;
+              nummerliste.push(array[i].kommunenummer)
             }
+            else {nummerliste.push(array[i].kommunenummer);}
           }
+          console.log(nummerliste);
         }
+
+      function getNames(array, navnliste) {
+        var navnliste = [];
+        for (kommunenavn in array)
+        {navnliste.push(kommunenavn)}
+        console.log(navnliste);
+        return (navnliste);
+      }
 
       function getInfo(array, input) {
           //document.getElementById('Detaljer_output').innerHTML = input;
@@ -67,25 +61,49 @@ function Konstruktør(array, input, kommunenr) {
                 }
               }
       }
-      getIds(array, input)
+
+      function load(URL) {
+        var netURL = URL;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", netURL);
+        xhr.onreadystatechange = function() {
+          if(xhr.readyState === 4 && xhr.status === 200) {
+            var myArr = (JSON.parse(this.responseText));
+            let array = myArr.elementer;
+            for (kommunenavn in myArr.elementer) {
+              var informasjon = myArr.elementer[kommunenavn];
+            }
+            //document.getElementById('Detaljer_output').innerHTML = input;
+            //Konstruktør(array, "Halden")
+            getIds(array, input);
+            getInfo(array, input);
+            getNames(array);
+          }
+        }
+        xhr.send();
+      }
+
+      load(URL);
+      getIds(array, kommunenr);
       getInfo(array, input);
+      getNames(array, navnliste);
+      this.URL = URL;
+      this.navnliste = navnliste;
+      this.kommunenr = kommunenr;
     }
-Konstruktør();
+//Konstruktør(Befolkning_url, "Halden");
+
+var test = new Konstruktør(Befolkning_url, "Halden")
+console.log(test)
+
+
 ////////////////////////////////////////////////////////////////////////////////////////
-function getNames(array) {
-  var mylist = [];
-  for (kommunenavn in array)
-  {mylist.push(kommunenavn)}
-  data(mylist);
-}
 
 //load(Befolkning_url, getNames);
 //load(Befolkning_url, getIds);
-load(Befolkning_url, getInfo);
+//load(Befolkning_url, getInfo);
 
-function data(mylist) {
-    //console.log(mylist);
-}
+
 
           //Logger kommunenummer
 
