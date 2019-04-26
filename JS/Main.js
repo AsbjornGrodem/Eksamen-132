@@ -24,6 +24,7 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenr) {
               }
               //document.getElementById('Detaljer_output').innerHTML = input;
               //Konstruktør(array, "Halden")
+              getIds(array, input);
               getInfo(array, input);
               getNames(array);
             }
@@ -44,6 +45,7 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenr) {
             else {nummerliste.push(array[i].kommunenummer);}
           }
           console.log(nummerliste);
+          return (nummerliste);
         }
 
       function getNames(array, navnliste) {
@@ -89,6 +91,7 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenr) {
       this.URL = URL;
       this.navnliste = navnliste;
       this.kommunenr = kommunenr;
+      this.nummerliste = nummerliste;
     }
 //Konstruktør(Befolkning_url, "Halden");
 
