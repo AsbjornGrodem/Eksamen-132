@@ -4,6 +4,10 @@ h1 {
   font-size: 60px;
 }
 
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 body {
   background-color: #95E8DE;
   text-align: center;
@@ -34,6 +38,11 @@ div {
   font-size: 20px;
 }
 
+.Table_Menn_div {
+
+}
+
+.Table_Kvinner_div {}
 .button {
   background-color: #4CAF50; /* Green */
   border: none;
