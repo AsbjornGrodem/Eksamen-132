@@ -9,36 +9,29 @@ var sammenligning = document.getElementById("Sammenligning_div");
 
 //async, await ny teknologi
 
-function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenummer, navn) {
+function Konstruktor(URL, input, array) {
 
-  function load(URL) {
-    return new Promise(function (resolve, reject) {
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function (e) {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            resolve(JSON.parse(xhr.response))
-          } else {
-            reject(xhr.status)
-          }
+  function load(URL, array, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        var myArr = (JSON.parse(this.responseText));
+        let array = myArr.elementer;
         }
       }
-      xhr.open('get', URL, true)
-      xhr.send();
-    })
+    xhr.open('get', URL, true)
+    xhr.send();
   }
+  load(URL);
 
-//heihei
-  load(URL).then(response => {
-    let array = response.elementer;
+
   this.URL = URL;
   this.navneliste = getNames(array);
-  this.nummerliste = getIds(array);
   this.navn = input;
   this.array = array;
-  this.kommunenummer = getNumber(array)
-  getInfo();
-});
+  this.kommunenummer = getNumber(array);
+  this.nummerliste = getIds(array);
+
 
   function getIds(array) {
     let nummerliste = [];
@@ -98,34 +91,29 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenummer, 
               cell2.innerHTML = verdi;}
             }
           }
-  }
-
+        }
 }
 
+var test = new Konstruktor(Befolkning_url, "Halden")
 
-var test = new Konstruktør(Befolkning_url, "Lindesnes")
 console.log(test)
-console.log(test.URL)
 
-function newKonst() {
-  var inp = document.getElementById("Infoinp");
-  var konst = new Konstruktør(Befolkning_url, inp);
-  console.log(konst)
-  console.log(inp);
-}
 
-function Sammenlign(URL) {
-  document.getElementById('Kommune_output').innerHTML = Sammenlign1_input.value;
-      console.log(myArr);
-    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Button funksjoner som viser/gjemmer divs
 function show(button) {
-
-  while (button === true) {
-    console.log("du printer ut");
-  }
-
   if (button === 1) {
     console.log("du trykket på knapp 1");
 
@@ -161,4 +149,4 @@ function show(button) {
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
   };
-};
+}
