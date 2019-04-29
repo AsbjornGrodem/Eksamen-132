@@ -28,6 +28,7 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenummer, 
     })
   }
 
+//heihei
   load(URL).then(response => {
     let array = response.elementer;
   this.URL = URL;
