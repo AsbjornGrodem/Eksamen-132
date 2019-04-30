@@ -14,7 +14,7 @@ function Konstruktor(array, input) {
   this.nummerliste = getIds(array);
   this.kommunenummer = getNumber(array);
   this.navneliste = getNames(array);
-  
+  this.informasjon = getInfo(array);
 
   function getIds(array) {
     let nummerliste = [];
@@ -44,6 +44,8 @@ function Konstruktor(array, input) {
     }
     return (navnliste);
   }
+
+
   function getInfo(array, input) {
   //document.getElementById('Detaljer_output').innerHTML = input;
   var table_Menn = document.createElement("Table_Menn");
@@ -51,42 +53,14 @@ function Konstruktor(array, input) {
   var table_Begge = document.getElementById("Table_Begge");
 
   for (kommune in array) {
-    if ("Grunnskolenivå" in array) {
-      console.log("Dette er utdanning");
-    }
-    else if (kommune===input)  {
-      var array_Menn = array[kommune].Menn;
-      var array_Kvinner = array[kommune].Kvinner;
-      var array_Begge = array[kommune].Begge;//////////////////Hvordan komme til en verdi som er to navn
-        for (årstall in array_Menn) {
-          var verdi = array_Menn[årstall];
-          var row = table_Menn.insertRow(0);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          cell1.innerHTML = årstall;
-          cell2.innerHTML = verdi;
-        }
-        for (årstall in array_Kvinner) {
-          var verdi = array_Kvinner[årstall];
-          var row = table_Kvinner.insertRow(0);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          cell1.innerHTML = årstall;
-          cell2.innerHTML = verdi;
-        }
-        for (årstall in array_Begge) {
-          var verdi = array_Begge[årstall];
-          var row = table_Begge_div.insertRow(0);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          cell1.innerHTML = årstall;
-          cell2.innerHTML = verdi;
-        }
+    if (kommune === i){
+      let informasjon = array[kommune];
+      console.log(informasjon);
+      return (informasjon)
       }
     }
   }
 }
-
 function load(URL, callback) {
     const xhr = new XMLHttpRequest();
     xhr.onload = function() {
@@ -99,12 +73,50 @@ function load(URL, callback) {
     xhr.send();
 }
 
-load(Befolkning_url, function(array) {
+load(Utdanning_url, function(array) {
     let test = new Konstruktor(array, "Halden");
     console.log(test);
 });
 
+/*
 
+
+
+//      Dette kan brukes for å pushe tabeller osv
+for (kommune in array) {
+  if (kommune===input)  {
+    var array_Menn = array[kommune].Menn;
+    var array_Kvinner = array[kommune].Kvinner;
+    var array_Begge = array[kommune].Begge;//////////////////Hvordan komme til en verdi som er to navn
+      for (årstall in array_Menn) {
+        var verdi = array_Menn[årstall];
+        var row = table_Menn.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = årstall;
+        cell2.innerHTML = verdi;
+      }
+      for (årstall in array_Kvinner) {
+        var verdi = array_Kvinner[årstall];
+        var row = table_Kvinner.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = årstall;
+        cell2.innerHTML = verdi;
+      }
+      for (årstall in array_Begge) {
+        var verdi = array_Begge[årstall];
+        var row = table_Begge_div.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = årstall;
+        cell2.innerHTML = verdi;
+
+      }
+    }
+  }
+}
+*/
 
 //Button funksjoner som viser/gjemmer divs
 function show(button) {
