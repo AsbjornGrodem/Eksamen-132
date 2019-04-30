@@ -44,8 +44,6 @@ function Konstruktor(array, input) {
     }
     return (navnliste);
   }
-
-
   function getInfo(array, input) {
   //document.getElementById('Detaljer_output').innerHTML = input;
   var table_Menn = document.createElement("Table_Menn");
@@ -55,12 +53,12 @@ function Konstruktor(array, input) {
   for (kommune in array) {
     if (kommune === i){
       let informasjon = array[kommune];
-      console.log(informasjon);
       return (informasjon)
       }
     }
   }
 }
+
 function load(URL, callback) {
     const xhr = new XMLHttpRequest();
     xhr.onload = function() {
@@ -74,9 +72,18 @@ function load(URL, callback) {
 }
 
 load(Utdanning_url, function(array) {
-    let test = new Konstruktor(array, "Halden");
-    console.log(test);
-});
+    let master = [];
+    for (x in array) {
+      let kommune = new Konstruktor(array, x)
+      master.push(kommune)
+    }
+    for (kommune in master) {
+      console.log(master[kommune])
+    }return (master);
+  });
+load(Sysselsatte_url, function (array) {
+})
+
 
 /*
 
