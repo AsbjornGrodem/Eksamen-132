@@ -9,26 +9,47 @@ var sammenligning = document.getElementById("Sammenligning_div");
 
 //async, await ny teknologi
 
-function Konstruktor(array, input) {
+function Konstruktor(URL, input, array) {
+
+  function load(URL, array, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        var myArr = (JSON.parse(this.responseText));
+        let array = myArr.elementer;
+        console.log(array);
+        this.navneliste = getNames(array);
+        
+        }
+      }
+    xhr.open('get', URL, true)
+    xhr.send();
+  }
+  load(URL);
+
+
+  this.URL = URL;
+
   this.navn = input;
-  this.nummerliste = getIds(array);
+  this.array = array;
   this.kommunenummer = getNumber(array);
-  this.navneliste = getNames(array);
-  
+  this.nummerliste = getIds(array);
+
 
   function getIds(array) {
     let nummerliste = [];
     for (i in array) {
       if (i === input) {
+        console.log(i)
         var kommunenr = array[i].kommunenummer;
         nummerliste.push(array[i].kommunenummer)
+        console.log(kommunenr);
       } else {
         nummerliste.push(array[i].kommunenummer);
       }
-    }
-    this.nummerliste = nummerliste;
-    return (nummerliste)
+    }return (nummerliste)
   }
+
   function getNumber(array) {
     for (i in array) {
       if (i === input) {
@@ -37,72 +58,60 @@ function Konstruktor(array, input) {
       }
     }
   }
-  function getNames(array) {
+
+  function getNames(array, navnliste) {
     var navnliste = [];
     for (kommunenavn in array) {
       navnliste.push(kommunenavn)
     }
     return (navnliste);
   }
+
   function getInfo(array, input) {
-  //document.getElementById('Detaljer_output').innerHTML = input;
-  var table_Menn = document.createElement("Table_Menn");
-  var table_Kvinner = document.getElementById("Table_Kvinner");
-  var table_Begge = document.getElementById("Table_Begge");
+      //document.getElementById('Detaljer_output').innerHTML = input;
+      var table_Menn = document.createElement("Table_Menn");
+      var table_Kvinner = document.getElementById("Table_Kvinner");
+      var table_Begge = document.getElementById("Table_Begge");
 
-  for (kommune in array) {
-    if ("Grunnskolenivå" in array) {
-      console.log("Dette er utdanning");
-    }
-    else if (kommune===input)  {
-      var array_Menn = array[kommune].Menn;
-      var array_Kvinner = array[kommune].Kvinner;
-      var array_Begge = array[kommune].Begge;//////////////////Hvordan komme til en verdi som er to navn
-        for (årstall in array_Menn) {
-          var verdi = array_Menn[årstall];
-          var row = table_Menn.insertRow(0);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          cell1.innerHTML = årstall;
-          cell2.innerHTML = verdi;
+      for (kommune in array) {
+        if (kommune===input)  {
+          var array_Menn = array[kommune].Menn;
+          var array_Kvinner = array[kommune].Kvinner;
+            for (årstall in array_Menn) {
+              var verdi = array_Menn[årstall];
+              var row = table_Menn.insertRow(0);
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);
+              cell1.innerHTML = årstall;
+              cell2.innerHTML = verdi;
+            }
+            for (årstall in array_Kvinner) {
+              var verdi = array_Kvinner[årstall];
+              var row = table_Kvinner.insertRow(0);
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);
+              cell1.innerHTML = årstall;
+              cell2.innerHTML = verdi;}
+            }
+          }
         }
-        for (årstall in array_Kvinner) {
-          var verdi = array_Kvinner[årstall];
-          var row = table_Kvinner.insertRow(0);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          cell1.innerHTML = årstall;
-          cell2.innerHTML = verdi;
-        }
-        for (årstall in array_Begge) {
-          var verdi = array_Begge[årstall];
-          var row = table_Begge_div.insertRow(0);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          cell1.innerHTML = årstall;
-          cell2.innerHTML = verdi;
-        }
-      }
-    }
-  }
 }
 
-function load(URL, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-        let myArr = JSON.parse(this.responseText);
-        let array = myArr.elementer;
+var test = new Konstruktor(Befolkning_url, "Halden")
 
-        callback(array);
-    }
-    xhr.open('GET', URL, true);
-    xhr.send();
-}
+console.log(test)
 
-load(Befolkning_url, function(array) {
-    let test = new Konstruktor(array, "Halden");
-    console.log(test);
-});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
