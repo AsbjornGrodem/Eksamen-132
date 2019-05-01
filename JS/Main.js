@@ -7,6 +7,7 @@ var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
 
+
 //async, await ny teknologi
 
 function Konstruktor(array, input) {
@@ -45,15 +46,10 @@ function Konstruktor(array, input) {
     return (navnliste);
   }
   function getInfo(array, input) {
-  //document.getElementById('Detaljer_output').innerHTML = input;
-  var table_Menn = document.createElement("Table_Menn");
-  var table_Kvinner = document.getElementById("Table_Kvinner");
-  var table_Begge = document.getElementById("Table_Begge");
-
-  for (kommune in array) {
-    if (kommune === i){
-      let informasjon = array[kommune];
-      return (informasjon)
+    for (kommune in array) {
+      if (kommune === i){
+        let informasjon = array[kommune];
+        return (informasjon)
       }
     }
   }
@@ -71,24 +67,55 @@ function load(URL, callback) {
     xhr.send();
 }
 
-load(Utdanning_url, function(array) {
-    let master = [];
-    for (x in array) {
-      let kommune = new Konstruktor(array, x)
-      master.push(kommune)
+function f_oversikt (utdanning_master, befolkning_master, sysselsatte_master) {
+
+};
+
+function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
+
+};
+
+function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
+  let input = "0101";//document.getElementById("Detaljer_input").value
+  for (kommune in utdanning_master){
+    if (utdanning_master[kommune].kommunenummer === input){
+      var out = utdanning_master[kommune].navn + " " + utdanning_master[kommune].kommunenummer;
+      document.getElementById("Detaljer_output").innerHTML = out;
+      console.log(out);
     }
-    for (kommune in master) {
-      console.log(master[kommune])
-    }return (master);
-  });
-load(Sysselsatte_url, function (array) {
+  }
+}
+
+load(Befolkning_url, function (array1) {
+  let befolkning_master = [];
+  for (x in array1) {
+    let kommune = new Konstruktor(array1, x)
+    befolkning_master.push(kommune);}
+
+  load(Utdanning_url, function(array2) {
+    let utdanning_master = [];
+    for (x in array2) {
+      let kommune = new Konstruktor(array2, x)
+      utdanning_master.push(kommune);}
+
+    load(Sysselsatte_url, function(array3) {
+      let sysselsatte_master = [];
+      for (x in array3) {
+        let kommune = new Konstruktor(array3, x)
+        sysselsatte_master.push(kommune);}
+      f_sammenlign(utdanning_master,befolkning_master,sysselsatte_master);
+      f_detaljer (utdanning_master, befolkning_master, sysselsatte_master);
+      f_oversikt (utdanning_master, befolkning_master, sysselsatte_master)
+    })
+  })
 })
+
+//f_oversikt();
+//f_detaljer();
+//f_sammenlign();
 
 
 /*
-
-
-
 //      Dette kan brukes for å pushe tabeller osv
 for (kommune in array) {
   if (kommune===input)  {
