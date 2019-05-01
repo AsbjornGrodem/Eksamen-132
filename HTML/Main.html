@@ -12,78 +12,75 @@
     <body>
 
 
-<button class="button" onclick="show(1)">Introduksjon</button>
+      <button class="button" onclick="show(1)">Introduksjon</button>
       <button class="button button2" onclick="show(2)">Oversikt</button>
       <button class="button button3" onclick="show(3)">Detaljer</button>
       <button class="button button4" onclick="show(4)">Sammenlign</button>
 
-<div id="Introduksjon_div" class="Introduksjon_div">Intro
+      <div id="Introduksjon_div" class="Introduksjon_div">Intro
         <p>Her er det ting om introduksjonen
           Introduksjonsteksten skal bestå av tekst som beskriver produktet deres. Det skal også inneholde
     lenker til SSB-sine offisielle sider, og en notis om at dataene kan inneholde feil.</p>
       </div>
       <br>
 
-<div id="Oversikt_div" class="Oversikt_div">Oversikt
-      </div>
-      <table id="Oversikt_table">
+      <div id="Oversikt_div" class="Oversikt_div">Oversikt
+        <table id="Oversikt_table">
+          <tr>
+            <th>test</th>
+            <th>test1</th>
+          </tr>
+          <tr>
+            <th>sidelengs1</th>
+            <th>sidelengs2</th>
+            <th>sidelengs3</th>
+          </tr>
+          <td>Test ned</td>
+        </table>
+        </div>
+        <br>
 
-      </table>
+        <div id="Detaljer_div" class="Detaljer_div">Detaljer
+          <input type="text" id="Detaljer_input">
+          </input>
+          <button id="Detaljer_button" onclick="f_detaljer();">Last inn</button>
+
+          <table id="Detaljer_output">Hei</table>
+        </div>
       <br>
 
-<div id="Detaljer_div" class="Detaljer_div">Detaljer
-        <input type="text" id="Detaljer_input">
-      </input>
-      <button id="Detaljer_button" onclick="f_detaljer();">Last inn</button>
+    <div id="Sammenligning_div" class="Sammenligning_div">Her kan du sammenligne uviklingen i to kommuner.
+          <input type="text" id="Sammenlign1_input">
+        </input>
+        <input type="text" id="Sammenlign2_input">
+        <button onclick="Sammenlign()">Sammenlign</button>
+        <p id="Kommune_output"></p>
+        </div>
 
-      <table id="Detaljer_output">Hei</table>
+    <div id="Table_Menn_div">
+      <input type="text" id="Info.inp">
+      <button type="button" id="Info" onclick="newKonst();">TEST</button>
+          <p>Menn som jobber</p>
+        <table id="Table_Menn">
+            <tr>
+            </tr>
+            <tr>
+              <td>Hei</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>Test1</td>
+              <td>Test2</td>
+            </tr>
+          </table>
+        </div>
+        </div>
 
-      </div>
-      <br>
+        <br>
 
-<div id="Sammenligning_div" class="Sammenligning_div">Her kan du sammenligne uviklingen i to kommuner.
-      <input type="text" id="Sammenlign1_input">
-    </input>
-    <input type="text" id="Sammenlign2_input">
-    <button onclick="Sammenlign()">Sammenlign</button>
-    <p id="Kommune_output"></p>
-    </div>
-
-<div id="Table_Menn_div">
-  <input type="text" id="Info.inp">
-  <button type="button" id="Info" onclick="newKonst();">TEST</button>
-      <p>Menn som jobber</p>
-    <table id="Table_Menn">
-        <tr>
-        </tr>
-        <tr>
-          <td>Hei</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>Test1</td>
-          <td>Test2</td>
-        </tr>
-      </table>
-    </div>
-    </div>
-
-    <br>
-
-<div id="Table_Kvinner_div">
-  <p>Kvinner som jobber</p>
-    <table id="Table_Kvinner">
-      <tr>
-        <td>
-        </td>
-      </tr>
-    </table>
-
-    </div>
-
-<div id="Table_Begge_div">
-      <p>Begge jobber;</p>
-        <table id="Table_Begge">
+    <div id="Table_Kvinner_div">
+      <p>Kvinner som jobber</p>
+        <table id="Table_Kvinner">
           <tr>
             <td>
             </td>
@@ -92,7 +89,18 @@
 
         </div>
 
-  </body>
+    <div id="Table_Begge_div">
+          <p>Begge jobber;</p>
+            <table id="Table_Begge">
+              <tr>
+                <td>
+                </td>
+              </tr>
+            </table>
 
-<script src="../JS/Main.js"></script>
+            </div>
+
+      </body>
+
+    <script src="../JS/Main.js"></script>
 </html>

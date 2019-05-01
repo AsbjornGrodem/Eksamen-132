@@ -68,8 +68,12 @@ function load(URL, callback) {
 }
 
 function f_oversikt (utdanning_master, befolkning_master, sysselsatte_master) {
-
-};
+  var table = document.getElementById("Oversikt_table");
+  for (kommune in utdanning_master){
+    console.log(utdanning_master[kommune]);
+    
+  }
+}
 
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
 
@@ -81,7 +85,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
     if (utdanning_master[kommune].kommunenummer === input){
       var out = utdanning_master[kommune].navn + " " + utdanning_master[kommune].kommunenummer;
       document.getElementById("Detaljer_output").innerHTML = out;
-      console.log(out);
+      //console.log(out);
     }
   }
 }
