@@ -10,7 +10,7 @@
   <body>
     <h1>INFO134</h1>
     </head>
-    <body onload="buttonClick()">
+    <body onload="buttonClick(0)">
 
       <button class="button" onclick="show(1)">Introduksjon</button>
       <button class="button button2" onclick="show(2)" >Oversikt</button>
@@ -28,10 +28,12 @@
       </div>
         <br>
 
-        <div id="Detaljer_div" class="Detaljer_div">Detaljer
-          <input type="text" id="Detaljer_input">
-          </input>
-          <button id="Detaljer_button" onclick="buttonClick()">Last inn</button>
+        <div id="Detaljer_div" class="Detaljer_div">
+
+          <input type="text" id="Detaljer_input"placeholder="Kommunenummer"></input>
+          <button id="Detaljer_button" onclick="buttonClick(1)">Last inn</button>
+          <div id="kommunenavn" class="kommunenavn">
+          </div>
 
           <div id="detaljer_oversikt" class="detaljer_oversikt">
 

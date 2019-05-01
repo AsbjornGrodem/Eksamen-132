@@ -160,30 +160,57 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
   let input = document.getElementById("Detaljer_input").value;
   for (kommunenummer in befolkning_master){
     if (input === befolkning_master[kommunenummer].kommunenummer){
+      var kommuneNavn = '<h2>'
+      kommuneNavn += befolkning_master[kommunenummer].navn;
+      kommuneNavn += " kommune"
+      kommuneNavn += '</h2>'
       var tabellHTML = '<table id="Detaljer_output">'
+
       tabellHTML += '<tr>';
       tabellHTML += '<td>';
       tabellHTML += "Kommunenavn: ";
-      tabellHTML += befolkning_master[kommunenummer].navn;
       tabellHTML += '</td>';
       tabellHTML += '<td>';
       tabellHTML += "Kommunenummer: ";
+      tabellHTML += '</td>';
+      tabellHTML += '<td>';
+      tabellHTML += "Total befolkning: ";
+      tabellHTML += '</td>';
+      tabellHTML += '<td>';
+      tabellHTML += "Sysselsetting og høyere utdanning: ";
+      tabellHTML += '</td>';
+      tabellHTML += '<td>';
+      tabellHTML += "Høyere utdanning: ";
+      tabellHTML += '</td>';
+      tabellHTML += '</tr>';
+      tabellHTML += '<tr>';
+      tabellHTML += '<td>';
+      tabellHTML += befolkning_master[kommunenummer].navn;
+      tabellHTML += '</td>';
+      tabellHTML += '<td>';
       tabellHTML += befolkning_master[kommunenummer].kommunenummer;
       tabellHTML += '</td>';
       tabellHTML += '<td>';
-      tabellHTML += "Sysselsetting og høyere utdanning ";
+      tabellHTML += befolkning_master[kommunenummer].total_befolkning[kommunenummer];
+      tabellHTML += '</td>';
+      tabellHTML += '<td>';
+      tabellHTML += "uskjent";
+      tabellHTML += '</td>';
+      tabellHTML += '<td>';
+      tabellHTML += "uskjent";
       tabellHTML += '</td>';
       tabellHTML += '</tr>';
 
       tabellHTML += '</table>';
-      var tabell = document.getElementById("detaljer_oversikt").innerHTML = tabellHTML;
+      document.getElementById("detaljer_oversikt").innerHTML = tabellHTML;
+      document.getElementById("kommunenavn").innerHTML = kommuneNavn;
     }
 
   }
-  return tabell;
+
 }
 
-function buttonClick() {
+function buttonClick(test) {
 
   load(Befolkning_url, function (array1) {
     let befolkning_master = [];
@@ -203,7 +230,10 @@ function buttonClick() {
           let kommune = new Konstruktor(array3, x)
           sysselsatte_master.push(kommune);}
         f_sammenlign(utdanning_master,befolkning_master,sysselsatte_master);
-        f_detaljer(utdanning_master, befolkning_master, sysselsatte_master);
+        if (test === 1) {
+          f_detaljer(utdanning_master, befolkning_master, sysselsatte_master);
+        }
+
         f_oversikt (befolkning_master)
 
       })
@@ -211,9 +241,6 @@ function buttonClick() {
 
   })
 }
-
-
-
 
 
 //f_oversikt();

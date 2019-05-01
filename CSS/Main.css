@@ -38,7 +38,8 @@ body {
 
 .Detaljer_div {
   display: none;
-  width: 320px;
+  width: auto;
+  height: auto;
   padding: 10px;
   border: 5px solid gray;
   margin: 0;
