@@ -8,7 +8,7 @@ var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
 
 
-//Jeg har endret noe
+//Jeg har endret noe mer
 
 function Konstruktor(array, input) {
   this.navn = input;
