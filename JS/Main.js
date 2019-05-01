@@ -8,7 +8,7 @@ var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
 
 
-//async, await ny teknologi
+//Jeg har endret noe
 
 function Konstruktor(array, input) {
   this.navn = input;
