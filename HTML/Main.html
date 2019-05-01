@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../CSS/Main.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="../JS/Main.js"></script>
     <title>MAIN</title>
   </head>
   <body>
     <h1>INFO134</h1>
     </head>
-    <body>
-
+    <body onload="buttonClick()">
 
       <button class="button" onclick="show(1)">Introduksjon</button>
-      <button class="button button2" onclick="show(2)">Oversikt</button>
+      <button class="button button2" onclick="show(2)" >Oversikt</button>
       <button class="button button3" onclick="show(3)">Detaljer</button>
       <button class="button button4" onclick="show(4)">Sammenlign</button>
 
@@ -24,14 +24,14 @@
       </div>
       <br>
 
-      <div id="Oversikt_div" class="Oversikt_div">Oversikt
+      <div  id="Oversikt_div" class="Oversikt_div" >Oversikt
       </div>
         <br>
 
         <div id="Detaljer_div" class="Detaljer_div">Detaljer
           <input type="text" id="Detaljer_input">
           </input>
-          <button id="Detaljer_button" onclick="f_detaljer()">Last inn</button>
+          <button id="Detaljer_button" onclick="buttonClick()">Last inn</button>
 
           <div id="detaljer_oversikt" class="detaljer_oversikt">
 
@@ -67,7 +67,6 @@
           </table>
         </div>
 
-
         <br>
 
     <div id="table_Kvinner_div">
@@ -94,5 +93,5 @@
 
       </body>
 
-    <script src="../JS/Main.js"></script>
+
 </html>

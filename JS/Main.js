@@ -103,8 +103,6 @@ function load(URL, callback) {
 }
 
 
-
-
 function f_oversikt (oversikt) {
 
   var tabellHTML = '<table class="total_oversikt">';
@@ -151,8 +149,6 @@ function f_oversikt (oversikt) {
     console.log(navn, kommunenummer);
   }
 }
-
-
 */
 
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
@@ -180,36 +176,43 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
       tabellHTML += '</tr>';
 
       tabellHTML += '</table>';
-      document.getElementById("detaljer_oversikt").innerHTML = tabellHTML;
+      var tabell = document.getElementById("detaljer_oversikt").innerHTML = tabellHTML;
     }
 
   }
+  return tabell;
 }
 
-load(Befolkning_url, function (array1) {
-  let befolkning_master = [];
-  for (x in array1) {
-    let kommune = new Konstruktor(array1, x)
-    befolkning_master.push(kommune);}
+function buttonClick() {
 
-  load(Utdanning_url, function(array2) {
-    let utdanning_master = [];
-    for (x in array2) {
-      let kommune = new Konstruktor(array2, x)
-      utdanning_master.push(kommune);}
+  load(Befolkning_url, function (array1) {
+    let befolkning_master = [];
+    for (x in array1) {
+      let kommune = new Konstruktor(array1, x)
+      befolkning_master.push(kommune);}
 
-    load(Sysselsatte_url, function(array3) {
-      let sysselsatte_master = [];
-      for (x in array3) {
-        let kommune = new Konstruktor(array3, x)
-        sysselsatte_master.push(kommune);}
-      f_sammenlign(utdanning_master,befolkning_master,sysselsatte_master);
-      f_detaljer (utdanning_master, befolkning_master, sysselsatte_master);
-      f_oversikt (befolkning_master)
+    load(Utdanning_url, function(array2) {
+      let utdanning_master = [];
+      for (x in array2) {
+        let kommune = new Konstruktor(array2, x)
+        utdanning_master.push(kommune);}
 
+      load(Sysselsatte_url, function(array3) {
+        let sysselsatte_master = [];
+        for (x in array3) {
+          let kommune = new Konstruktor(array3, x)
+          sysselsatte_master.push(kommune);}
+        f_sammenlign(utdanning_master,befolkning_master,sysselsatte_master);
+        f_detaljer(utdanning_master, befolkning_master, sysselsatte_master);
+        f_oversikt (befolkning_master)
+
+      })
     })
+
   })
-})
+}
+
+
 
 
 
