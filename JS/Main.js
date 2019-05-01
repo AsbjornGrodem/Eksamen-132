@@ -9,36 +9,13 @@ var sammenligning = document.getElementById("Sammenligning_div");
 
 //async, await ny teknologi
 
-function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenummer, navn) {
-
-  function load(URL) {
-    return new Promise(function (resolve, reject) {
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function (e) {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            resolve(JSON.parse(xhr.response))
-          } else {
-            reject(xhr.status)
-          }
-        }
-      }
-      xhr.open('get', URL, true)
-      xhr.send();
-    })
-  }
-
-//heihei
-  load(URL).then(response => {
-    let array = response.elementer;
-  this.URL = URL;
-  this.navneliste = getNames(array);
-  this.nummerliste = getIds(array);
+function Konstruktor(array, input) {
   this.navn = input;
-  this.array = array;
-  this.kommunenummer = getNumber(array)
-  getInfo();
-});
+  this.nummerliste = getIds(array);
+  this.kommunenummer = getNumber(array);
+  this.navneliste = getNames(array);
+  this.informasjon = getInfo(array);
+  this.total_befolkning = befolkning_total(array);
 
 
 
@@ -46,16 +23,15 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenummer, 
     let nummerliste = [];
     for (i in array) {
       if (i === input) {
-        console.log(i)
         var kommunenr = array[i].kommunenummer;
         nummerliste.push(array[i].kommunenummer)
-        console.log(kommunenr);
       } else {
         nummerliste.push(array[i].kommunenummer);
       }
-    }return (nummerliste)
+    }
+    this.nummerliste = nummerliste;
+    return (nummerliste)
   }
-
   function getNumber(array) {
     for (i in array) {
       if (i === input) {
@@ -64,71 +40,198 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenummer, 
       }
     }
   }
-
-  function getNames(array, navnliste) {
+  function getNames(array) {
     var navnliste = [];
     for (kommunenavn in array) {
       navnliste.push(kommunenavn)
     }
     return (navnliste);
   }
-
   function getInfo(array, input) {
-      //document.getElementById('Detaljer_output').innerHTML = input;
-      var table_Menn = document.createElement("Table_Menn");
-      var table_Kvinner = document.getElementById("Table_Kvinner");
-      var table_Begge = document.getElementById("Table_Begge");
-
-      for (kommune in array) {
-        for (kommune in input)  {
-          var array_Menn = array[kommune].Menn;
-          var array_Kvinner = array[kommune].Kvinner;
-            for (årstall in array_Menn) {
-              var verdi = array_Menn[årstall];
-              var row = table_Menn.insertRow(0);
-              var cell1 = row.insertCell(0);
-              var cell2 = row.insertCell(1);
-              cell1.innerHTML = årstall;
-              cell2.innerHTML = verdi;
-            }
-            for (årstall in array_Kvinner) {
-              var verdi = array_Kvinner[årstall];
-              var row = table_Kvinner.insertRow(0);
-              var cell1 = row.insertCell(0);
-              var cell2 = row.insertCell(1);
-              cell1.innerHTML = årstall;
-              cell2.innerHTML = verdi;}
-            }
-          }
+    for (kommune in array) {
+      if (kommune === i){
+        let informasjon = array[kommune];
+        return (informasjon)
+      }
+    }
   }
 
-}
+  function befolkning_total(kjønn) {
 
+    var total = [];
+    var total_menn = [];
+    var total_kvinner = [];
+    for (kommune in kjønn) {
+      var menn = kjønn[kommune].Menn;
+      var kvinner = kjønn[kommune].Kvinner
+      for(årstall in menn){
+        var antall = menn[årstall];
+      }
+      total_menn.push(antall)
 
-var test = new Konstruktør(Befolkning_url, "Lindesnes")
-
-
-
-
-function newKonst() {
-  var inp = document.getElementById("Infoinp");
-  var konst = new Konstruktør(Befolkning_url, inp);
-  console.log(konst)
-  console.log(inp);
-}
-
-function Sammenlign(URL) {
-  document.getElementById('Kommune_output').innerHTML = Sammenlign1_input.value;
-      console.log(myArr);
+      for(årstall in kvinner) {
+        var antall = kvinner[årstall];
+      }
+      total_kvinner.push(antall)
     }
+
+    for (var i = 0; i < total_menn.length; i++) {
+      total_menn[i]
+    }
+
+    for (var i = 0; i < total_kvinner.length; i++) {
+      total.push(total_kvinner[i] + total_menn[i]);
+    }
+
+    return total
+  }
+}
+
+function load(URL, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        let myArr = JSON.parse(this.responseText);
+        let array = myArr.elementer;
+
+        callback(array);
+    }
+    xhr.open('GET', URL, true);
+    xhr.send();
+}
+
+/*function f_oversikt (utdanning_master, befolkning_master, sysselsatte_master) {
+  var table = document.getElementById("Oversikt_table");
+  let newRow = table.insertRow(-1);
+  let newCell = newRow.insertCell(0);
+  let newText = document.createTextNode('INPUT');
+
+  for (kommune in sysselsatte_master){
+    let navn = sysselsatte_master[kommune].navn;
+    let kommunenummer = sysselsatte_master[kommune].kommunenummer;
+    let info_Begge = sysselsatte_master[kommune].informasjon["Begge kjønn"];
+    let count = 2018;                         //Må få til at den leter etter siste oppdaterte år, ikke statisk 2018;
+    console.log("Kommune", navn, "Kommunenummer", kommunenummer, "I ", count, "var det ", info_Begge[count], "til sammen");
+  }
+}
+*/
+
+
+function f_oversikt (oversikt) {
+
+console.log(oversikt);
+  var tabellHTML = '<table class="total_oversikt">';
+  tabellHTML += '<tr>';
+  tabellHTML += '<td>';
+  tabellHTML += "Kommunenavn: ";
+  tabellHTML += '</td>';
+  tabellHTML += '<td>';
+  tabellHTML += "Kommunenummer: ";
+  tabellHTML += '</td>';
+  tabellHTML += '<td>';
+  tabellHTML += "Total Befolkning: ";
+  tabellHTML += '</td>';
+  tabellHTML += '</tr>';
+
+  for(i = 0; i <= 422; i++) {
+    tabellHTML += '<tr>';
+    tabellHTML += '<td>';
+    tabellHTML += oversikt[i].navn;
+    tabellHTML += '</td>';
+    tabellHTML += '<td>';
+    tabellHTML += oversikt[i].kommunenummer;
+    tabellHTML += '</td>';
+    tabellHTML += '<td>';
+    tabellHTML += oversikt[i].total_befolkning[i];
+    tabellHTML += '</td>';
+    tabellHTML += '</tr>';
+  }
+
+  tabellHTML += '</table>';
+  document.getElementById("Oversikt_div").innerHTML = tabellHTML;
+}
+function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
+
+};
+
+function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
+  let input = "0101";//document.getElementById("Detaljer_input").value
+  for (kommune in utdanning_master){
+    if (utdanning_master[kommune].kommunenummer === input){
+      var out = utdanning_master[kommune].navn + " " + utdanning_master[kommune].kommunenummer;
+      document.getElementById("Detaljer_output").innerHTML = out;
+      //console.log(out);
+    }
+  }
+}
+
+load(Befolkning_url, function (array1) {
+  let befolkning_master = [];
+  for (x in array1) {
+    let kommune = new Konstruktor(array1, x)
+    befolkning_master.push(kommune);}
+
+  load(Utdanning_url, function(array2) {
+    let utdanning_master = [];
+    for (x in array2) {
+      let kommune = new Konstruktor(array2, x)
+      utdanning_master.push(kommune);}
+
+    load(Sysselsatte_url, function(array3) {
+      let sysselsatte_master = [];
+      for (x in array3) {
+        let kommune = new Konstruktor(array3, x)
+        sysselsatte_master.push(kommune);}
+      f_sammenlign(utdanning_master,befolkning_master,sysselsatte_master);
+      f_detaljer (utdanning_master, befolkning_master, sysselsatte_master);
+      f_oversikt (utdanning_master, befolkning_master, sysselsatte_master)
+    })
+  })
+})
+
+//f_oversikt();
+//f_detaljer();
+//f_sammenlign();
+
+
+/*
+//      Dette kan brukes for å pushe tabeller osv
+for (kommune in array) {
+  if (kommune===input)  {
+    var array_Menn = array[kommune].Menn;
+    var array_Kvinner = array[kommune].Kvinner;
+    var array_Begge = array[kommune].Begge;//////////////////Hvordan komme til en verdi som er to navn
+      for (årstall in array_Menn) {
+        var verdi = array_Menn[årstall];
+        var row = table_Menn.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = årstall;
+        cell2.innerHTML = verdi;
+      }
+      for (årstall in array_Kvinner) {
+        var verdi = array_Kvinner[årstall];
+        var row = table_Kvinner.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = årstall;
+        cell2.innerHTML = verdi;
+      }
+      for (årstall in array_Begge) {
+        var verdi = array_Begge[årstall];
+        var row = table_Begge_div.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = årstall;
+        cell2.innerHTML = verdi;
+
+      }
+    }
+  }
+}
+*/
 
 //Button funksjoner som viser/gjemmer divs
 function show(button) {
-
-  while (button === true) {
-    console.log("du printer ut");
-  }
-
   if (button === 1) {
     console.log("du trykket på knapp 1");
 
@@ -164,4 +267,4 @@ function show(button) {
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
   };
-};
+}
