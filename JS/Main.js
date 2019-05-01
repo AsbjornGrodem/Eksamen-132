@@ -40,6 +40,8 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenummer, 
   getInfo();
 });
 
+
+
   function getIds(array) {
     let nummerliste = [];
     for (i in array) {
@@ -78,7 +80,7 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenummer, 
       var table_Begge = document.getElementById("Table_Begge");
 
       for (kommune in array) {
-        if (kommune===input)  {
+        for (kommune in input)  {
           var array_Menn = array[kommune].Menn;
           var array_Kvinner = array[kommune].Kvinner;
             for (årstall in array_Menn) {
@@ -104,8 +106,9 @@ function Konstruktør(URL, input, array, nummerliste, navnliste, kommunenummer, 
 
 
 var test = new Konstruktør(Befolkning_url, "Lindesnes")
-console.log(test)
-console.log(test.URL)
+
+
+
 
 function newKonst() {
   var inp = document.getElementById("Infoinp");
