@@ -69,9 +69,16 @@ function load(URL, callback) {
 
 function f_oversikt (utdanning_master, befolkning_master, sysselsatte_master) {
   var table = document.getElementById("Oversikt_table");
-  for (kommune in utdanning_master){
-    console.log(utdanning_master[kommune]);
-    
+  let newRow = table.insertRow(-1);
+  let newCell = newRow.insertCell(0);
+  let newText = document.createTextNode('INPUT');
+
+  for (kommune in sysselsatte_master){
+    let navn = sysselsatte_master[kommune].navn;
+    let kommunenummer = sysselsatte_master[kommune].kommunenummer;
+    let info = sysselsatte_master[kommune].informasjon.Menn;
+
+    console.log(navn, kommunenummer);
   }
 }
 
