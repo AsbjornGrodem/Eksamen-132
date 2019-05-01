@@ -13,13 +13,7 @@ body {
   font-size: : 20px;
 }
 
-/*div {
-  width: 320px;
-  padding: 10px;
-  border: 5px solid gray;
-  margin: 0;
-}
-*/
+
 
 .Introduksjon_div {
   display: none;
@@ -77,4 +71,3 @@ body {
 .button3 {background-color: #f44336;} /* Red */
 .button4 {background-color: #e7e7e7; color: black;} /* Gray */
 .button5 {background-color: #555555;} /* Black */
-
