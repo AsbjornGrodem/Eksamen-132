@@ -7,6 +7,7 @@ var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
 
+
 //async, await ny teknologi
 
 function Konstruktor(array, input) {
@@ -82,10 +83,11 @@ function Konstruktor(array, input) {
     for (var i = 0; i < total_kvinner.length; i++) {
       total.push(total_kvinner[i] + total_menn[i]);
     }
-
     return total
   }
 }
+
+
 
 function load(URL, callback) {
     const xhr = new XMLHttpRequest();
@@ -94,31 +96,17 @@ function load(URL, callback) {
         let array = myArr.elementer;
 
         callback(array);
+
     }
     xhr.open('GET', URL, true);
     xhr.send();
 }
 
-/*function f_oversikt (utdanning_master, befolkning_master, sysselsatte_master) {
-  var table = document.getElementById("Oversikt_table");
-  let newRow = table.insertRow(-1);
-  let newCell = newRow.insertCell(0);
-  let newText = document.createTextNode('INPUT');
 
-  for (kommune in sysselsatte_master){
-    let navn = sysselsatte_master[kommune].navn;
-    let kommunenummer = sysselsatte_master[kommune].kommunenummer;
-    let info_Begge = sysselsatte_master[kommune].informasjon["Begge kjønn"];
-    let count = 2018;                         //Må få til at den leter etter siste oppdaterte år, ikke statisk 2018;
-    console.log("Kommune", navn, "Kommunenummer", kommunenummer, "I ", count, "var det ", info_Begge[count], "til sammen");
-  }
-}
-*/
 
 
 function f_oversikt (oversikt) {
 
-console.log(oversikt);
   var tabellHTML = '<table class="total_oversikt">';
   tabellHTML += '<tr>';
   tabellHTML += '<td>';
@@ -149,17 +137,50 @@ console.log(oversikt);
   tabellHTML += '</table>';
   document.getElementById("Oversikt_div").innerHTML = tabellHTML;
 }
+
+/*  var table = document.getElementById("Oversikt_table");
+  let newRow = table.insertRow(-1);
+  let newCell = newRow.insertCell(0);
+  let newText = document.createTextNode('INPUT');
+
+  for (kommune in sysselsatte_master){
+    let navn = sysselsatte_master[kommune].navn;
+    let kommunenummer = sysselsatte_master[kommune].kommunenummer;
+    let info = sysselsatte_master[kommune].informasjon.Menn;
+
+    console.log(navn, kommunenummer);
+  }
+}
+
+
+*/
+
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
 
 };
 
-function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
-  let input = "0101";//document.getElementById("Detaljer_input").value
-  for (kommune in utdanning_master){
-    if (utdanning_master[kommune].kommunenummer === input){
-      var out = utdanning_master[kommune].navn + " " + utdanning_master[kommune].kommunenummer;
-      document.getElementById("Detaljer_output").innerHTML = out;
-      //console.log(out);
+function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
+
+  let input = document.getElementById("Detaljer_input").value;
+  for (kommunenummer in befolkning_master){
+    if (input === befolkning_master[kommunenummer].kommunenummer){
+      var tabellHTML = '<table id="Detaljer_output">'
+      tabellHTML += '<tr>';
+      tabellHTML += '<td>';
+      tabellHTML += "Kommunenavn: ";
+      tabellHTML += befolkning_master[kommunenummer].navn;
+      tabellHTML += '</td>';
+      tabellHTML += '<td>';
+      tabellHTML += "Kommunenummer: ";
+      tabellHTML += befolkning_master[kommunenummer].kommunenummer;
+      tabellHTML += '</td>';
+      tabellHTML += '<td>';
+      tabellHTML += "Sysselsetting og høyere utdanning ";
+      tabellHTML += '</td>';
+      tabellHTML += '</tr>';
+
+      document.getElementById("Detaljer_output").innerHTML = tabellHTML;
+
     }
   }
 }
@@ -182,11 +203,16 @@ load(Befolkning_url, function (array1) {
         let kommune = new Konstruktor(array3, x)
         sysselsatte_master.push(kommune);}
       f_sammenlign(utdanning_master,befolkning_master,sysselsatte_master);
-      f_detaljer (utdanning_master, befolkning_master, sysselsatte_master);
-      f_oversikt (utdanning_master, befolkning_master, sysselsatte_master)
+      /*f_detaljer (utdanning_master, befolkning_master, sysselsatte_master);*/
+      f_oversikt (befolkning_master)
+      function buttonClicked() {
+        f_detaljer (utdanning_master, befolkning_master, sysselsatte_master);
+      }
     })
   })
 })
+
+
 
 //f_oversikt();
 //f_detaljer();
@@ -223,7 +249,6 @@ for (kommune in array) {
         var cell2 = row.insertCell(1);
         cell1.innerHTML = årstall;
         cell2.innerHTML = verdi;
-
       }
     }
   }
@@ -232,39 +257,56 @@ for (kommune in array) {
 
 //Button funksjoner som viser/gjemmer divs
 function show(button) {
+
+  while (button === true) {
+    console.log("du printer ut");
+  }
+
   if (button === 1) {
-    console.log("du trykket på knapp 1");
+
 
     intro.style.display = "block";
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
+    table_Menn_div.style.display = "none";
+    table_Kvinner_div.style.display = "none";
+    table_Begge_div.style.display = "none";
   };
 
   if (button === 2) {
-    console.log("du trykket på knapp 1");
+
 
     intro.style.display = "none";
     oversikt.style.display = "block";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
+    table_Menn_div.style.display = "none";
+    table_Kvinner_div.style.display = "none";
+    table_Begge_div.style.display = "none";
   };
 
   if (button === 3) {
-    console.log("du trykket på knapp 1");
+
 
     intro.style.display = "none";
     oversikt.style.display = "none";
     detaljer.style.display = "block";
     sammenligning.style.display = "none";
+    table_Menn_div.style.display = "none";
+    table_Kvinner_div.style.display = "none";
+    table_Begge_div.style.display = "none";
   };
 
   if (button === 4) {
-    console.log("du trykket på knapp 1");
+
 
     intro.style.display = "none";
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
+    table_Menn_div.style.display = "none";
+    table_Kvinner_div.style.display = "none";
+    table_Begge_div.style.display = "none";
   };
-}
+};
