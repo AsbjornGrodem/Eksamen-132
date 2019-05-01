@@ -7,7 +7,6 @@ var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
 
-
 //async, await ny teknologi
 
 function Konstruktor(array, input) {
@@ -16,6 +15,7 @@ function Konstruktor(array, input) {
   this.kommunenummer = getNumber(array);
   this.navneliste = getNames(array);
   this.informasjon = getInfo(array);
+  this.total_befolkning = befolkning_total(array);
 
   function getIds(array) {
     let nummerliste = [];
@@ -53,6 +53,36 @@ function Konstruktor(array, input) {
       }
     }
   }
+
+  function befolkning_total(kjønn) {
+
+    var total = [];
+    var total_menn = [];
+    var total_kvinner = [];
+    for (kommune in kjønn) {
+      var menn = kjønn[kommune].Menn;
+      var kvinner = kjønn[kommune].Kvinner
+      for(årstall in menn){
+        var antall = menn[årstall];
+      }
+      total_menn.push(antall)
+
+      for(årstall in kvinner) {
+        var antall = kvinner[årstall];
+      }
+      total_kvinner.push(antall)
+    }
+
+    for (var i = 0; i < total_menn.length; i++) {
+      total_menn[i]
+    }
+
+    for (var i = 0; i < total_kvinner.length; i++) {
+      total.push(total_kvinner[i] + total_menn[i]);
+    }
+
+    return total
+  }
 }
 
 function load(URL, callback) {
@@ -67,7 +97,7 @@ function load(URL, callback) {
     xhr.send();
 }
 
-function f_oversikt (utdanning_master, befolkning_master, sysselsatte_master) {
+/*function f_oversikt (utdanning_master, befolkning_master, sysselsatte_master) {
   var table = document.getElementById("Oversikt_table");
   let newRow = table.insertRow(-1);
   let newCell = newRow.insertCell(0);
@@ -76,12 +106,47 @@ function f_oversikt (utdanning_master, befolkning_master, sysselsatte_master) {
   for (kommune in sysselsatte_master){
     let navn = sysselsatte_master[kommune].navn;
     let kommunenummer = sysselsatte_master[kommune].kommunenummer;
-    let info = sysselsatte_master[kommune].informasjon.Menn;
-
-    console.log(navn, kommunenummer);
+    let info_Begge = sysselsatte_master[kommune].informasjon["Begge kjønn"];
+    let count = 2018;                         //Må få til at den leter etter siste oppdaterte år, ikke statisk 2018;
+    console.log("Kommune", navn, "Kommunenummer", kommunenummer, "I ", count, "var det ", info_Begge[count], "til sammen");
   }
 }
+*/
 
+
+function f_oversikt (oversikt) {
+
+console.log(oversikt);
+  var tabellHTML = '<table class="total_oversikt">';
+  tabellHTML += '<tr>';
+  tabellHTML += '<td>';
+  tabellHTML += "Kommunenavn: ";
+  tabellHTML += '</td>';
+  tabellHTML += '<td>';
+  tabellHTML += "Kommunenummer: ";
+  tabellHTML += '</td>';
+  tabellHTML += '<td>';
+  tabellHTML += "Total Befolkning: ";
+  tabellHTML += '</td>';
+  tabellHTML += '</tr>';
+
+  for(i = 0; i <= 422; i++) {
+    tabellHTML += '<tr>';
+    tabellHTML += '<td>';
+    tabellHTML += oversikt[i].navn;
+    tabellHTML += '</td>';
+    tabellHTML += '<td>';
+    tabellHTML += oversikt[i].kommunenummer;
+    tabellHTML += '</td>';
+    tabellHTML += '<td>';
+    tabellHTML += oversikt[i].total_befolkning[i];
+    tabellHTML += '</td>';
+    tabellHTML += '</tr>';
+  }
+
+  tabellHTML += '</table>';
+  document.getElementById("Oversikt_div").innerHTML = tabellHTML;
+}
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
 
 };
