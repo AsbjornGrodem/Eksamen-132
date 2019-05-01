@@ -179,9 +179,10 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
       tabellHTML += '</td>';
       tabellHTML += '</tr>';
 
-      document.getElementById("Detaljer_output").innerHTML = tabellHTML;
-
+      tabellHTML += '</table>';
+      document.getElementById("detaljer_oversikt").innerHTML = tabellHTML;
     }
+
   }
 }
 
@@ -203,11 +204,9 @@ load(Befolkning_url, function (array1) {
         let kommune = new Konstruktor(array3, x)
         sysselsatte_master.push(kommune);}
       f_sammenlign(utdanning_master,befolkning_master,sysselsatte_master);
-      /*f_detaljer (utdanning_master, befolkning_master, sysselsatte_master);*/
+      f_detaljer (utdanning_master, befolkning_master, sysselsatte_master);
       f_oversikt (befolkning_master)
-      function buttonClicked() {
-        f_detaljer (utdanning_master, befolkning_master, sysselsatte_master);
-      }
+
     })
   })
 })
