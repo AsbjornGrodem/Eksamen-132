@@ -17,6 +17,7 @@ function Konstruktor(array, input) {
   this.navneliste = getNames(array);
   this.informasjon = getInfo(array);
   this.total_befolkning = befolkning_total(array);
+  this.sysselsetting = sysselSetting(array);
 
 
 
@@ -83,8 +84,27 @@ function Konstruktor(array, input) {
     for (var i = 0; i < total_kvinner.length; i++) {
       total.push(total_kvinner[i] + total_menn[i]);
     }
+    console.log(total_menn);
     return total
   }
+
+
+  function sysselSetting(sysselsetting) {
+
+    let siste_maaling = [];
+    for(kommune in sysselsetting){
+      let menn = sysselsetting[kommune].Menn;
+      for(årstall in menn) {
+        var antall = menn[årstall];
+      }
+    }
+    for (var i = 0; i < siste_maaling.length; i++) {
+      siste_maaling.push(antall[i])
+    }
+
+
+  }
+
 }
 
 
