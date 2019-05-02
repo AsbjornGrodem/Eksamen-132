@@ -209,17 +209,20 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
 
 
 function sammenlign_click() {
+  //Load lager master-array som vi looper gjennom for å finne inputs
   load(Sysselsatte_url, function(array) {
     let sysselsatte_master = [];
     for (x in array) {
       let kommune = new Konstruktor(array, x)
       sysselsatte_master.push(kommune);}
+
     let input1 = document.getElementById("Sammenlign1_input").value;
     let input2 = document.getElementById("Sammenlign2_input").value;
     var table1 = document.getElementById("Sammenlign.kommune1.menn");
     var table2 = document.getElementById("Sammenlign.kommune1.kvinner");
     var table3 = document.getElementById("Sammenlign.kommune2.menn");
     var table4 = document.getElementById("Sammenlign.kommune2.kvinner");
+
     for (kommune in sysselsatte_master){
       if (input1 === sysselsatte_master[kommune].kommunenummer){
         let out1 = sysselsatte_master[kommune];
@@ -242,6 +245,7 @@ function sammenlign_click() {
           cell2.innerHTML = år;
       }
     }
+    //Akkuratt det samme men for kommune nummer 2
       if (input2 === sysselsatte_master[kommune].kommunenummer){
         if (input2 === sysselsatte_master[kommune].kommunenummer){
           let out2 = sysselsatte_master[kommune];
