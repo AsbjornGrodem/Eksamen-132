@@ -107,8 +107,6 @@ function Konstruktor(array, input) {
 
 }
 
-
-
 function load(URL, callback) {
     const xhr = new XMLHttpRequest();
     xhr.onload = function() {
@@ -121,7 +119,6 @@ function load(URL, callback) {
     xhr.open('GET', URL, true);
     xhr.send();
 }
-
 
 function f_oversikt (oversikt) {
 
@@ -230,6 +227,72 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
 
 }
 
+
+function sammenlign_click() {
+  //Load lager master-array som vi looper gjennom for å finne inputs
+  load(Sysselsatte_url, function(array) {
+    let sysselsatte_master = [];
+    for (x in array) {
+      let kommune = new Konstruktor(array, x)
+      sysselsatte_master.push(kommune);}
+
+    let input1 = document.getElementById("Sammenlign1_input").value;
+    let input2 = document.getElementById("Sammenlign2_input").value;
+    var table1 = document.getElementById("Sammenlign.kommune1.menn");
+    var table2 = document.getElementById("Sammenlign.kommune1.kvinner");
+    var table3 = document.getElementById("Sammenlign.kommune2.menn");
+    var table4 = document.getElementById("Sammenlign.kommune2.kvinner");
+
+    for (kommune in sysselsatte_master){
+      if (input1 === sysselsatte_master[kommune].kommunenummer){
+        let out1 = sysselsatte_master[kommune];
+        let menn1 = out1.informasjon.Menn;
+        let kvinner1 = out1.informasjon.Kvinner;
+        for (år in menn1) {
+          let verdi = menn1[år];
+          var row = table1.insertRow(0);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          cell1.innerHTML = verdi;
+          cell2.innerHTML = år;
+        }
+        for (år in kvinner1) {
+          let verdi = kvinner1[år];
+          var row = table2.insertRow(0);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          cell1.innerHTML = verdi;
+          cell2.innerHTML = år;
+      }
+    }
+    //Akkuratt det samme men for kommune nummer 2
+      if (input2 === sysselsatte_master[kommune].kommunenummer){
+        if (input2 === sysselsatte_master[kommune].kommunenummer){
+          let out2 = sysselsatte_master[kommune];
+          let menn2 = out2.informasjon.Menn;
+          let kvinner2 = out2.informasjon.Kvinner;
+          for (år in menn2) {
+            let verdi = menn2[år];
+            var row = table3.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = verdi;
+            cell2.innerHTML = år;
+          }
+          for (år in kvinner2) {
+            let verdi = kvinner2[år];
+            var row = table4.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = verdi;
+            cell2.innerHTML = år;
+          }
+        }
+      }
+    }
+  })
+}
+
 function buttonClick(test) {
 
   load(Befolkning_url, function (array1) {
@@ -269,7 +332,7 @@ function buttonClick(test) {
 
 
 /*
-//      Dette kan brukes for å pushe tabeller osv
+
 for (kommune in array) {
   if (kommune===input)  {
     var array_Menn = array[kommune].Menn;

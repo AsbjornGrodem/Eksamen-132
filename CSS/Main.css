@@ -48,7 +48,7 @@ body {
 .Sammenligning_div {
   display: none;
   font-size: 20px;
-  width: 320px;
+  width: auto;
   padding: 10px;
   border: 5px solid gray;
   margin: 0;

@@ -10,7 +10,6 @@
   <body>
     <h1>INFO134</h1>
     </head>
-    <body onload="buttonClick(0)">
 
       <button class="button" onclick="show(1)">Introduksjon</button>
       <button class="button button2" onclick="show(2)" >Oversikt</button>
@@ -26,7 +25,6 @@
 
       <div  id="Oversikt_div" class="Oversikt_div" >Oversikt
       </div>
-        <br>
 
         <div id="Detaljer_div" class="Detaljer_div">
 
@@ -41,14 +39,22 @@
           </div>
         </div>
 
-
-
     <div id="Sammenligning_div" class="Sammenligning_div">Her kan du sammenligne uviklingen i to kommuner.
-          <input type="text" id="Sammenlign1_input">
-        </input>
-        <input type="text" id="Sammenlign2_input">
-        <button onclick="Sammenlign()">Sammenlign</button>
-        <p id="Kommune_output"></p>
+      <br>
+        <input type="text" id="Sammenlign1_input">Kommune nummer en</input>
+        <input type="text" id="Sammenlign2_input">Kommune nummer to<button onclick="sammenlign_click()">Sammenlign</button>
+        <table id="Sammenlign.kommune1.menn">
+
+        </table>
+        <table id="Sammenlign.kommune1.kvinner">
+
+        </table>
+        <table id="Sammenlign.kommune2.menn">
+        </table>
+        <table id="Sammenlign.kommune2.kvinner">
+
+        </table>
+
         </div>
 
     <div id="table_Menn_div">
