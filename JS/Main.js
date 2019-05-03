@@ -97,9 +97,7 @@ function Konstruktor(array, input) {
        siste_maaling.push(sysselsetting[kommune].Menn);
 
     }
-    for (var i = 0; i < siste_maaling.length; i++) {
-      siste_maaling[i]
-    }
+
 
 
     return siste_maaling;
@@ -156,7 +154,7 @@ function f_oversikt (oversikt) {
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
 
 };
-function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
+function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
 
   let input = document.getElementById("Detaljer_input").value;
   for (kommunenummer in befolkning_master){
@@ -321,9 +319,7 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-    table_Menn_div.style.display = "none";
-    table_Kvinner_div.style.display = "none";
-    table_Begge_div.style.display = "none";
+
   };
 
   if (button === 2) {
@@ -333,9 +329,7 @@ function show(button) {
     oversikt.style.display = "block";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-    table_Menn_div.style.display = "none";
-    table_Kvinner_div.style.display = "none";
-    table_Begge_div.style.display = "none";
+
   };
 
   if (button === 3) {
@@ -345,9 +339,7 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "block";
     sammenligning.style.display = "none";
-    table_Menn_div.style.display = "none";
-    table_Kvinner_div.style.display = "none";
-    table_Begge_div.style.display = "none";
+
   };
 
   if (button === 4) {
@@ -357,8 +349,6 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
-    table_Menn_div.style.display = "none";
-    table_Kvinner_div.style.display = "none";
-    table_Begge_div.style.display = "none";
+
   };
 };
