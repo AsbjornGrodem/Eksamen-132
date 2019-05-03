@@ -90,18 +90,20 @@ function Konstruktor(array, input) {
 
   function sysselSetting(sysselsetting) {
 
-    let siste_maaling = [];
+    var siste_maaling = [];
+
     for(kommune in sysselsetting){
-      let menn = sysselsetting[kommune].Menn;
-      for(årstall in menn) {
-        var antall = menn[årstall];
-      }
-    }
-    for (var i = 0; i < siste_maaling.length; i++) {
-      siste_maaling.push(antall[i])
+      var menn = sysselsetting[kommune].Menn;
+       for (årstall in menn) {
+         var antall = menn[årstall];
+       }
+       siste_maaling.push(antall);
+       for (var i = 0; i < siste_maaling.length; i++) {
+         siste_maaling[i]
+       }
     }
 
-
+    return siste_maaling;
   }
 
 }
@@ -147,13 +149,14 @@ function f_oversikt (oversikt) {
     tabellHTML += '</tr>';
   }
 
+
   tabellHTML += '</table>';
   document.getElementById("Oversikt_div").innerHTML = tabellHTML;
 }
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
 
 };
-function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
+function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
 
   let input = document.getElementById("Detaljer_input").value;
   for (kommunenummer in befolkning_master){
@@ -192,7 +195,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
       tabellHTML += befolkning_master[kommunenummer].total_befolkning[kommunenummer];
       tabellHTML += '</td>';
       tabellHTML += '<td>';
-      tabellHTML += "uskjent";
+      tabellHTML += JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer]);
       tabellHTML += '</td>';
       tabellHTML += '<td>';
       tabellHTML += "uskjent";
@@ -283,7 +286,6 @@ function buttonClick(test) {
     for (x in array1) {
       let kommune = new Konstruktor(array1, x)
       befolkning_master.push(kommune);}
-
     load(Utdanning_url, function(array2) {
       let utdanning_master = [];
       for (x in array2) {
