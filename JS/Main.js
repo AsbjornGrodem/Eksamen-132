@@ -84,7 +84,6 @@ function Konstruktor(array, input) {
     for (var i = 0; i < total_kvinner.length; i++) {
       total.push(total_kvinner[i] + total_menn[i]);
     }
-    console.log(total_menn);
     return total
   }
 
@@ -119,7 +118,6 @@ function load(URL, callback) {
     xhr.open('GET', URL, true);
     xhr.send();
 }
-
 function f_oversikt (oversikt) {
 
   var tabellHTML = '<table class="total_oversikt">';
@@ -152,26 +150,9 @@ function f_oversikt (oversikt) {
   tabellHTML += '</table>';
   document.getElementById("Oversikt_div").innerHTML = tabellHTML;
 }
-
-/*  var table = document.getElementById("Oversikt_table");
-  let newRow = table.insertRow(-1);
-  let newCell = newRow.insertCell(0);
-  let newText = document.createTextNode('INPUT');
-
-  for (kommune in sysselsatte_master){
-    let navn = sysselsatte_master[kommune].navn;
-    let kommunenummer = sysselsatte_master[kommune].kommunenummer;
-    let info = sysselsatte_master[kommune].informasjon.Menn;
-
-    console.log(navn, kommunenummer);
-  }
-}
-*/
-
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
 
 };
-
 function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
 
   let input = document.getElementById("Detaljer_input").value;
@@ -226,8 +207,6 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_mast) {
   }
 
 }
-
-
 function sammenlign_click() {
   //Load lager master-array som vi looper gjennom for å finne inputs
   load(Sysselsatte_url, function(array) {
@@ -238,10 +217,10 @@ function sammenlign_click() {
 
     let input1 = document.getElementById("Sammenlign1_input").value;
     let input2 = document.getElementById("Sammenlign2_input").value;
-    var table1 = document.getElementById("Sammenlign.kommune1.menn");
-    var table2 = document.getElementById("Sammenlign.kommune1.kvinner");
-    var table3 = document.getElementById("Sammenlign.kommune2.menn");
-    var table4 = document.getElementById("Sammenlign.kommune2.kvinner");
+    var table1 = document.getElementById("Sk1menn");
+    var table2 = document.getElementById("Sk1kvinner");
+    var table3 = document.getElementById("Sk2menn");
+    var table4 = document.getElementById("Sk2kvinner");
 
     for (kommune in sysselsatte_master){
       if (input1 === sysselsatte_master[kommune].kommunenummer){
@@ -325,47 +304,6 @@ function buttonClick(test) {
   })
 }
 
-
-//f_oversikt();
-//f_detaljer();
-//f_sammenlign();
-
-
-/*
-
-for (kommune in array) {
-  if (kommune===input)  {
-    var array_Menn = array[kommune].Menn;
-    var array_Kvinner = array[kommune].Kvinner;
-    var array_Begge = array[kommune].Begge;//////////////////Hvordan komme til en verdi som er to navn
-      for (årstall in array_Menn) {
-        var verdi = array_Menn[årstall];
-        var row = table_Menn.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = årstall;
-        cell2.innerHTML = verdi;
-      }
-      for (årstall in array_Kvinner) {
-        var verdi = array_Kvinner[årstall];
-        var row = table_Kvinner.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = årstall;
-        cell2.innerHTML = verdi;
-      }
-      for (årstall in array_Begge) {
-        var verdi = array_Begge[årstall];
-        var row = table_Begge_div.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = årstall;
-        cell2.innerHTML = verdi;
-      }
-    }
-  }
-}
-*/
 
 //Button funksjoner som viser/gjemmer divs
 function show(button) {

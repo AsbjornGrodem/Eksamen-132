@@ -11,95 +11,43 @@
     <h1>INFO134</h1>
     </head>
 
-      <button class="button" onclick="show(1)">Introduksjon</button>
-      <button class="button button2" onclick="show(2)" >Oversikt</button>
-      <button class="button button3" onclick="show(3)">Detaljer</button>
-      <button class="button button4" onclick="show(4)">Sammenlign</button>
+    <button class="button" onclick="show(1)">Introduksjon</button>
+    <button class="button button2" onclick="show(2)" >Oversikt</button>
+    <button class="button button3" onclick="show(3)">Detaljer</button>
+    <button class="button button4" onclick="show(4)">Sammenlign</button>
 
-      <div id="Introduksjon_div" class="Introduksjon_div">Intro
-        <p>Her er det ting om introduksjonen
-          Introduksjonsteksten skal bestå av tekst som beskriver produktet deres. Det skal også inneholde
-    lenker til SSB-sine offisielle sider, og en notis om at dataene kan inneholde feil.</p>
+    <div id="Introduksjon_div" class="Introduksjon_div">Intro
+      <p>Her er det ting om introduksjonen
+        Introduksjonsteksten skal bestå av tekst som beskriver produktet deres. Det skal også inneholde
+        lenker til SSB-sine offisielle sider, og en notis om at dataene kan inneholde feil.</p>
       </div>
-      <br>
+    <div  id="Oversikt_div" class="Oversikt_div" >Oversikt
+    </div>
+    <div id="Detaljer_div" class="Detaljer_div">
 
-      <div  id="Oversikt_div" class="Oversikt_div" >Oversikt
-      </div>
-
-        <div id="Detaljer_div" class="Detaljer_div">
-
-          <input type="text" id="Detaljer_input"placeholder="Kommunenummer"></input>
-          <button id="Detaljer_button" onclick="buttonClick(1)">Last inn</button>
-          <div id="kommunenavn" class="kommunenavn">
-          </div>
-
-          <div id="detaljer_oversikt" class="detaljer_oversikt">
-
-
-          </div>
+        <input type="text" id="Detaljer_input"placeholder="Kommunenummer"></input>
+        <button id="Detaljer_button" onclick="buttonClick(1)">Last inn</button>
+        <div id="kommunenavn" class="kommunenavn">
         </div>
 
+        <div id="detaljer_oversikt" class="detaljer_oversikt">
+
+
+        </div>
+      </div>
     <div id="Sammenligning_div" class="Sammenligning_div">Her kan du sammenligne uviklingen i to kommuner.
-      <br>
-        <input type="text" id="Sammenlign1_input">Kommune nummer en</input>
-        <input type="text" id="Sammenlign2_input">Kommune nummer to<button onclick="sammenlign_click()">Sammenlign</button>
-        <table id="Sammenlign.kommune1.menn">
+      <input type="text" id="Sammenlign1_input">Kommune nummer en</input>
+      <input type="text" id="Sammenlign2_input">Kommune nummer to<button onclick="sammenlign_click()">Sammenlign</button>
+      <table id="Sk1menn">
+      </table>
+      <table id="Sk1kvinner">
 
-        </table>
-        <table id="Sammenlign.kommune1.kvinner">
+      </table>
+      <table id="Sk2menn">
+      </table>
+      <table id="Sk2kvinner">
 
-        </table>
-        <table id="Sammenlign.kommune2.menn">
-        </table>
-        <table id="Sammenlign.kommune2.kvinner">
-
-        </table>
-
-        </div>
-
-    <div id="table_Menn_div">
-      <input type="text" id="Info.inp">
-      <button type="button" id="Info" onclick="newKonst();">TEST</button>
-          <p>Menn som jobber</p>
-        <table id="Table_Menn">
-            <tr>
-            </tr>
-            <tr>
-              <td>Hei</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td>Test1</td>
-              <td>Test2</td>
-            </tr>
-          </table>
-        </div>
-
-        <br>
-
-    <div id="table_Kvinner_div">
-      <p>Kvinner som jobber</p>
-        <table id="Table_Kvinner">
-          <tr>
-            <td>
-            </td>
-          </tr>
-        </table>
-
-        </div>
-
-    <div id="table_Begge_div">
-          <p>Begge jobber;</p>
-            <table id="Table_Begge">
-              <tr>
-                <td>
-                </td>
-              </tr>
-            </table>
-
-            </div>
-
-      </body>
-
-
+      </table>
+    </div>
+  </body>
 </html>
