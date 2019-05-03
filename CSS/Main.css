@@ -4,16 +4,48 @@ h1 {
   font-size: 60px;
 }
 
-table, tr, td {
+table{
   border: 1px solid black;
+  text-align: center;
+  font-size: 15px;
 }
+tr, td {
+  border: 1px solid black;
+  font-size: 20px;
+  text-align: center;
+  align-self: center;
+}
+#Sk1menn {
+  color:green;
+  font-size: 50px;
+  caption-side: left;
+
+}
+
+#Sk1kvinner {
+  color:green;
+  font-size: 50px;
+  caption-side: right;
+}
+
+#Sk2menn {
+  color:green;
+  font-size: 50px;
+  caption-side: right;
+}
+
+#Sk2kvinner {
+  color:green;
+  font-size: 50px;
+  caption-side: right;
+}
+
+
 body {
   background-color: #95E8DE;
   text-align: center;
   font-size: : 20px;
 }
-
-
 
 .Introduksjon_div {
   display: none;
@@ -25,7 +57,8 @@ body {
 
 .Oversikt_div {
   display: none;
-
+  font-size: 10px;
+  border: 100px, solid gray;
 }
 
 .total_oversikt{
@@ -46,13 +79,9 @@ body {
 }
 
 .Sammenligning_div {
-  display: none;
-  font-size: 20px;
-  width: auto;
-  padding: 10px;
-  border: 5px solid gray;
-  margin: 0;
+  border:solid gray;
 }
+
 
 .button {
   background-color: #4CAF50; /* Green */
