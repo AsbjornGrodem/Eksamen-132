@@ -3,12 +3,19 @@ h1 {
   text-align: center;
   font-size: 60px;
 }
-
-table{
-  border: 1px solid black;
-  text-align: center;
-  font-size: 15px;
+table.center{
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: :5px;
+  padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
+table {
+  width: 100%
+}
+
+
 tr, td {
   border: 1px solid black;
   font-size: 20px;
@@ -18,26 +25,26 @@ tr, td {
 #Sk1menn {
   color:green;
   font-size: 50px;
-  caption-side: left;
+  float: left;
 
 }
 
 #Sk1kvinner {
   color:green;
   font-size: 50px;
-  caption-side: right;
+  float: left;
 }
 
 #Sk2menn {
   color:green;
   font-size: 50px;
-  caption-side: right;
+  float: right;
 }
 
 #Sk2kvinner {
   color:green;
   font-size: 50px;
-  caption-side: right;
+  float: right;
 }
 
 
@@ -79,7 +86,11 @@ body {
 }
 
 .Sammenligning_div {
+
   border:solid gray;
+  width : 800px;
+  float:center;
+  text-align: center;
 }
 
 

@@ -227,6 +227,10 @@ function sammenlign_click() {
         let out1 = sysselsatte_master[kommune];
         let menn1 = out1.informasjon.Menn;
         let kvinner1 = out1.informasjon.Kvinner;
+        var row = table1.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+
         for (år in menn1) {
           let verdi = menn1[år];
           var row = table1.insertRow(0);
@@ -304,7 +308,6 @@ function buttonClick(test) {
   })
 }
 
-
 //Button funksjoner som viser/gjemmer divs
 function show(button) {
 
@@ -319,9 +322,7 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-    table_Menn_div.style.display = "none";
-    table_Kvinner_div.style.display = "none";
-    table_Begge_div.style.display = "none";
+
   };
 
   if (button === 2) {
@@ -331,9 +332,7 @@ function show(button) {
     oversikt.style.display = "block";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-    table_Menn_div.style.display = "none";
-    table_Kvinner_div.style.display = "none";
-    table_Begge_div.style.display = "none";
+
   };
 
   if (button === 3) {
@@ -343,9 +342,7 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "block";
     sammenligning.style.display = "none";
-    table_Menn_div.style.display = "none";
-    table_Kvinner_div.style.display = "none";
-    table_Begge_div.style.display = "none";
+
   };
 
   if (button === 4) {
@@ -355,8 +352,6 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
-    table_Menn_div.style.display = "none";
-    table_Kvinner_div.style.display = "none";
-    table_Begge_div.style.display = "none";
+
   };
 };
