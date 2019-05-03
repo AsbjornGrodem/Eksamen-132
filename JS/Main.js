@@ -90,18 +90,20 @@ function Konstruktor(array, input) {
 
   function sysselSetting(sysselsetting) {
 
-    let siste_maaling = [];
+    var siste_maaling = [];
 
     for(kommune in sysselsetting){
-
-       siste_maaling.push(sysselsetting[kommune].Menn);
-
+      var menn = sysselsetting[kommune].Menn;
+       for (årstall in menn) {
+         var antall = menn[årstall];
+       }
+       siste_maaling.push(antall);
+       for (var i = 0; i < siste_maaling.length; i++) {
+         siste_maaling[i]
+       }
     }
 
-
-
     return siste_maaling;
-
   }
 
 }
