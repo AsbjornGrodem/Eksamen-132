@@ -266,6 +266,10 @@ function sammenlign_click() {
         let out1 = sysselsatte_master[kommune];
         let menn1 = out1.informasjon.Menn;
         let kvinner1 = out1.informasjon.Kvinner;
+        var row = table1.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+
         for (år in menn1) {
           let verdi = menn1[år];
           var row = table1.insertRow(0);
@@ -341,7 +345,6 @@ function buttonClick(test) {
 
   })
 }
-
 
 //Button funksjoner som viser/gjemmer divs
 function show(button) {
