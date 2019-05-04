@@ -18,6 +18,7 @@ function Konstruktor(array, input) {
   this.informasjon = getInfo(array);
   this.total_befolkning = befolkning_total(array);
   this.sysselsetting = sysselSetting(array);
+  this.høyereUtdanning_total = høyereUtdanning_total(array);
 
 
 
@@ -106,6 +107,41 @@ function Konstruktor(array, input) {
     return siste_maaling;
   }
 
+  function høyereUtdanning_total(kjønn) {
+
+    var total = [];
+    var total_menn = [];
+    var total_kvinner = [];
+    for (kategorier in kjønn) {
+      if (kategorier === "04a") {
+
+
+    for (kommune in kjønn) {
+      var menn = kjønn[kommune].Menn;
+      var kvinner = kjønn[kommune].Kvinner
+      for(årstall in menn){
+        var antall = menn[årstall];
+      }
+      total_menn.push(antall)
+
+      for(årstall in kvinner) {
+        var antall = kvinner[årstall];
+      }
+      total_kvinner.push(antall)
+    }
+
+    for (var i = 0; i < total_menn.length; i++) {
+      total_menn[i]
+    }
+
+    for (var i = 0; i < total_kvinner.length; i++) {
+      total.push(total_kvinner[i] + total_menn[i]);
+    }
+  }
+}
+    return total
+  }
+
 }
 
 function load(URL, callback) {
@@ -169,16 +205,16 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
 
       tabellHTML += '<tr>';
       tabellHTML += '<td>';
-      tabellHTML += "Kommunenavn: ";
+      tabellHTML += "Kommunenavn:  ";
       tabellHTML += '</td>';
       tabellHTML += '<td>';
-      tabellHTML += "Kommunenummer: ";
+      tabellHTML += "Kommunenummer:  ";
       tabellHTML += '</td>';
       tabellHTML += '<td>';
-      tabellHTML += "Total befolkning: ";
+      tabellHTML += "Total befolkning:  ";
       tabellHTML += '</td>';
       tabellHTML += '<td>';
-      tabellHTML += "Sysselsetting og høyere utdanning: ";
+      tabellHTML += "Sysselsetting:  ";
       tabellHTML += '</td>';
       tabellHTML += '<td>';
       tabellHTML += "Høyere utdanning: ";
@@ -198,7 +234,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       tabellHTML += JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer]);
       tabellHTML += '</td>';
       tabellHTML += '<td>';
-      tabellHTML += "uskjent";
+      tabellHTML += sysselsatte_master[kommunenummer].høyereUtdanning_total[kommunenummer];
       tabellHTML += '</td>';
       tabellHTML += '</tr>';
 
