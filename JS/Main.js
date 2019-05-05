@@ -6,6 +6,7 @@ var intro = document.getElementById("Introduksjon_div");
 var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
+var input_detaljer = document.getElementById("Detaljer_input");
 
 
 
@@ -85,6 +86,7 @@ function Konstruktor(array, input) {
     }
     return total
   }
+
   function sysselSetting(sysselsetting) {
 
     var siste_maaling = [];
@@ -103,11 +105,9 @@ function Konstruktor(array, input) {
          siste_maaling[i]
        }
     }
-
-    return siste_maaling;
   }
-<<<<<<< HEAD
 }
+return siste_maaling;
 }
 
 
@@ -146,8 +146,6 @@ function Konstruktor(array, input) {
     return total
   }
 
-=======
->>>>>>> 3ac7334a76a603bc6b82b7487f3b9ab9938a8d84
 }
 
 function load(URL, callback) {
@@ -196,89 +194,63 @@ function f_oversikt (oversikt) {
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
 
 };
+
+
 function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
 
-  load(Sysselsatte_url, function(array) {
-    let sysselsatte_master = [];
-    for (x in array) {
-      let kommune = new Konstruktor(array, x)
-      sysselsatte_master.push(kommune);}
+      for (kommunenummer in befolkning_master){
+        if (input_detaljer === befolkning_master[kommunenummer].kommunenummer){
+          var kommuneNavn = '<h2>'
+          kommuneNavn += befolkning_master[kommunenummer].navn;
+          kommuneNavn += " kommune"
+          kommuneNavn += '</h2>'
+          var tabellHTML = '<table id="Detaljer_output">'
 
+          tabellHTML += '<tr>';
+          tabellHTML += '<td>';
+          tabellHTML += "Kommunenavn:  ";
+          tabellHTML += '</td>';
+          tabellHTML += '<td>';
+          tabellHTML += "Kommunenummer:  ";
+          tabellHTML += '</td>';
+          tabellHTML += '<td>';
+          tabellHTML += "Total befolkning:  ";
+          tabellHTML += '</td>';
+          tabellHTML += '<td>';
+          tabellHTML += "Sysselsetting:  ";
+          tabellHTML += '</td>';
+          tabellHTML += '<td>';
+          tabellHTML += "Høyere utdanning: ";
+          tabellHTML += '</td>';
+          tabellHTML += '</tr>';
+          tabellHTML += '<tr>';
+          tabellHTML += '<td>';
+          tabellHTML += befolkning_master[kommunenummer].navn;
+          tabellHTML += '</td>';
+          tabellHTML += '<td>';
+          tabellHTML += befolkning_master[kommunenummer].kommunenummer;
+          tabellHTML += '</td>';
+          tabellHTML += '<td>';
+          tabellHTML += befolkning_master[kommunenummer].total_befolkning[kommunenummer];
+          tabellHTML += '</td>';
+          tabellHTML += '<td>';
+          tabellHTML += JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer]);
+          tabellHTML += '</td>';
+          tabellHTML += '<td>';
+          tabellHTML += sysselsatte_master[kommunenummer].høyereUtdanning_total[kommunenummer];
+          tabellHTML += '</td>';
+          tabellHTML += '</tr>';
 
-  let input = document.getElementById("Detaljer_input").value;
-  for (kommunenummer in befolkning_master){
-    if (input === befolkning_master[kommunenummer].kommunenummer){
-      var kommuneNavn = '<h2>'
-      kommuneNavn += befolkning_master[kommunenummer].navn;
-      kommuneNavn += " kommune"
-      kommuneNavn += '</h2>'
-      var tabellHTML = '<table id="Detaljer_output">'
-
-      tabellHTML += '<tr>';
-      tabellHTML += '<td>';
-      tabellHTML += "Kommunenavn:  ";
-      tabellHTML += '</td>';
-      tabellHTML += '<td>';
-      tabellHTML += "Kommunenummer:  ";
-      tabellHTML += '</td>';
-      tabellHTML += '<td>';
-      tabellHTML += "Total befolkning:  ";
-      tabellHTML += '</td>';
-      tabellHTML += '<td>';
-      tabellHTML += "Sysselsetting:  ";
-      tabellHTML += '</td>';
-      tabellHTML += '<td>';
-      tabellHTML += "Høyere utdanning: ";
-      tabellHTML += '</td>';
-      tabellHTML += '</tr>';
-      tabellHTML += '<tr>';
-      tabellHTML += '<td>';
-      tabellHTML += befolkning_master[kommunenummer].navn;
-      tabellHTML += '</td>';
-      tabellHTML += '<td>';
-      tabellHTML += befolkning_master[kommunenummer].kommunenummer;
-      tabellHTML += '</td>';
-      tabellHTML += '<td>';
-      tabellHTML += befolkning_master[kommunenummer].total_befolkning[kommunenummer];
-      tabellHTML += '</td>';
-      tabellHTML += '<td>';
-      tabellHTML += JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer]);
-      tabellHTML += '</td>';
-      tabellHTML += '<td>';
-      tabellHTML += sysselsatte_master[kommunenummer].høyereUtdanning_total[kommunenummer];
-      tabellHTML += '</td>';
-      tabellHTML += '</tr>';
-
-      tabellHTML += '</table>';
-      document.getElementById("detaljer_oversikt").innerHTML = tabellHTML;
-      document.getElementById("kommunenavn").innerHTML = kommuneNavn;
-    }
-
-  }
-
-  var input_detaljer = document.getElementById("Detaljer_input");
-
-  var siste_maaling = [];
-
-  for (kommune in sysselsatte_master) {
-
-    if (input_detaljer === sysselsatte_master[kommune].kommunenummer) {
-
-      for(kommune in sysselsetting){
-        var menn = sysselsetting[kommune].Menn;
-        for (årstall in menn) {
-          var antall = menn[årstall];
+          tabellHTML += '</table>';
+          document.getElementById("detaljer_oversikt").innerHTML = tabellHTML;
+          document.getElementById("kommunenavn").innerHTML = kommuneNavn;
         }
-        siste_maaling.push(antall);
-        for (var i = 0; i < siste_maaling.length; i++) {
-          siste_maaling[i]
-        }
-      }
-    }
   }
-
-
 }
+
+
+
+
 function sammenlign_click() {
   //Load lager master-array som vi looper gjennom for å finne inputs
   load(Sysselsatte_url, function(array) {
@@ -373,6 +345,7 @@ function sammenlign_click() {
   })
 
 }
+
 
 function buttonClick(test) {
 
