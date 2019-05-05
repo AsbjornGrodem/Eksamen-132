@@ -91,26 +91,23 @@ function Konstruktor(array, input) {
 
     for (kommune in sysselsetting) {
 
-    if (input_detaljer === sysselsetting[kommune].kommunenummer) {
+      if (input_detaljer === sysselsetting[kommune].kommunenummer) {
 
-    for(kommune in sysselsetting){
-      var menn = sysselsetting[kommune].Menn;
-       for (årstall in menn) {
-         var antall = menn[årstall];
-       }
-       siste_maaling.push(antall);
-       for (var i = 0; i < siste_maaling.length; i++) {
-         siste_maaling[i]
-       }
+      for(kommune in sysselsetting){
+        var menn = sysselsetting[kommune].Menn;
+         for (årstall in menn) {
+           var antall = menn[årstall];
+         }
+         siste_maaling.push(antall);
+         for (var i = 0; i < siste_maaling.length; i++) {
+           siste_maaling[i]
+         }
     }
 
     return siste_maaling;
   }
-<<<<<<< HEAD
 }
 }
-
-
   function høyereUtdanning_total(kjønn) {
 
     var total = [];
@@ -145,9 +142,6 @@ function Konstruktor(array, input) {
 }
     return total
   }
-
-=======
->>>>>>> 3ac7334a76a603bc6b82b7487f3b9ab9938a8d84
 }
 
 function load(URL, callback) {
@@ -276,8 +270,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       }
     }
   }
-
-
+})
 }
 function sammenlign_click() {
   //Load lager master-array som vi looper gjennom for å finne inputs
@@ -369,7 +362,6 @@ function sammenlign_click() {
     document.getElementById("Sk2menn").innerHTML = tabellHTML2;
     tabellHTML += '</table>';
     document.getElementById("Sk1menn").innerHTML = tabellHTML;
-    console.log(tabellHTML);
   })
 
 }
