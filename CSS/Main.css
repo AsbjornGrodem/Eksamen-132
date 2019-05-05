@@ -112,3 +112,30 @@ body {
 .button3 {background-color: #f44336;} /* Red */
 .button4 {background-color: #e7e7e7; color: black;} /* Gray */
 .button5 {background-color: #555555;} /* Black */
+
+/*
+//Akkuratt det samme men for kommune nummer 2
+  if (input2 === sysselsatte_master[kommune].kommunenummer){
+    if (input2 === sysselsatte_master[kommune].kommunenummer){
+      let out2 = sysselsatte_master[kommune];
+      let menn2 = out2.informasjon.Menn;
+      let kvinner2 = out2.informasjon.Kvinner;
+      for (år in menn2) {
+        let verdi = menn2[år];
+        var row = table3.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = verdi;
+        cell2.innerHTML = år;
+      }
+      for (år in kvinner2) {
+        let verdi = kvinner2[år];
+        var row = table4.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = verdi;
+        cell2.innerHTML = år;
+      }
+    }
+  }
+  */
