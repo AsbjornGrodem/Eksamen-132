@@ -1,3 +1,8 @@
+body {
+  background-color: #95E8DE;
+  text-align: center;
+  font-size: : 20px;
+}
 h1 {
   color:Black;
   text-align: center;
@@ -14,10 +19,12 @@ table.center{
 table {
   width: 100%
 }
-
-
 tr, td {
   border: 1px solid black;
+  padding-left: :1px;
+  padding-right: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   font-size: 20px;
   text-align: center;
   align-self: center;
@@ -25,75 +32,60 @@ tr, td {
 #Sk1menn {
   color:green;
   font-size: 50px;
-  float: left;
-
+  float: top;
 }
-
 #Sk1kvinner {
   color:green;
   font-size: 50px;
   float: left;
 }
-
 #Sk2menn {
   color:green;
   font-size: 50px;
   float: right;
 }
-
 #Sk2kvinner {
   color:green;
   font-size: 50px;
   float: right;
 }
-
-
-body {
-  background-color: #95E8DE;
-  text-align: center;
-  font-size: : 20px;
-}
-
 .Introduksjon_div {
   display: none;
-  width: 320px;
+  width: 70%;
+  height: atuo;
   padding: 10px;
-  border: 5px solid gray;
-  margin: 0;
+  border: 5px solid red;
+  margin: auto;
+  font-size: 20px;
 }
-
 .Oversikt_div {
   display: none;
   font-size: 10px;
   border: 100px, solid gray;
 }
-
 .total_oversikt{
   border: none;
   padding-top: 100px;
   padding-left: 10%;
   padding-right: 10%;
   font-size: 45px;
+  margin: auto;
 }
-
 .Detaljer_div {
   display: none;
   width: auto;
   height: auto;
   padding: 10px;
   border: 5px solid gray;
-  margin: 0;
+  margin: auto;
 }
-
 .Sammenligning_div {
-
   border:solid gray;
   width : 800px;
   float:center;
   text-align: center;
+  margin: auto;
 }
-
-
 .button {
   background-color: #4CAF50; /* Green */
   border: none;
@@ -106,8 +98,6 @@ body {
   margin: 4px 2px;
   cursor: pointer;
 }
-
-
 .button2 {background-color: #008CBA;} /* Blue */
 .button3 {background-color: #f44336;} /* Red */
 .button4 {background-color: #e7e7e7; color: black;} /* Gray */
