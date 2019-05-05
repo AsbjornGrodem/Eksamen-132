@@ -19,8 +19,6 @@ function Konstruktor(array, input) {
   this.total_befolkning = befolkning_total(array);
   this.sysselsetting = sysselSetting(array);
 
-
-
   function getIds(array) {
     let nummerliste = [];
     for (i in array) {
@@ -57,7 +55,6 @@ function Konstruktor(array, input) {
       }
     }
   }
-
   function befolkning_total(kjønn) {
 
     var total = [];
@@ -86,8 +83,6 @@ function Konstruktor(array, input) {
     }
     return total
   }
-
-
   function sysselSetting(sysselsetting) {
 
     var siste_maaling = [];
@@ -105,7 +100,6 @@ function Konstruktor(array, input) {
 
     return siste_maaling;
   }
-
 }
 
 function load(URL, callback) {
@@ -148,8 +142,6 @@ function f_oversikt (oversikt) {
     tabellHTML += '</td>';
     tabellHTML += '</tr>';
   }
-
-
   tabellHTML += '</table>';
   document.getElementById("Oversikt_div").innerHTML = tabellHTML;
 }
@@ -225,58 +217,84 @@ function sammenlign_click() {
     var table3 = document.getElementById("Sk2menn");
     var table4 = document.getElementById("Sk2kvinner");
 
+    var tabellHTML = '<table class="Sammenligning_div">';
+    var tabellHTML2 = '<table class="Sammenligning_div">';
     for (kommune in sysselsatte_master){
       if (input1 === sysselsatte_master[kommune].kommunenummer){
-        let out1 = sysselsatte_master[kommune];
-        let menn1 = out1.informasjon.Menn;
-        let kvinner1 = out1.informasjon.Kvinner;
-        var row = table1.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
+        tabellHTML += '<tr>';
+        tabellHTML += '<td>';
+        tabellHTML += "Sysselsatte Kvinner i " + sysselsatte_master[kommune].navn;;
+        tabellHTML += '</td>';
+        tabellHTML += '<td>';
+        tabellHTML += "Sysselsatte Menn i "+ sysselsatte_master[kommune].navn;
+        tabellHTML += '</td>';
+        tabellHTML += '<td>';
+        tabellHTML += "Årstall : ";
+        tabellHTML += '</td>';
+        tabellHTML += '</tr>';
 
-        for (år in menn1) {
-          let verdi = menn1[år];
-          var row = table1.insertRow(0);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          cell1.innerHTML = verdi;
-          cell2.innerHTML = år;
+        for (year in sysselsatte_master[kommune].informasjon.Menn) {
+          tabellHTML += '<tr>';
+          tabellHTML += '<td>';
+          tabellHTML += '</td>';
+          tabellHTML += '<td>';
+          tabellHTML += sysselsatte_master[kommune].informasjon.Menn[year];
+          tabellHTML += '</td>';
+          tabellHTML += '<td>';
+          tabellHTML += year;
+          tabellHTML += '</td>';
+          tabellHTML += '</tr>';
         }
-        for (år in kvinner1) {
-          let verdi = kvinner1[år];
-          var row = table2.insertRow(0);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          cell1.innerHTML = verdi;
-          cell2.innerHTML = år;
+        for (year in sysselsatte_master[kommune].informasjon.Kvinner) {
+          tabellHTML += '<tr>';
+          tabellHTML += '<td>';
+          tabellHTML += sysselsatte_master[kommune].informasjon.Kvinner[year];
+          tabellHTML += '</td>';
+          tabellHTML += '</tr>';
+        }
       }
-    }
-    //Akkuratt det samme men for kommune nummer 2
+
       if (input2 === sysselsatte_master[kommune].kommunenummer){
-        if (input2 === sysselsatte_master[kommune].kommunenummer){
-          let out2 = sysselsatte_master[kommune];
-          let menn2 = out2.informasjon.Menn;
-          let kvinner2 = out2.informasjon.Kvinner;
-          for (år in menn2) {
-            let verdi = menn2[år];
-            var row = table3.insertRow(0);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            cell1.innerHTML = verdi;
-            cell2.innerHTML = år;
-          }
-          for (år in kvinner2) {
-            let verdi = kvinner2[år];
-            var row = table4.insertRow(0);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            cell1.innerHTML = verdi;
-            cell2.innerHTML = år;
-          }
-        }
+      tabellHTML2 += '<tr>';
+      tabellHTML2 += '<td>';
+      tabellHTML2 += "Sysselsatte Kvinner i " + sysselsatte_master[kommune].navn;;
+      tabellHTML2 += '</td>';
+      tabellHTML2 += '<td>';
+      tabellHTML2 += "Sysselsatte Menn i "+ sysselsatte_master[kommune].navn;
+      tabellHTML2 += '</td>';
+      tabellHTML2 += '<td>';
+      tabellHTML2 += "Årstall : ";
+      tabellHTML2 += '</td>';
+      tabellHTML2 += '</tr>';
+
+      for (year in sysselsatte_master[kommune].informasjon.Menn) {
+        tabellHTML2 += '<tr>';
+        tabellHTML2 += '<td>';
+        tabellHTML2 += '</td>';
+        tabellHTML2 += '<td>';
+        tabellHTML2 += sysselsatte_master[kommune].informasjon.Menn[year];
+        tabellHTML2 += '</td>';
+        tabellHTML2 += '<td>';
+        tabellHTML2 += year;
+        tabellHTML2 += '</td>';
+        tabellHTML2 += '</tr>';
+      }
+      for (year in sysselsatte_master[kommune].informasjon.Kvinner) {
+        tabellHTML2 += '<tr>';
+        tabellHTML2 += '<td>';
+        tabellHTML2 += sysselsatte_master[kommune].informasjon.Kvinner[year];
+        tabellHTML2 += '</td>';
+        tabellHTML2 += '</tr>';
       }
     }
+  }
+    tabellHTML2 += '</table>';
+    document.getElementById("Sk2menn").innerHTML = tabellHTML2;
+    tabellHTML += '</table>';
+    document.getElementById("Sk1menn").innerHTML = tabellHTML;
+    console.log(tabellHTML);
   })
+
 }
 
 function buttonClick(test) {
