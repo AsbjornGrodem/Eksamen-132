@@ -16,12 +16,24 @@
     <button class="button button3" onclick="show(3)">Detaljer</button>
     <button class="button button4" onclick="show(4)">Sammenlign</button>
 
-    <div id="Introduksjon_div" class="Introduksjon_div">Intro
-      <p>Her er det ting om introduksjonen
-        Introduksjonsteksten skal bestå av tekst som beskriver produktet deres. Det skal også inneholde
-        lenker til SSB-sine offisielle sider, og en notis om at dataene kan inneholde feil.</p>
+    <div id="Introduksjon_div" class="Introduksjon_div">
+      <h3>Introduksjon</h3>
+      <p>
+        På denne nettsiden kan du finne informasjon om forskjellige kommuner i Norge. Under "Sammenlign" kan du sammenligne to kommuner ved å skrive inn to gyldige kommunenummer. I "Detaljer" kan du skrive inn et
+        kommunenummer og finne informasjon om den gitte kommunen. "Oversikt" inneholder en tabell av de forskjellige
+        kommunene sitt navn, kommunenummer og hvor mange som er sysselsatt.
+
+        All informasjon er hentet fra Statistisk sentralbyrå. Noe av dataen kan inneholde feil.
+          <p>
+            <a href="http://data.ssb.no/api/v0/dataset/104857?lang=no">Befolkning - SSB</a>
+            <a href="http://data.ssb.no/api/v0/dataset/100145?lang=no">Sysselsatte - SSB</a>
+            <a href="http://data.ssb.no/api/v0/dataset/85432?lang=no">Utdanning - SSB</a>
+          </p>
+
+
+      </p>
       </div>
-    <div  id="Oversikt_div" class="Oversikt_div" >Oversikt
+    <div id="Oversikt_div" class="Oversikt_div" >Oversikt
     </div>
     <div id="Detaljer_div" class="Detaljer_div">
 
@@ -44,19 +56,21 @@
       <input type="text" id="Sammenlign1_input">Kommune nummer en</input>
       <input type="text" id="Sammenlign2_input">Kommune nummer to</input>
       <button onclick="sammenlign_click()">Sammenlign</button>
-      <table id="Sk1menn" class="center">
-        <th></th>
+    </div>
+    <div class="div1">
+      <table id="S_table1">
       </table>
-      <br>
-      <table id="Sk1kvinner" class="center">
-
+    </div>
+    <div class="div1">
+      <table id="S_table2">
+        </table>
+    </div>
+    <div class="div1">
+      <table id="Sk2menn">
       </table>
-      <br>
-      <table id="Sk2menn" class="center">
-      </table>
-      <br>
+    </div>
+    <div class="div1">
       <table id="Sk2kvinner">
-
       </table>
     </div>
   </body>
