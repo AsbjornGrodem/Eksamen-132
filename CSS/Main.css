@@ -8,14 +8,6 @@ h1 {
   text-align: center;
   font-size: 60px;
 }
-table.center{
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: :5px;
-  padding-right: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
 table {
   width: 100%
 }
@@ -29,25 +21,15 @@ tr, td {
   text-align: center;
   align-self: center;
 }
-#Sk1menn {
-  color:green;
-  font-size: 50px;
-  float: top;
+th{
+  float:top;
 }
-#Sk1kvinner {
-  color:green;
-  font-size: 50px;
-  float: left;
-}
-#Sk2menn {
-  color:green;
-  font-size: 50px;
-  float: right;
-}
-#Sk2kvinner {
-  color:green;
-  font-size: 50px;
-  float: right;
+.div1 {
+/*overflow-x: auto;*/
+margin: 2px;
+height: 300px;
+width: 300px;
+float: left;
 }
 .Introduksjon_div {
   display: none;
@@ -81,8 +63,7 @@ tr, td {
 }
 .Sammenligning_div {
   border:solid gray;
-  width : 800px;
-  float:center;
+  width : 400px;
   text-align: center;
   margin: auto;
 }
