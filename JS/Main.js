@@ -17,7 +17,7 @@ function Konstruktor(array, input) {
   this.navneliste = getNames(array);
   this.informasjon = getInfo(array);
   this.total_befolkning = befolkning_total(array);
-  this.sysselsetting = sysselSetting(array);
+
 
   function getIds(array) {
     let nummerliste = [];
@@ -83,24 +83,10 @@ function Konstruktor(array, input) {
     }
     return total
   }
-  function sysselSetting(sysselsetting) {
 
-    var siste_maaling = [];
-
-    for(kommune in sysselsetting){
-      var menn = sysselsetting[kommune].Menn;
-       for (årstall in menn) {
-         var antall = menn[årstall];
-       }
-       siste_maaling.push(antall);
-       for (var i = 0; i < siste_maaling.length; i++) {
-         siste_maaling[i]
-       }
-    }
-
-    return siste_maaling;
-  }
 }
+
+
 
 function load(URL, callback) {
     const xhr = new XMLHttpRequest();
@@ -186,22 +172,83 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       tabellHTML += '<td>';
       tabellHTML += befolkning_master[kommunenummer].total_befolkning[kommunenummer];
       tabellHTML += '</td>';
-      tabellHTML += '<td>';
-      tabellHTML += JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer]);
+    }
+  }
+  tabellHTML += '<td>';
+  for (kommunenummer in sysselsatte_master) {
+    if (input === sysselsatte_master[kommunenummer].kommunenummer) {
+      var objekt = sysselsatte_master[kommunenummer].informasjon["Begge kjønn"]["2018"];
+      tabellHTML += JSON.stringify(objekt);
       tabellHTML += '</td>';
+    }
+  }
+  for (kommunenummer in utdanning_master) {
+    if (input === utdanning_master[kommunenummer].kommunenummer) {
+      var utdanning = utdanning_master[kommunenummer].informasjon;
+      var utdanning_menn = utdanning_master[kommunenummer].informasjon["04a"].Menn["2017"];
+      var utdanning_kvinner = utdanning_master[kommunenummer].informasjon["04a"].Kvinner["2017"];
+      var total_utdanning = utdanning_menn + utdanning_kvinner;
+      var total_befolkning = befolkning_master[kommunenummer].total_befolkning[kommunenummer]
+      var total_befolkning_utdanning = total_befolkning * total_utdanning / 100;
+
       tabellHTML += '<td>';
-      tabellHTML += "uskjent";
+      tabellHTML += "Prosent: "
+      tabellHTML += JSON.stringify(total_utdanning) + "%";
+      tabellHTML += '<br>'
+      tabellHTML += "Total: "
+      tabellHTML +=  Math.trunc(total_befolkning_utdanning);
       tabellHTML += '</td>';
       tabellHTML += '</tr>';
-
       tabellHTML += '</table>';
-      document.getElementById("detaljer_oversikt").innerHTML = tabellHTML;
-      document.getElementById("kommunenavn").innerHTML = kommuneNavn;
+      tabellHTML += '<br>';
     }
-
   }
 
+
+    for (kommunenummer in befolkning_master){
+
+
+
+
+      if (input === befolkning_master[kommunenummer].kommunenummer) {
+        var utvikling_navn = '<h2>'
+        utvikling_navn += "Historisk utvikling i " + befolkning_master[kommunenummer].navn;
+        utvikling_navn += " kommune"
+        utvikling_navn += '</h2>'
+        var tabellHistorisk = '<table id="Historisk_tabell">'
+        tabellHistorisk += '<tr>';
+        tabellHistorisk += '<td>';
+        tabellHistorisk += "År: ";
+        tabellHistorisk += '</td>';
+        tabellHistorisk += '<td>';
+        tabellHistorisk += "Antall: ";
+        tabellHistorisk += '</td>';
+        tabellHistorisk += '</tr>';
+
+        for (var i = 0; i < 11; i++) {
+          var årstall = Object.keys(befolkning_master[kommunenummer].informasjon.Kvinner);
+          var antall = befolkning_master[kommunenummer].total_befolkning;
+          tabellHistorisk += '<tr>';
+          tabellHistorisk += '<td>';
+          tabellHistorisk += årstall[i]
+          tabellHistorisk += '</td>';
+          tabellHistorisk += '<td>';
+          tabellHistorisk += antall[i];
+          tabellHistorisk += '</td>';
+          tabellHistorisk += '</tr>';
+        }
+        tabellHistorisk += '</table>';
+
+        //tabellHistorisk += JSON.stringify(befolkning_master[kommunenummer].informasjon.Kvinner);
+      }
+    }
+    document.getElementById("detaljer_oversikt").innerHTML = tabellHTML;
+    document.getElementById("kommunenavn").innerHTML = kommuneNavn;
+    document.getElementById("navn_historisk").innerHTML = utvikling_navn;
+    document.getElementById("historisk_utvikling").innerHTML = tabellHistorisk;
+
 }
+
 function sammenlign_click() {
   //Load lager master-array som vi looper gjennom for å finne inputs
   load(Sysselsatte_url, function(array) {
