@@ -12,21 +12,7 @@ body {
     display: flex;
     flex-direction: column;
 }
-@media (max-width: 1200px) {
-    #S_table {
-        flex-direction: column;
-    }
-    .row {
-        flex-direction: row;
-    }
-    #Detaljer_ouput {
-      border-collapse: collapse;}
-      tr { display: block; float: left; }
-      th, td { display: block; border: 1px solid black;
-    }
-    }
-  }
-}
+
 .cell {
     flex-basis: 20%;
     text-align: center;
@@ -50,7 +36,7 @@ h1 {
   font-size: 60px;
 }
 table {
-  width: 100%
+  width: 95%
 }
 tr, td {
   border: 1px solid black;
@@ -64,6 +50,12 @@ tr, td {
 }
 th{
   float:top;
+}
+#kommuneNavn {
+  color: red;
+}
+.detaljer_oversikt {
+  color: red;
 }
 .div1 {
   /*overflow-x: auto;*/
@@ -125,3 +117,16 @@ th{
 .button3 {background-color: #f44336;} /* Red */
 .button4 {background-color: #e7e7e7; color: black;} /* Gray */
 .button5 {background-color: #555555;} /* Black */
+@media (max-width: 1200px) {
+    #S_table {
+        flex-direction: column;
+    }
+    .row {
+        flex-direction: row;
+    }
+
+    table { border-collapse: collapse; }
+    tr { display: block; float: left; }
+    th, td { display: block; border: 1px solid black; }
+
+}

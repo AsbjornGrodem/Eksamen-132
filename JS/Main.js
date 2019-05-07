@@ -308,9 +308,10 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       row.insertCell().innerText = "Informasjon om etteelleaent";
       row.insertCell().innerText = "ukjent";
       document.getElementById("detaljer_oversikt").appendChild(tabellHTML);
-      document.getElementById("kommunenavn").appendChild(kommuneNavn);
+      //document.getElementById("kommunenavn").appendChild(kommuneNavn);
     }
   }
+
 }
 function sammenlign_click() {
   //Load lager master-array som vi looper gjennom for å finne inputs
