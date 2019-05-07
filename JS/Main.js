@@ -280,8 +280,10 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       var kommuneNavn = document.createElement('h2');
       kommuneNavn.innerText = befolkning_master[kommunenummer].navn + " kommune";
       var tabellHTML = document.createElement('table');
+
       tabellHTML.id = "detaljer_oversikt";
       tabellHTML.innerHTML = "";
+
 
       var row = tabellHTML.insertRow();
       row.insertCell().innerText = "Kommunenavn: ";
@@ -295,22 +297,29 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       row.insertCell().innerText = befolkning_master[kommunenummer].navn;
       row.insertCell().innerText = befolkning_master[kommunenummer].kommunenummer;
       row.insertCell().innerText = befolkning_master[kommunenummer].total_befolkning[kommunenummer];
+      for (kommunenummer in sysselsatte_master) {
+        if (input === sysselsatte_master[kommunenummer].kommunenummer){
       row.insertCell().innerText = JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer])+"%";
+    }
+  }
       row.insertCell().innerText = u_kvinner+" prosent av kvinner og "+u_menn+" prosent av menn";
       row.insertCell().innerText = Math.round(befolkning_master[kommunenummer].informasjon.Kvinner["2017"]*u_kvinner/100)+" kvinner og "+Math.round(befolkning_master[kommunenummer].informasjon.Menn["2017"]/100*u_menn)+" menn";
 
 
       //HISTORISK UTVIKLING AV BEFOLKNING DESKTOP VERSJON
+      for (kommunenummer in befolkning_master) {
+      if (input === befolkning_master[kommunenummer].kommunenummer){
       var utvikling_navn = document.createElement('h3');
       utvikling_navn.innerText = "Historisk utvikling av befolkning i " + befolkning_master[kommunenummer].navn + " kommune";
       var tabellHistorisk = document.createElement('table');
-      tabellHistorisk.innerHTML = "";
       tabellHistorisk.id = "historisk_utvikling";
+
 
       var row = tabellHistorisk.insertRow();
       row.insertCell().innerText = "År:"
       for (var i = 2007; i < 2019; i++) {
         row.insertCell().innerText = i;
+      }
 
       row = tabellHistorisk.insertRow();
       row.insertCell().innerText = "Antall kvinner:"
@@ -325,12 +334,18 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
          var antall_menn = befolkning_master[kommunenummer].informasjon.Menn;
          row.insertCell().innerText = antall_menn[i];
       }
+    }
+  }
 
       //HISTORISK UTVIKLING AV SYSSELSETTING DESKTOP VERSJON
+
+      for (kommunenummer in sysselsatte_master) {
+      if (input === sysselsatte_master[kommunenummer].kommunenummer){
       var utvikling_navn_syssel = document.createElement('h3');
       utvikling_navn_syssel.innerText = "Historisk utvikling av sysselsetting i " + sysselsatte_master[kommunenummer].navn + " kommune";
       var tabellHistorisk_sysselsatte = document.createElement('table');
       tabellHistorisk_sysselsatte .id = "historisk_sysselsatte";
+
 
       var row = tabellHistorisk_sysselsatte .insertRow();
       row.insertCell().innerText = "År:"
@@ -351,12 +366,20 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
          var antall_menn = sysselsatte_master[kommunenummer].informasjon.Menn;
          row.insertCell().innerText = antall_menn[i];
       }
+    }
+  }
 
       //HISTORISK UTVIKLING AV UTDANNING DESKTOP VERSJON
+
+      for (kommunenummer in utdanning_master) {
+      if (input === utdanning_master[kommunenummer].kommunenummer){
       var utvikling_navn_utdanning = document.createElement('h3');
       utvikling_navn_utdanning.innerText = "Historisk utvikling av utdanning i " + befolkning_master[kommunenummer].navn + " kommune";
       var tabellHistorisk_utdanning = document.createElement('table');
       tabellHistorisk_utdanning .id = "historisk_sysselsatte";
+
+
+        console.log(utdanning_master[kommunenummer].informasjon);
 
       var row = tabellHistorisk_utdanning .insertRow();
       row.insertCell().innerText = "År:"
@@ -381,7 +404,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
     }
   }
       document.getElementById("detaljer_oversikt").appendChild(tabellHTML);
-      document.getElementById("kommunenavn").replaceChild(kommuneNavn);
+      document.getElementById("kommunenavn").appendChild(kommuneNavn);
       document.getElementById("navn_historisk").appendChild(utvikling_navn);
       document.getElementById("historisk_utvikling").appendChild(tabellHistorisk);
       document.getElementById("navn_historisk_syssel").appendChild(utvikling_navn_syssel);
@@ -528,6 +551,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
          row.insertCell().innerText = antall_menn[i];
       }
 
+    }
   }
 
       document.getElementById("navn_historisk_MOBIL").appendChild(utvikling_navn);
