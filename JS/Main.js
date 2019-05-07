@@ -6,7 +6,7 @@ var intro = document.getElementById("Introduksjon_div");
 var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
-
+var sammenlign_table = document.getElementById("S_table");
 
 //Jeg har endret noe mer
 
@@ -17,7 +17,7 @@ function Konstruktor(array, input) {
   this.navneliste = getNames(array);
   this.informasjon = getInfo(array);
   this.total_befolkning = befolkning_total(array);
-
+  this.sysselsetting = sysselSetting(array);
 
   function getIds(array) {
     let nummerliste = [];
@@ -32,6 +32,25 @@ function Konstruktor(array, input) {
     this.nummerliste = nummerliste;
     return (nummerliste)
   }
+
+  function sysselSetting(sysselsetting) {
+
+  var siste_maaling = [];
+
+  for(kommune in sysselsetting){
+    var menn = sysselsetting[kommune].Menn;
+     for (årstall in menn) {
+       var antall = menn[årstall];
+     }
+     siste_maaling.push(antall);
+     for (var i = 0; i < siste_maaling.length; i++) {
+       siste_maaling[i]
+     }
+  }
+
+  return siste_maaling;
+}
+
   function getNumber(array) {
     for (i in array) {
       if (i === input) {
@@ -131,7 +150,7 @@ function f_oversikt (oversikt) {
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
 
 };
-function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
+/*function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
 
   let input = document.getElementById("Detaljer_input").value;
   for (kommunenummer in befolkning_master){
@@ -245,6 +264,36 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
     document.getElementById("historisk_utvikling").innerHTML = tabellHistorisk;
 
 }
+*/
+function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
+  let input = document.getElementById("Detaljer_input").value;
+  for (kommunenummer in befolkning_master){
+    if (input === befolkning_master[kommunenummer].kommunenummer){
+      var kommuneNavn = document.createElement('h2');
+      kommuneNavn.innerText = befolkning_master[kommunenummer].navn + " kommune";
+      var tabellHTML = document.createElement('table');
+      tabellHTML.id = "Detaljer_output";
+
+      var row = tabellHTML.insertRow();
+      row.insertCell().innerText = "Kommunenavn: ";
+      row.insertCell().innerText = "Kommunenummer: ";
+      row.insertCell().innerText = "Total befolkning: ";
+      row.insertCell().innerText = "Sysselsetting og høyere utdanning: ";
+      row.insertCell().innerText = "Høyere utdanning: ";
+
+      row = tabellHTML.insertRow();
+      row.insertCell().innerText = befolkning_master[kommunenummer].navn;
+      row.insertCell().innerText = befolkning_master[kommunenummer].kommunenummer;
+      row.insertCell().innerText = befolkning_master[kommunenummer].total_befolkning[kommunenummer];
+      console.log(befolkning_master[kommunenummer]);
+      row.insertCell().innerText = JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer]);
+      row.insertCell().innerText = "uskjent";
+
+      document.getElementById("detaljer_oversikt").appendChild(tabellHTML);
+      document.getElementById("kommunenavn").appendChild(kommuneNavn);
+    }
+  }
+}
 function sammenlign_click() {
   //Load lager master-array som vi looper gjennom for å finne inputs
   load(Sysselsatte_url, function(array) {
@@ -262,30 +311,25 @@ function sammenlign_click() {
     let kommune1 = sysselsatte_master.find(function(kommune) {
       return kommune.kommunenummer === input1;
     });
-
     if (kommune1 === undefined) {
       let text = document.createElement('span');
       text.innerText = 'Ugyldig kommunenummer: ' + input1;
       table.appendChild(text);
       return;
     }
-
     let kommune2 = sysselsatte_master.find(function(kommune) {
       return kommune.kommunenummer === input2;
     });
-
     if (kommune2 === undefined) {
       let text = document.createElement('span');
       text.innerText = 'Ugyldig kommunenummer: ' + input2;
       table.appendChild(text);
       return;
     }
-
     let kommuner = [
       kommune1,
       kommune2,
     ];
-
     let newDiv = function() {
       return document.createElement('div');
     }
@@ -367,9 +411,6 @@ function sammenlign_click() {
   })
 }
 
-
-
-
 function buttonClick(test) {
 
   load(Befolkning_url, function (array1) {
@@ -415,7 +456,7 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-
+    sammenlign_table.style.display = "none";
   };
 
   if (button === 2) {
@@ -425,7 +466,7 @@ function show(button) {
     oversikt.style.display = "block";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-
+    sammenlign_table.style.display = "none";
   };
 
   if (button === 3) {
@@ -435,7 +476,7 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "block";
     sammenligning.style.display = "none";
-
+    sammenlign_table.style.display = "none";
   };
 
   if (button === 4) {
@@ -445,6 +486,6 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
-
+    sammenlign_table.style.display = "block";
   };
 };
