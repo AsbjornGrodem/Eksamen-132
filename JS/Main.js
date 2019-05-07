@@ -269,6 +269,15 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
   let input = document.getElementById("Detaljer_input").value;
   for (kommunenummer in befolkning_master){
     if (input === befolkning_master[kommunenummer].kommunenummer){
+      let uni_kort_menn = utdanning_master[kommunenummer].informasjon["03a"].Menn[2017];
+      let uni_kort_kvinner = utdanning_master[kommunenummer].informasjon["03a"].Kvinner[2017];
+      let uni_lang_menn = utdanning_master[kommunenummer].informasjon["04a"].Menn[2017];
+      let uni_lang_kvinner = utdanning_master[kommunenummer].informasjon["04a"].Kvinner[2017];
+      let fagskole_menn = utdanning_master[kommunenummer].informasjon["11"].Menn[2017];
+      let fagskole_kvinner = utdanning_master[kommunenummer].informasjon["11"].Kvinner[2017];
+      let u_kvinner = uni_kort_kvinner+uni_lang_kvinner+fagskole_kvinner;
+      let u_menn = uni_kort_menn+uni_lang_menn+fagskole_menn;
+
       var kommuneNavn = document.createElement('h2');
       kommuneNavn.innerText = befolkning_master[kommunenummer].navn + " kommune";
       var tabellHTML = document.createElement('table');
@@ -278,15 +287,19 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       row.insertCell().innerText = "Kommunenavn: ";
       row.insertCell().innerText = "Kommunenummer: ";
       row.insertCell().innerText = "Total befolkning: ";
-      row.insertCell().innerText = "Sysselsetting og høyere utdanning: ";
-      row.insertCell().innerText = "Høyere utdanning: ";
+      row.insertCell().innerText = "Sysselsatt";
+      row.insertCell().innerText = "Høyere utdanning (fra 2017) ";
+      row.insertCell().innerText = "Høyere utdanning (fra 2017) ";
 
       row = tabellHTML.insertRow();
       row.insertCell().innerText = befolkning_master[kommunenummer].navn;
       row.insertCell().innerText = befolkning_master[kommunenummer].kommunenummer;
       row.insertCell().innerText = befolkning_master[kommunenummer].total_befolkning[kommunenummer];
-      row.insertCell().innerText = JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer]);
-      row.insertCell().innerText = "ukjent";
+      row.insertCell().innerText = JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer])+"%";
+      row.insertCell().innerText = u_kvinner+" prosent av kvinner og "+u_menn+" prosent av menn";
+      row.insertCell().innerText = Math.round(befolkning_master[kommunenummer].informasjon.Kvinner["2017"]*u_kvinner/100)+" kvinner og "+Math.round(befolkning_master[kommunenummer].informasjon.Menn["2017"]/100*u_menn)+" menn";
+
+      console.log(befolkning_master[kommunenummer].informasjon.Kvinner["2017"]);
 
       row = tabellHTML.insertRow();
       row.insertCell().innerText = "Informasjon om datasett 1 feks";

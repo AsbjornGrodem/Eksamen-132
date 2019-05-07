@@ -13,17 +13,19 @@ body {
     flex-direction: column;
 }
 @media (max-width: 1200px) {
-    #Detaljer_div {
-        flex-direction: column;
-    }
-
-
     #S_table {
         flex-direction: column;
     }
     .row {
         flex-direction: row;
     }
+    #Detaljer_ouput {
+      border-collapse: collapse;}
+      tr { display: block; float: left; }
+      th, td { display: block; border: 1px solid black;
+    }
+    }
+  }
 }
 .cell {
     flex-basis: 20%;
