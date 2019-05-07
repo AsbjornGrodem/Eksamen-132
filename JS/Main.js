@@ -207,9 +207,6 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
 
     for (kommunenummer in befolkning_master){
 
-
-
-
       if (input === befolkning_master[kommunenummer].kommunenummer) {
         var utvikling_navn = '<h2>'
         utvikling_navn += "Historisk utvikling i " + befolkning_master[kommunenummer].navn;
@@ -225,9 +222,10 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
         tabellHistorisk += '</td>';
         tabellHistorisk += '</tr>';
 
-        for (var i = 0; i < 11; i++) {
+        for (var i = 2007; i < 2019; i++) {
           var årstall = Object.keys(befolkning_master[kommunenummer].informasjon.Kvinner);
-          var antall = befolkning_master[kommunenummer].total_befolkning;
+          var antall = befolkning_master[kommunenummer].informasjon.Kvinner;
+
           tabellHistorisk += '<tr>';
           tabellHistorisk += '<td>';
           tabellHistorisk += årstall[i]
@@ -284,7 +282,7 @@ function sammenlign_click() {
       cell2.innerHTML = "Antall sysselsatte menn i "+ sysselsatte_master[kommune].navn;
         var table_kvinner = sysselsatte_master[kommune].informasjon.Kvinner;
             for (årstall in table_kvinner) {
-              console.log(årstall);
+
               var verdi = table_kvinner[årstall];
               var row = table2.insertRow(0);
               var cell1 = row.insertCell(0);
