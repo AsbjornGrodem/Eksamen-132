@@ -294,21 +294,16 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
           var total_befolkning = befolkning_master[kommunenummer].total_befolkning[kommunenummer]
           var total_befolkning_utdanning = total_befolkning * total_utdanning / 100;
       row.insertCell().innerText = JSON.stringify(total_utdanning);
-
+    }
   }
-
       row = tabellHTML.insertRow();
       row.insertCell().innerText = "Informasjon om datasett 1 feks";
       row.insertCell().innerText = "Informasjon om datasett 2 feks";
       row.insertCell().innerText = "Informasjon om datasett 3 feks";
       row.insertCell().innerText = "Informasjon om etteelleaent";
       row.insertCell().innerText = "ukjent";
-    }
-  }
       document.getElementById("detaljer_oversikt").appendChild(tabellHTML);
       document.getElementById("kommunenavn").appendChild(kommuneNavn);
-
-
     }
   }
 }
