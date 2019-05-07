@@ -279,6 +279,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       var kommuneNavn = document.createElement('h2');
       kommuneNavn.innerText = befolkning_master[kommunenummer].navn + " kommune";
       var tabellHTML = document.createElement('table');
+      tabellHTML.innerHTML = "";
       tabellHTML.id = "detaljer_oversikt";
 
       var row = tabellHTML.insertRow();
