@@ -285,10 +285,15 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       row.insertCell().innerText = befolkning_master[kommunenummer].navn;
       row.insertCell().innerText = befolkning_master[kommunenummer].kommunenummer;
       row.insertCell().innerText = befolkning_master[kommunenummer].total_befolkning[kommunenummer];
-      console.log(befolkning_master[kommunenummer]);
       row.insertCell().innerText = JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer]);
-      row.insertCell().innerText = "uskjent";
+      row.insertCell().innerText = "ukjent";
 
+      row = tabellHTML.insertRow();
+      row.insertCell().innerText = "Informasjon om datasett 1 feks";
+      row.insertCell().innerText = "Informasjon om datasett 2 feks";
+      row.insertCell().innerText = "Informasjon om datasett 3 feks";
+      row.insertCell().innerText = "Informasjon om etteelleaent";
+      row.insertCell().innerText = "ukjent";
       document.getElementById("detaljer_oversikt").appendChild(tabellHTML);
       document.getElementById("kommunenavn").appendChild(kommuneNavn);
     }
