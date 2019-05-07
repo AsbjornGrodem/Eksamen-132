@@ -267,43 +267,69 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
   let input = document.getElementById("Detaljer_input").value;
   for (kommunenummer in befolkning_master){
     if (input === befolkning_master[kommunenummer].kommunenummer){
+      let uni_kort_menn = utdanning_master[kommunenummer].informasjon["03a"].Menn[2017];
+      let uni_kort_kvinner = utdanning_master[kommunenummer].informasjon["03a"].Kvinner[2017];
+      let uni_lang_menn = utdanning_master[kommunenummer].informasjon["04a"].Menn[2017];
+      let uni_lang_kvinner = utdanning_master[kommunenummer].informasjon["04a"].Kvinner[2017];
+      let fagskole_menn = utdanning_master[kommunenummer].informasjon["11"].Menn[2017];
+      let fagskole_kvinner = utdanning_master[kommunenummer].informasjon["11"].Kvinner[2017];
+      let u_kvinner = uni_kort_kvinner+uni_lang_kvinner+fagskole_kvinner;
+      let u_menn = uni_kort_menn+uni_lang_menn+fagskole_menn;
+
       var kommuneNavn = document.createElement('h2');
       kommuneNavn.innerText = befolkning_master[kommunenummer].navn + " kommune";
       var tabellHTML = document.createElement('table');
-      tabellHTML.id = "Detaljer_output";
+      tabellHTML.id = "detaljer_oversikt";
 
       var row = tabellHTML.insertRow();
       row.insertCell().innerText = "Kommunenavn: ";
       row.insertCell().innerText = "Kommunenummer: ";
       row.insertCell().innerText = "Total befolkning: ";
-      row.insertCell().innerText = "Sysselsetting og høyere utdanning: ";
-      row.insertCell().innerText = "Høyere utdanning: ";
+      row.insertCell().innerText = "Sysselsatt";
+      row.insertCell().innerText = "Høyere utdanning (fra 2017) ";
+      row.insertCell().innerText = "Høyere utdanning (fra 2017) ";
 
       row = tabellHTML.insertRow();
       row.insertCell().innerText = befolkning_master[kommunenummer].navn;
       row.insertCell().innerText = befolkning_master[kommunenummer].kommunenummer;
       row.insertCell().innerText = befolkning_master[kommunenummer].total_befolkning[kommunenummer];
-      row.insertCell().innerText = JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer]);
+      row.insertCell().innerText = JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer])+"%";
+      row.insertCell().innerText = u_kvinner+" prosent av kvinner og "+u_menn+" prosent av menn";
+      row.insertCell().innerText = Math.round(befolkning_master[kommunenummer].informasjon.Kvinner["2017"]*u_kvinner/100)+" kvinner og "+Math.round(befolkning_master[kommunenummer].informasjon.Menn["2017"]/100*u_menn)+" menn";
 
-      for (kommunenummer in utdanning_master) {
-        if (input === utdanning_master[kommunenummer].kommunenummer) {
-          var utdanning = utdanning_master[kommunenummer].informasjon;
-          var utdanning_menn = utdanning_master[kommunenummer].informasjon["04a"].Menn["2017"];
-          var utdanning_kvinner = utdanning_master[kommunenummer].informasjon["04a"].Kvinner["2017"];
-          var total_utdanning = utdanning_menn + utdanning_kvinner;
-          var total_befolkning = befolkning_master[kommunenummer].total_befolkning[kommunenummer]
-          var total_befolkning_utdanning = total_befolkning * total_utdanning / 100;
-      row.insertCell().innerText = JSON.stringify(total_utdanning);
-    }
-  }
-      row = tabellHTML.insertRow();
-      row.insertCell().innerText = "Informasjon om datasett 1 feks";
-      row.insertCell().innerText = "Informasjon om datasett 2 feks";
-      row.insertCell().innerText = "Informasjon om datasett 3 feks";
-      row.insertCell().innerText = "Informasjon om etteelleaent";
-      row.insertCell().innerText = "ukjent";
+
+      //HISTORISK UTVIKLING DESKTOP VERSJON
+
+      var utvikling_navn = document.createElement('h3');
+      utvikling_navn.innerText = "Historisk utvikling av befolkning i " + befolkning_master[kommunenummer].navn + " kommune";
+      var tabellHistorisk = document.createElement('table');
+      tabellHistorisk.id = "historisk_utvikling";
+
+
+      var row = tabellHistorisk.insertRow();
+      row.insertCell().innerText = "År:"
+      for (var i = 2007; i < 2019; i++) {
+        row.insertCell().innerText = i;
+      }
+
+      row = tabellHistorisk.insertRow();
+      row.insertCell().innerText = "Antall kvinner:"
+      for (var i = 2007; i < 2019; i++) {
+         var antall_kvinner = befolkning_master[kommunenummer].informasjon.Kvinner;
+         row.insertCell().innerText = antall_kvinner[i];
+      }
+
+      row = tabellHistorisk.insertRow();
+      row.insertCell().innerText = "Antall menn:"
+      for (var i = 2007; i < 2019; i++) {
+         var antall_menn = befolkning_master[kommunenummer].informasjon.Menn;
+         row.insertCell().innerText = antall_menn[i];
+      }
+
       document.getElementById("detaljer_oversikt").appendChild(tabellHTML);
       document.getElementById("kommunenavn").appendChild(kommuneNavn);
+      document.getElementById("navn_historisk").appendChild(utvikling_navn);
+      document.getElementById("historisk_utvikling").appendChild(tabellHistorisk);
     }
   }
 }
