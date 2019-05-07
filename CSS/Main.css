@@ -1,4 +1,38 @@
 body {
+    box-sizing: border-box;
+}
+* {
+    box-sizing: inherit;
+}
+#S_table {
+    display: flex;
+
+}
+.row {
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 1200px) {
+    #S_table {
+        flex-direction: column;
+    }
+    .row {
+        flex-direction: row;
+    }
+}
+.cell {
+    flex-basis: 20%;
+    text-align: center;
+    margin: 0.5em;
+}
+.title-cell {
+    flex-basis: 40%;
+}
+.highest {
+    font-weight: bold;
+   background-color: #9fb;
+}
+body {
   background-color: #95E8DE;
   text-align: center;
   font-size: : 20px;
@@ -25,12 +59,12 @@ th{
   float:top;
 }
 .div1 {
-/*overflow-x: auto;*/
-margin: 2px;
-height: 300px;
-width: 300px;
-float: left;
-}
+  /*overflow-x: auto;*/
+  margin: 2px;
+  height: 300px;
+  width: 300px;
+  float: left;
+  }
 .Introduksjon_div {
   display: none;
   width: 70%;
@@ -66,6 +100,7 @@ float: left;
   width : 400px;
   text-align: center;
   margin: auto;
+  float: top;
 }
 .button {
   background-color: #4CAF50; /* Green */
