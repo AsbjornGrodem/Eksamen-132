@@ -400,44 +400,165 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
          row.insertCell().innerText = antall_menn[i];
       }
 
-      row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall kvinner på Universitets og høyskolenivå (KORT):"
-      for (var i = 1980; i <= 2017; i++) {
-         var antall_kvinner = utdanning_master[kommunenummer].informasjon["03a"].Kvinner;
-         row.insertCell().innerText = antall_kvinner[i];
-      }
-
-      row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall menn på Universitets og høyskolenivå (KORT):"
-      for (var i = 1980; i <= 2017; i++) {
-         var antall_menn = utdanning_master[kommunenummer].informasjon["03a"].Menn;
-         row.insertCell().innerText = antall_menn[i];
-      }
-
-      row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall kvinner på Fagskole:"
-      for (var i = 1980; i <= 2017; i++) {
-         var antall_kvinner = utdanning_master[kommunenummer].informasjon["11"].Kvinner;
-         row.insertCell().innerText = antall_kvinner[i];
-      }
-
-      row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall menn på Fagskole:"
-      for (var i = 1980; i <= 2017; i++) {
-         var antall_menn = utdanning_master[kommunenummer].informasjon["11"].Menn;
-         row.insertCell().innerText = antall_menn[i];
-      }
-
     }
   }
       document.getElementById("detaljer_oversikt").appendChild(tabellHTML);
-      document.getElementById("kommunenavn").appendChild(kommuneNavn);
+      document.getElementById("kommunenavn").replaceChild(kommuneNavn);
       document.getElementById("navn_historisk").appendChild(utvikling_navn);
       document.getElementById("historisk_utvikling").appendChild(tabellHistorisk);
       document.getElementById("navn_historisk_syssel").appendChild(utvikling_navn_syssel);
       document.getElementById("historisk_sysselsatte").appendChild(tabellHistorisk_sysselsatte);
       document.getElementById("navn_historisk_utdanning").appendChild(utvikling_navn_utdanning);
       document.getElementById("historisk_utdanning").appendChild(tabellHistorisk_utdanning);
+    }
+  }
+
+
+//MOBIL VERSJON
+
+
+
+  for (kommunenummer in befolkning_master){
+    if (input === befolkning_master[kommunenummer].kommunenummer){
+      let uni_kort_menn = utdanning_master[kommunenummer].informasjon["03a"].Menn[2017];
+      let uni_kort_kvinner = utdanning_master[kommunenummer].informasjon["03a"].Kvinner[2017];
+      let uni_lang_menn = utdanning_master[kommunenummer].informasjon["04a"].Menn[2017];
+      let uni_lang_kvinner = utdanning_master[kommunenummer].informasjon["04a"].Kvinner[2017];
+      let fagskole_menn = utdanning_master[kommunenummer].informasjon["11"].Menn[2017];
+      let fagskole_kvinner = utdanning_master[kommunenummer].informasjon["11"].Kvinner[2017];
+      let u_kvinner = uni_kort_kvinner+uni_lang_kvinner+fagskole_kvinner;
+      let u_menn = uni_kort_menn+uni_lang_menn+fagskole_menn;
+
+      var tabellHTML = document.createElement('table');
+      tabellHTML.innerHTML = "";
+      tabellHTML.id = "detaljer_oversikt";
+
+
+      var row = tabellHTML.insertRow();
+      row.insertCell().innerText = "Kommunenavn: ";
+      row.insertCell().innerText = "Kommunenummer: ";
+      row.insertCell().innerText = "Total befolkning: ";
+      row.insertCell().innerText = "Sysselsatt";
+      row.insertCell().innerText = "Høyere utdanning (fra 2017) ";
+      row.insertCell().innerText = "Høyere utdanning (fra 2017) ";
+
+      row = tabellHTML.insertRow();
+      row.insertCell().innerText = befolkning_master[kommunenummer].navn;
+      row.insertCell().innerText = befolkning_master[kommunenummer].kommunenummer;
+      row.insertCell().innerText = befolkning_master[kommunenummer].total_befolkning[kommunenummer];
+      for (kommunenummer in sysselsatte_master) {
+        if (input === sysselsatte_master[kommunenummer].kommunenummer){
+      row.insertCell().innerText = JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer])+"%";
+    }
+  }
+      row.insertCell().innerText = u_kvinner+" prosent av kvinner og "+u_menn+" prosent av menn";
+      row.insertCell().innerText = Math.round(befolkning_master[kommunenummer].informasjon.Kvinner["2017"]*u_kvinner/100)+" kvinner og "+Math.round(befolkning_master[kommunenummer].informasjon.Menn["2017"]/100*u_menn)+" menn";
+
+
+      //HISTORISK UTVIKLING AV BEFOLKNING MOBIL VERSJON
+      for (kommunenummer in befolkning_master) {
+      if (input === befolkning_master[kommunenummer].kommunenummer){
+      var utvikling_navn = document.createElement('h3');
+      utvikling_navn.innerText = "Historisk utvikling av befolkning i " + befolkning_master[kommunenummer].navn + " kommune";
+      var tabellHistorisk = document.createElement('table');
+      tabellHistorisk.id = "historisk_utvikling";
+
+
+      var row = tabellHistorisk.insertRow();
+      row.insertCell().innerText = "År:"
+      for (var i = 2007; i < 2019; i++) {
+        row.insertCell().innerText = i;
+      }
+
+      row = tabellHistorisk.insertRow();
+      row.insertCell().innerText = "Antall kvinner:"
+      for (var i = 2007; i < 2019; i++) {
+         var antall_kvinner = befolkning_master[kommunenummer].informasjon.Kvinner;
+         row.insertCell().innerText = antall_kvinner[i];
+      }
+
+      row = tabellHistorisk.insertRow();
+      row.insertCell().innerText = "Antall menn:"
+      for (var i = 2007; i < 2019; i++) {
+         var antall_menn = befolkning_master[kommunenummer].informasjon.Menn;
+         row.insertCell().innerText = antall_menn[i];
+      }
+    }
+  }
+
+      //HISTORISK UTVIKLING AV SYSSELSETTING MOBIL VERSJON
+
+      for (kommunenummer in sysselsatte_master) {
+      if (input === sysselsatte_master[kommunenummer].kommunenummer){
+      var utvikling_navn_syssel = document.createElement('h3');
+      utvikling_navn_syssel.innerText = "Historisk utvikling av sysselsetting i " + sysselsatte_master[kommunenummer].navn + " kommune";
+      var tabellHistorisk_sysselsatte = document.createElement('table');
+      tabellHistorisk_sysselsatte .id = "historisk_sysselsatte";
+
+
+      var row = tabellHistorisk_sysselsatte .insertRow();
+      row.insertCell().innerText = "År:"
+      for (var i = 2007; i < 2019; i++) {
+        row.insertCell().innerText = i;
+      }
+
+      row = tabellHistorisk_sysselsatte .insertRow();
+      row.insertCell().innerText = "Antall kvinner:"
+      for (var i = 2007; i < 2019; i++) {
+         var antall_kvinner = sysselsatte_master[kommunenummer].informasjon.Kvinner;
+         row.insertCell().innerText = antall_kvinner[i];
+      }
+
+      row = tabellHistorisk_sysselsatte .insertRow();
+      row.insertCell().innerText = "Antall menn:"
+      for (var i = 2007; i < 2019; i++) {
+         var antall_menn = sysselsatte_master[kommunenummer].informasjon.Menn;
+         row.insertCell().innerText = antall_menn[i];
+      }
+    }
+  }
+
+      //HISTORISK UTVIKLING AV UTDANNING MOBIL VERSJON
+
+      for (kommunenummer in utdanning_master) {
+      if (input === utdanning_master[kommunenummer].kommunenummer){
+      var utvikling_navn_utdanning = document.createElement('h3');
+      utvikling_navn_utdanning.innerText = "Historisk utvikling av utdanning i " + befolkning_master[kommunenummer].navn + " kommune";
+      var tabellHistorisk_utdanning = document.createElement('table');
+      tabellHistorisk_utdanning .id = "historisk_sysselsatte";
+
+
+        console.log(utdanning_master[kommunenummer].informasjon);
+
+      var row = tabellHistorisk_utdanning .insertRow();
+      row.insertCell().innerText = "År:"
+      for (var i = 1980; i <= 2017; i++) {
+        row.insertCell().innerText = i;
+      }
+
+      row = tabellHistorisk_utdanning .insertRow();
+      row.insertCell().innerText = "Antall kvinner på Universitets og høyskolenivå (LANG):"
+      for (var i = 1980; i <= 2017; i++) {
+         var antall_kvinner = utdanning_master[kommunenummer].informasjon["04a"].Kvinner;
+         row.insertCell().innerText = antall_kvinner[i];
+      }
+
+      row = tabellHistorisk_utdanning .insertRow();
+      row.insertCell().innerText = "Antall menn på Universitets og høyskolenivå (LANG):"
+      for (var i = 1980; i <= 2017; i++) {
+         var antall_menn = utdanning_master[kommunenummer].informasjon["04a"].Menn;
+         row.insertCell().innerText = antall_menn[i];
+      }
+
+    }
+  }
+
+      document.getElementById("navn_historisk_MOBIL").appendChild(utvikling_navn);
+      document.getElementById("historisk_utvikling_MOBIL").appendChild(tabellHistorisk);
+      document.getElementById("navn_historisk_syssel_MOBIL").appendChild(utvikling_navn_syssel);
+      document.getElementById("historisk_sysselsatte_MOBIL").appendChild(tabellHistorisk_sysselsatte);
+      document.getElementById("navn_historisk_utdanning_MOBIL").appendChild(utvikling_navn_utdanning);
+      document.getElementById("historisk_utdanning_MOBIL").appendChild(tabellHistorisk_utdanning);
     }
   }
 }

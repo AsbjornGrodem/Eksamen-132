@@ -94,6 +94,11 @@ th{
   border: 5px solid gray;
   margin: auto;
 }
+
+.Detaljer_oversikt_MOBIL {
+  display: none;
+}
+
 .Sammenligning_div {
   border:solid gray;
   width : 400px;
