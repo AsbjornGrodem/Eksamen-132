@@ -13,6 +13,11 @@ body {
     flex-direction: column;
 }
 @media (max-width: 1200px) {
+    #Detaljer_div {
+        flex-direction: column;
+    }
+
+
     #S_table {
         flex-direction: column;
     }
