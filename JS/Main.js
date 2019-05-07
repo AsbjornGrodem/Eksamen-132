@@ -405,9 +405,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
          var antall_menn = utdanning_master[kommunenummer].informasjon["11"].Menn;
          row.insertCell().innerText = antall_menn[i];
       }
-
     }
-  }
       document.getElementById("detaljer_oversikt").appendChild(tabellHTML);
       document.getElementById("kommunenavn").appendChild(kommuneNavn);
       document.getElementById("navn_historisk").appendChild(utvikling_navn);
