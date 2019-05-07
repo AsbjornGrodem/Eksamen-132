@@ -414,6 +414,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       document.getElementById("historisk_utdanning").appendChild(tabellHistorisk_utdanning);
     }
   }
+
 }
 function sammenlign_click() {
   //Load lager master-array som vi looper gjennom for å finne inputs
