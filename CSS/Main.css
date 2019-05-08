@@ -22,8 +22,9 @@ body {
     flex-basis: 40%;
 }
 .highest {
-    font-weight: bold;
-   background-color: #9fb;
+  font-weight: bold;
+  background-color: #9fb;
+  font-size: 20px;
 }
 
 h1 {

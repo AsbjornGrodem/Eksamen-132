@@ -548,119 +548,70 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
   }
 }
 function sammenlign_click() {
-  //Load lager master-array som vi looper gjennom for å finne inputs
-  load(Sysselsatte_url, function(array) {
-    let sysselsatte_master = [];
-    for (x in array) {
-      let kommune = new Konstruktor(array, x)
-      sysselsatte_master.push(kommune);
-    }
+ //Load lager master-array som vi looper gjennom for å finne inputs
+ load(Sysselsatte_url, function(array) {
+   let sysselsatte_master = [];
+   for (x in array) {
+     let kommune = new Konstruktor(array, x)
+     sysselsatte_master.push(kommune);
+   }
+   let input1 = document.getElementById("Sammenlign1_input").value;
+   let input2 = document.getElementById("Sammenlign2_input").value;
+   var k1_table = document.createElement('table');
+   var k2_table = document.createElement('table');
+   k1_table.innerHTML = "";
+   k2_table.innerHTML = "";
+   let high = [];
+   for (kommune in sysselsatte_master) {
+    if (sysselsatte_master[kommune].kommunenummer==="0101") {
+       var kommune1_navn = document.createElement('h2');
+       kommune1_navn.innerText = sysselsatte_master[kommune].navn;
+       k1_table.id = "k1_table";
 
-    let input1 = document.getElementById("Sammenlign1_input").value;
-    let input2 = document.getElementById("Sammenlign2_input").value;
-    var table = document.getElementById("S_table");
-    table.innerHTML = '';
+       var row = k1_table.insertRow();
+       row.insertCell().innerText = "År";
+       row.insertCell().innerText = "Menn";
+       row.insertCell().innerText = "Kvinner";
 
-    let kommune1 = sysselsatte_master.find(function(kommune) {
-      return kommune.kommunenummer === input1;
-    });
-    if (kommune1 === undefined) {
-      let text = document.createElement('span');
-      text.innerText = 'Ugyldig kommunenummer: ' + input1;
-      table.appendChild(text);
-      return;
-    }
-    let kommune2 = sysselsatte_master.find(function(kommune) {
-      return kommune.kommunenummer === input2;
-    });
-    if (kommune2 === undefined) {
-      let text = document.createElement('span');
-      text.innerText = 'Ugyldig kommunenummer: ' + input2;
-      table.appendChild(text);
-      return;
-    }
-    let kommuner = [
-      kommune1,
-      kommune2,
-    ];
-    let newDiv = function() {
-      return document.createElement('div');
-    }
+       for (år in sysselsatte_master[kommune].informasjon.Menn) {
+         var row = k1_table.insertRow();
+         row.insertCell().innerText = år;
+         row.insertCell().innerText = sysselsatte_master[kommune].informasjon.Menn[år];
+         row.insertCell().innerText = sysselsatte_master[kommune].informasjon.Kvinner[år];
 
-    hr = newDiv();
-    hr.classList.add('row');
-    hr.classList.add('header');
-
-    let emptyCell = newDiv();
-    emptyCell.classList.add('cell');
-    hr.appendChild(emptyCell);
-
-    for (let kommune of kommuner) {
-      let title = newDiv();
-
-      title.innerText = kommune.navn;
-      title.classList.add('cell');
-      title.classList.add('title-cell');
-
-      hr.appendChild(title);
-    }
-    table.appendChild(hr);
-
-    hr2 = newDiv();
-    hr2.classList.add('row');
-    hr2.classList.add('header');
-
-    emptyCell = newDiv();
-    emptyCell.classList.add('cell');
-    hr2.append(emptyCell);
-
-    for (let i = 0; i < 2; ++i) {
-      for (let title of ['Menn', 'Kvinner']) {
-        let cell = newDiv();
-        cell.innerText = title;
-        cell.classList.add('cell');
-        hr2.appendChild(cell);
+         high.push(år);
       }
     }
-    table.appendChild(hr2);
+    if (sysselsatte_master[kommune].kommunenummer==="0104") {
+       var kommune2_navn = document.createElement('h2');
+       kommune2_navn.innerText = sysselsatte_master[kommune].navn;
+       k2_table.id = "k2_table";
+       var row = k2_table.insertRow();
+       row.insertCell().innerText = "År";
+       row.insertCell().innerText = "Menn";
+       row.insertCell().innerText = "Kvinner";
 
-    for (let year in kommune1.informasjon.Menn) {
-      let row = newDiv();
-      row.classList.add('row');
+       for (år in sysselsatte_master[kommune].informasjon.Menn) {
+         var row = k2_table.insertRow();
+         row.insertCell().innerText = år;
+         row.insertCell().innerText = sysselsatte_master[kommune].informasjon.Menn[år];
+         row.insertCell().innerText = sysselsatte_master[kommune].informasjon.Kvinner[år];
 
-      let maxValue = {
-        'Menn': -Infinity,
-        'Kvinner': -Infinity,
-      };
-      let maxValueCell = {};
+         high.push(år);
+       }
+     }
 
-      let yearCell = newDiv();
-      yearCell.innerText = year;
-      yearCell.classList.add('cell');
-      row.appendChild(yearCell);
+      var vekst = document.createElement('listen');
+      vekst.append(high);
+      vekst.classList.add('highest');
 
-      for (let kommune of kommuner) {
-        for (let gender of ['Menn', 'Kvinner']) {
-          let cell = newDiv();
-          let value = kommune.informasjon[gender][year];
-          cell.innerText = value;
-          cell.classList.add('cell');
-          row.appendChild(cell);
-
-          value = Number(value);
-          if (value > maxValue[gender]) {
-            maxValue[gender] = value;
-            maxValueCell[gender] = cell;
-          }
-        }
-      }
-
-      table.appendChild(row);
-
-      for (let cell of Object.values(maxValueCell)) {
-        cell.classList.add('highest');
-      }
-    }
+  }
+  document.getElementById("kommune1").appendChild(k1_table);
+  document.getElementById("kommune1_navn").appendChild(kommune1_navn);
+  document.getElementById("kommune1_navn").appendChild(vekst);
+  document.getElementById("kommune2").appendChild(k2_table);
+  document.getElementById("kommune2_navn").appendChild(kommune2_navn);
+  document.getElementById("kommune2_navn").appendChild(vekst);
   })
 }
 
@@ -742,3 +693,69 @@ function show(button) {
     sammenlign_table.style.display = "block";
   };
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
