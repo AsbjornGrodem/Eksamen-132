@@ -599,10 +599,72 @@ function sammenlign_click() {
    let input2 = document.getElementById("Sammenlign2_input").value;
    var k1_table = document.createElement('table');
    var k2_table = document.createElement('table');
+   var el = document.getElementById("hide");
+
+   el.classList.add("higher");
    k1_table.innerHTML = "";
    k2_table.innerHTML = "";
    let high = [];
+   var idmenn1 = [];
+   var idkvinner1 = [];
+   var idmenn2 = [];
+   var idkvinner2 = [];
+   var kvinner1 = [];
+   var kvinner2 = [];
+   var menn1 = [];
+   var menn2 = [];
+
+   let høyestVekstMenn = [];
+   let høyestVekstKvinner = [];
+
+   //Lager vinner-ayyars
    for (kommune in sysselsatte_master) {
+     if (sysselsatte_master[kommune].kommunenummer==="0101") {
+       for (år in sysselsatte_master[kommune].informasjon.Kvinner){
+         let verdi = sysselsatte_master[kommune].informasjon.Kvinner[år] - sysselsatte_master[kommune].informasjon.Kvinner[år-1];
+         kvinner1.push(verdi);
+         let verdi2 = sysselsatte_master[kommune].informasjon.Menn[år] - sysselsatte_master[kommune].informasjon.Menn[år-1];
+         menn1.push(verdi2);
+       }
+     }
+     if (sysselsatte_master[kommune].kommunenummer==="0104") {
+       for (år in sysselsatte_master[kommune].informasjon.Kvinner){
+         let verdi = sysselsatte_master[kommune].informasjon.Kvinner[år] - sysselsatte_master[kommune].informasjon.Kvinner[år-1];
+         kvinner2.push(verdi);
+         let verdi2 = sysselsatte_master[kommune].informasjon.Menn[år] - sysselsatte_master[kommune].informasjon.Menn[år-1];
+         menn2.push(verdi2);
+       }
+     }
+    }
+    for (i in  kvinner1){
+      if ( kvinner1[i]>kvinner2[i]) {
+        høyestVekstKvinner.push(1);
+        }
+      if ( kvinner1[i]<kvinner2[i]) {
+        høyestVekstKvinner.push(0);
+        }
+      if ( kvinner1[i]===kvinner2[i]){
+        høyestVekstKvinner.push("like");
+      }
+    }
+    for (y in  menn1){
+      if (menn1[y]>menn2[y]) {
+        høyestVekstMenn.push(1);
+        }
+      if (menn1[y]<menn2[y]) {
+        høyestVekstMenn.push(0);
+        }
+      if (menn1[y]===menn2[y]){
+        høyestVekstMenn.push("like");
+      }
+    }
+
+    console.log(høyestVekstMenn);
+    console.log(høyestVekstKvinner);
+
+    //Lager tabeller
+   for (kommune in sysselsatte_master) {
+      //Tabell1
     if (sysselsatte_master[kommune].kommunenummer==="0101") {
        var kommune1_navn = document.createElement('h2');
        kommune1_navn.innerText = sysselsatte_master[kommune].navn;
@@ -612,16 +674,30 @@ function sammenlign_click() {
        row.insertCell().innerText = "År";
        row.insertCell().innerText = "Menn";
        row.insertCell().innerText = "Kvinner";
+       let count = 0;
 
        for (år in sysselsatte_master[kommune].informasjon.Menn) {
-         var row = k1_table.insertRow();
-         row.insertCell().innerText = år;
-         row.insertCell().innerText = sysselsatte_master[kommune].informasjon.Menn[år];
-         row.insertCell().innerText = sysselsatte_master[kommune].informasjon.Kvinner[år];
 
-         high.push(år);
+         var row = k1_table.insertRow();
+         let celle_år = row.insertCell();
+         let celle_menn1 = row.insertCell();
+         let celle_kvinner1 = row.insertCell();
+
+         celle_menn1.innerText = sysselsatte_master[kommune].informasjon.Menn[år];
+         celle_kvinner1.innerText = sysselsatte_master[kommune].informasjon.Kvinner[år];
+         celle_år.innerText = år;
+         celle_år.classList.add("highest");
+         if (høyestVekstMenn[count]===0){
+           console.log("ok");
+           celle_menn1.classList.add("highest")
+         }
+         console.log(høyestVekstMenn[0]);
+         //console.log(count);
+         count = count+1;
+       }
       }
-    }
+
+    //Tabell2
     if (sysselsatte_master[kommune].kommunenummer==="0104") {
        var kommune2_navn = document.createElement('h2');
        kommune2_navn.innerText = sysselsatte_master[kommune].navn;
@@ -630,28 +706,23 @@ function sammenlign_click() {
        row.insertCell().innerText = "År";
        row.insertCell().innerText = "Menn";
        row.insertCell().innerText = "Kvinner";
-
        for (år in sysselsatte_master[kommune].informasjon.Menn) {
          var row = k2_table.insertRow();
+
+
          row.insertCell().innerText = år;
          row.insertCell().innerText = sysselsatte_master[kommune].informasjon.Menn[år];
          row.insertCell().innerText = sysselsatte_master[kommune].informasjon.Kvinner[år];
 
-         high.push(år);
        }
      }
-
-      var vekst = document.createElement('listen');
-      vekst.append(high);
-      vekst.classList.add('highest');
-
   }
+
+
   document.getElementById("kommune1").appendChild(k1_table);
   document.getElementById("kommune1_navn").appendChild(kommune1_navn);
-  document.getElementById("kommune1_navn").appendChild(vekst);
   document.getElementById("kommune2").appendChild(k2_table);
   document.getElementById("kommune2_navn").appendChild(kommune2_navn);
-  document.getElementById("kommune2_navn").appendChild(vekst);
   })
 }
 
