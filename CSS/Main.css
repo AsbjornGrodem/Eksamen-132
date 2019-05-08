@@ -1,14 +1,18 @@
 body {
     box-sizing: border-box;
-
-      background-color: #95E8DE;
-      text-align: center;
-      font-size: : 100%;
+    background-color: #95E8DE;
+    text-align: center;
+    font-size: : 95%;
 }
 * {
     box-sizing: inherit;
 }
-
+div {
+  padding-left: :5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 50px;
+}
 .row {
     display: flex;
     flex-direction: column;
@@ -25,9 +29,11 @@ body {
 .highest {
   font-weight: bold;
   background-color: #9fb;
-  font-size: 15px;
 }
-
+.like {
+  font-weight: bold;
+  background-color: #dbdbdb;
+}
 
 h1 {
   color:Black;
@@ -46,7 +52,6 @@ tr, td {
   padding-bottom: 5px;
   font-size: 20px;
   text-align: center;
-
 }
 th{
   float:top;
@@ -73,12 +78,13 @@ th{
   margin: auto;
   font-size: 20px;
 }
-
-
 .Oversikt_div {
   display: none;
   font-size: 10px;
   border: 100px, solid gray;
+  width: 60%;
+  height: auto;
+  margin: auto;
 }
 .total_oversikt{
   border: none;
@@ -96,11 +102,10 @@ th{
   border: 5px solid gray;
   margin: auto;
 }
-
 .Sammenligning_div {
   display: none;
   border:solid gray;
-  width : 400px;
+  width : 80%;
   text-align: center;
   margin: auto;
   float: top;
