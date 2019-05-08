@@ -1,13 +1,14 @@
 body {
     box-sizing: border-box;
+
+      background-color: #95E8DE;
+      text-align: center;
+      font-size: : 100%;
 }
 * {
     box-sizing: inherit;
 }
-#S_table {
-    display: flex;
-
-}
+/*
 .row {
     display: flex;
     flex-direction: column;
@@ -26,6 +27,7 @@ body {
   background-color: #9fb;
   font-size: 20px;
 }
+*/
 
 h1 {
   color:Black;
@@ -33,7 +35,8 @@ h1 {
   font-size: 60px;
 }
 table {
-  width: 95%
+  width: 95%;
+
 }
 tr, td {
   border: 1px solid black;
@@ -43,7 +46,7 @@ tr, td {
   padding-bottom: 5px;
   font-size: 20px;
   text-align: center;
-  align-self: center;
+
 }
 th{
   float:top;
@@ -64,12 +67,14 @@ th{
 .Introduksjon_div {
   display: none;
   width: 70%;
-  height: atuo;
+  height: auto;
   padding: 10px;
   border: 5px solid red;
   margin: auto;
   font-size: 20px;
 }
+
+
 .Oversikt_div {
   display: none;
   font-size: 10px;
@@ -87,14 +92,13 @@ th{
   display: none;
   width: auto;
   height: auto;
-  padding: 10px;
+  padding: 5%;
   border: 5px solid gray;
   margin: auto;
 }
 
-
-
 .Sammenligning_div {
+  display: none;
   border:solid gray;
   width : 400px;
   text-align: center;
@@ -117,16 +121,3 @@ th{
 .button3 {background-color: #f44336;} /* Red */
 .button4 {background-color: #e7e7e7; color: black;} /* Gray */
 .button5 {background-color: #555555;} /* Black */
-/*@media (max-width: 1200px) {
-    #S_table {
-        flex-direction: column;
-    }
-    .row {
-        flex-direction: row;
-    }
-
-    table { border-collapse: collapse; }
-    tr { display: block; float: left; }
-    th, td { display: block; border: 1px solid black; }
-
-}*/

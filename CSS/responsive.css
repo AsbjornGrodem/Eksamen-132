@@ -1,33 +1,47 @@
-@media screen and (min-width: 300px) {
-	body {
-	  background-color: #95E8DE;
+@media screen and (max-width: 700px) {
+
+
+
+
+	h1 {
+	  color:Black;
 	  text-align: center;
-	  font-size: : 20px;
+	  font-size: 60px;
 	}
 
-/******************************************************
-Two COLUM LAYOUT
-******************************************************/
+	table {
+		width: 300%;
+	}
 
-.Detaljer_oversikt_DESKTOP{
+	tr {
+		display: block;
+		float: left;
+		border: none;
+		text-align: center;
+	}
+	th, td {
+		display: block;
+		border: 1px solid black;
+		padding-left: :1px;
+		padding-right: 3px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	  font-size: 20px;
+		text-align: center;
+
+	}
+}
+
+.Detaljer_oversikt_MOBIL{
 	display: none;
 }
-.Detaljer_oversikt_MOBIL{
-	display: block;
-}
 
+@media screen and (max-width: 400px) {
 
-@media screen and (min-width: 660px) {
-	body {
-	  background-color: Green;
-	  text-align: center;
-	  font-size: : 20px;
+	h1 {
+		color:Red;
+		text-align: center;
+		font-size: 30px;
 	}
 
-	.Detaljer_oversikt_DESKTOP{
-		display: block;
-	}
-
-	.Detaljer_oversikt_MOBIL{
-		display: none;
-	}
+)

@@ -9,7 +9,7 @@
     <script defer src="../JS/Main.js"></script>
     <title>MAIN</title>
   </head>
-  <body onload="buttonClick(1)">
+  <body>
     <h1>INFO134</h1>
     </head>
 
@@ -35,17 +35,29 @@
 
       </p>
       </div>
-    <div id="Oversikt_div" class="Oversikt_div" >Oversikt
+    <div id="Oversikt_div" class="Oversikt_div" >
+      
     </div>
     <div id="Detaljer_div" class="Detaljer_div">
 
+      <div id="knapp" class="knapp">
+
+        <p>Her kan du skrive inn ett kommunenummer for å få detaljert oversikt.</p>
+
+
         <input type="text" id="Detaljer_input"placeholder="Kommunenummer"></input>
 
-        <button id="Detaljer_button" onclick="buttonClick(1)">Last inn</button>
+        <button id="Detaljer_button" onclick="detaljerClick()">Last inn</button>
+      </div>
+
+      <br>
+
+
+
         <div id="kommunenavn" class="kommunenavn">
         </div>
 
-        <div id="Detaljer_oversikt_DESKTOP" class="Detaljer_oversikt_DESKTOP">
+
         <div id="detaljer_oversikt" class="detaljer_oversikt">
         </div>
 
@@ -64,8 +76,6 @@
           </div>
         </div>
           </div>
-
-
 
           <div id="Detaljer_oversikt_MOBIL" class="Detaljer_oversikt_MOBIL">
             <div id="detaljer_oversikt_MOBIL" class="detaljer_oversikt_MOBIL">
