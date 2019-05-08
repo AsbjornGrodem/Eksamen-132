@@ -193,27 +193,19 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       row.insertCell().innerText = befolkning_master[kommunenummer].kommunenummer;
       row.insertCell().innerText = befolkning_master[kommunenummer].total_befolkning[kommunenummer];
 
-
-      console.log(befolkning_master[kommunenummer].informasjon.Menn["2017"]+ "her funker det heilt fint");
-      // under her skriver du over det forrige kommunenummeret som du brukte i befolkning_master.
-      //Du lager på en måte et nytt kommunenummer som egentlig hører til befolkning, men itte du bruker det under her,
-      //"hører det til" sysselsatte.
-      for (kommunenummer in sysselsatte_master) {
-        if (input === sysselsatte_master[kommunenummer].kommunenummer){
-      row.insertCell().innerText = JSON.stringify(sysselsatte_master[kommunenummer].sysselsetting[kommunenummer])+"%";
+      for (kommunenummer2 in sysselsatte_master) {
+        if (input === sysselsatte_master[kommunenummer2].kommunenummer){
+      row.insertCell().innerText = JSON.stringify(sysselsatte_master[kommunenummer2].sysselsetting[kommunenummer2])+"%";
     }
   }
 
       row.insertCell().innerText = u_kvinner+" prosent av kvinner og "+u_menn+" prosent av menn";
-      console.log(befolkning_master[kommunenummer].informasjon.Menn["2017"]+ "her bruker du informasjonen fra sysselseeting i befolkning, derfor blir det feil");
-      console.log(befolkning_master[kommunenummer].informasjon.Menn["2017"] + " er dette riktig tall fra befolkning_master (Menn)?");
       row.insertCell().innerText = Math.round(befolkning_master[kommunenummer].informasjon.Kvinner["2017"]*u_kvinner/100)+" kvinner og "+Math.round(befolkning_master[kommunenummer].informasjon.Menn["2017"]/100*u_menn)+" menn";
 
 
       //HISTORISK UTVIKLING AV BEFOLKNING DESKTOP VERSJON
       for (kommunenummer in befolkning_master) {
       if (input === befolkning_master[kommunenummer].kommunenummer){
-        console.log(befolkning_master[kommunenummer].informasjon.Menn["2017"]+ "her funker det fint igjen, fordi du har en ny for-løkke i befolkning, aka kommunenummeret blir overskrevet igjen");
       var utvikling_navn = document.createElement('h3');
       utvikling_navn.innerText = "Historisk utvikling av befolkning i " + befolkning_master[kommunenummer].navn + " kommune";
       var tabellHistorisk = document.createElement('table');
@@ -295,8 +287,6 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
           u_menn2.push(uni_kort_menn2[i]+uni_lang_menn2[i]+fagskole_menn2[i]);
       }
 
-
-
       var utvikling_navn_utdanning = document.createElement('h3');
       utvikling_navn_utdanning.innerText = "Historisk utvikling av utdanning i " + befolkning_master[kommunenummer].navn + " kommune";
       var tabellHistorisk_utdanning = document.createElement('table');
@@ -311,14 +301,14 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       row = tabellHistorisk_utdanning .insertRow();
       row.insertCell().innerText = "Antall prosent kvinner med høyere utdanning:"
       for (var i = 2007; i <= 2017; i++) {
-         var antall_kvinner = uni_kort_kvinner2[i]+uni_lang_kvinner2[i]+fagskole_kvinner2[i];
+         var antall_kvinner = Math.round(uni_kort_kvinner2[i]+uni_lang_kvinner2[i]+fagskole_kvinner2[i]);
          row.insertCell().innerText = antall_kvinner + "%";
       }
 
       row = tabellHistorisk_utdanning .insertRow();
       row.insertCell().innerText = "Antall prosent menn med høyere utdanning:"
       for (var i = 2007; i <= 2017; i++) {
-         var antall_menn = uni_kort_menn2[i]+uni_lang_menn2[i]+fagskole_menn2[i];
+         var antall_menn = Math.round(uni_kort_menn2[i]+uni_lang_menn2[i]+fagskole_menn2[i]);
          row.insertCell().innerText = antall_menn + "%";
       }
 
@@ -326,7 +316,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       row.insertCell().innerText = "Antall kvinner med høyere utdanning:"
       var antall_kvinner = [];
       for (var i = 2007; i <= 2017; i++) {
-         antall_kvinner.push(befolkning_master[kommunenummer].informasjon.Menn[i]);
+         antall_kvinner.push(befolkning_master[kommunenummer].informasjon.Kvinner[i]);
        }
       for (var j = 0; j <= 10; j++) {
           total_antall = u_kvinner2[j];
@@ -344,9 +334,6 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
           total_antall = u_menn2[j];
           row.insertCell().innerText = Math.round(total_antall * antall_menn[j] /100);
         }
-
-        console.log(befolkning_master[kommunenummer].informasjon.Menn["2017"] + " eller er dette riktig tall fra befolkning_master (Menn)?");
-        console.log(befolkning_master[kommunenummer].informasjon.Menn["2017"]);
     }
   }
       document.getElementById("detaljer_oversikt").appendChild(tabellHTML);
