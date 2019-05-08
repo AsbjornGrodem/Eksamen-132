@@ -34,7 +34,6 @@ div {
   font-weight: bold;
   background-color: #dbdbdb;
 }
-
 h1 {
   color:Black;
   text-align: center;
@@ -42,15 +41,14 @@ h1 {
 }
 table {
   width: 95%;
-
 }
 tr, td {
   border: 1px solid black;
   padding-left: :1px;
   padding-right: 3px;
-  padding-top: 5px;
+  padding-top: 2px;
   padding-bottom: 5px;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
 }
 th{
@@ -68,7 +66,7 @@ th{
   height: 300px;
   width: 300px;
   float: left;
-  }
+}
 .Introduksjon_div {
   display: none;
   width: 70%;
@@ -80,10 +78,10 @@ th{
 }
 .Oversikt_div {
   display: none;
-  font-size: 10px;
+  font-size: 20px;
   border: 100px, solid gray;
   width: 60%;
-  height: auto;
+  height: 90%;
   margin: auto;
 }
 .total_oversikt{

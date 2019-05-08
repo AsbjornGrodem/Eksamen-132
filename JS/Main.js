@@ -662,6 +662,8 @@ function detaljerClick() {
   })
 }
 
+
+
 load(Befolkning_url, function (array1) {
   let befolkning_master = [];
   for (x in array1) {
@@ -685,7 +687,6 @@ load(Befolkning_url, function (array1) {
   })
 
 })
-
 
 //Button funksjoner som viser/gjemmer divs
 function show(button) {
