@@ -277,12 +277,11 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
         let fagskole_menn2 = utdanning_master[kommunenummer].informasjon["11"].Menn;
         let fagskole_kvinner2 = utdanning_master[kommunenummer].informasjon["11"].Kvinner;
 
-
         let u_kvinner2 = [];
         for (var i = 2007; i <= 2017; i++) {
           u_kvinner2.push(uni_kort_kvinner2[i]+uni_lang_kvinner2[i]+fagskole_kvinner2[i]);
       }
-
+      
         let u_menn2 = [];
         for (var i = 2007; i <= 2017; i++) {
           u_menn2.push(uni_kort_menn2[i]+uni_lang_menn2[i]+fagskole_menn2[i]);
@@ -442,7 +441,6 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       }
     }
   }
-
       //HISTORISK UTVIKLING AV UTDANNING MOBIL VERSJON
 
       for (kommunenummer in utdanning_master) {
@@ -465,9 +463,6 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
         var antall_menn = utdanning_master[kommunenummer].informasjon["04a"].Menn;
         row.insertCell().innerText = antall_menn[i];
       }
-
-
-
     }
   }
       document.getElementById("detaljer_oversikt_MOBIL").appendChild(tabellHTML);
@@ -704,7 +699,7 @@ function show(button) {
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
     sammenlign_table.style.display = "none";
-    footer.style.display = "block"
+    footer.style.display = "block";
   };
 
   if (button === 2) {
@@ -715,7 +710,8 @@ function show(button) {
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
     sammenlign_table.style.display = "none";
-    footer.style.display = "block"
+    footer.style.display = "block";
+
   };
 
   if (button === 3) {
@@ -726,7 +722,8 @@ function show(button) {
     detaljer.style.display = "block";
     sammenligning.style.display = "none";
     sammenlign_table.style.display = "none";
-    footer.style.display = "block"
+    footer.style.display = "block";
+
   };
 
   if (button === 4) {
@@ -737,7 +734,8 @@ function show(button) {
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
     sammenlign_table.style.display = "block";
-    footer.style.display = "block"
+    footer.style.display = "block";
+
   };
 };
 

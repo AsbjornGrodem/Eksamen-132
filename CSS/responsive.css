@@ -1,22 +1,24 @@
 @media screen and (max-width: 700px) {
 
-	h1 {
+
+
+ h1 {
 	  color:Black;
 	  text-align: center;
 	  font-size: 60px;
 	}
 
-	table {
+	.Detaljer_div table {
 		width: 300%;
 	}
 
-	tr {
+	.Detaljer_div tr {
 		display: block;
 		float: left;
 		border: none;
 		text-align: center;
 	}
-	th, td {
+	.Detaljer_div td{
 		display: block;
 		border: 1px solid black;
 		padding-left: :1px;
@@ -27,7 +29,9 @@
 		text-align: center;
 
 	}
-}
+
+
+
 
 .Detaljer_oversikt_MOBIL{
 	display: none;
@@ -40,8 +44,9 @@
 		text-align: center;
 		font-size: 30px;
 	}
-	table {
-		font-size: 5px;
 
+	.Detaljer_oversikt_MOBIL{
+		display: none;
 	}
+
 )

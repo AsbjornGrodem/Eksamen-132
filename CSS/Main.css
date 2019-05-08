@@ -127,10 +127,13 @@ th{
 
 
 #footer {
-  display: none;
+
 	font-size: 1em;
 	text-align: center;
 	clear: both;
 	padding-top: 100px;
 	color: #ccc;
+}
+.Detaljer_oversikt_MOBIL{
+	display: none;
 }
