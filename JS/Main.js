@@ -160,7 +160,6 @@ function f_oversikt (oversikt) {
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
 
 };
-
 function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
   let input = document.getElementById("Detaljer_input").value;
   for (kommunenummer in befolkning_master){
@@ -494,12 +493,10 @@ function sammenlign_click() {
    let input2 = document.getElementById("Sammenlign2_input").value;
    var k1_table = document.createElement('table');
    var k2_table = document.createElement('table');
-   var el = document.getElementById("hide");
 
-   el.classList.add("higher");
    k1_table.innerHTML = "";
    k2_table.innerHTML = "";
-   let high = [];
+
    var idmenn1 = [];
    var idkvinner1 = [];
    var idmenn2 = [];
@@ -512,21 +509,21 @@ function sammenlign_click() {
    let høyestVekstMenn = [];
    let høyestVekstKvinner = [];
 
-   //Lager vinner-ayyars
+   //Lager vinner-ayyars, første kommune
    for (kommune in sysselsatte_master) {
-     if (sysselsatte_master[kommune].kommunenummer==="0101") {
+     if (sysselsatte_master[kommune].kommunenummer===input1) {
        for (år in sysselsatte_master[kommune].informasjon.Kvinner){
-         let verdi = sysselsatte_master[kommune].informasjon.Kvinner[år] - sysselsatte_master[kommune].informasjon.Kvinner[år-1];
+         let verdi = sysselsatte_master[kommune].informasjon.Kvinner[år-1] - sysselsatte_master[kommune].informasjon.Kvinner[år];
          kvinner1.push(verdi);
-         let verdi2 = sysselsatte_master[kommune].informasjon.Menn[år] - sysselsatte_master[kommune].informasjon.Menn[år-1];
+         let verdi2 = sysselsatte_master[kommune].informasjon.Menn[år-1] - sysselsatte_master[kommune].informasjon.Menn[år];
          menn1.push(verdi2);
        }
-     }
-     if (sysselsatte_master[kommune].kommunenummer==="0104") {
+     }//andre kommune
+     if (sysselsatte_master[kommune].kommunenummer===input2) {
        for (år in sysselsatte_master[kommune].informasjon.Kvinner){
-         let verdi = sysselsatte_master[kommune].informasjon.Kvinner[år] - sysselsatte_master[kommune].informasjon.Kvinner[år-1];
+         let verdi = sysselsatte_master[kommune].informasjon.Kvinner[år-1] - sysselsatte_master[kommune].informasjon.Kvinner[år];
          kvinner2.push(verdi);
-         let verdi2 = sysselsatte_master[kommune].informasjon.Menn[år] - sysselsatte_master[kommune].informasjon.Menn[år-1];
+         let verdi2 = sysselsatte_master[kommune].informasjon.Menn[år-1] - sysselsatte_master[kommune].informasjon.Menn[år];
          menn2.push(verdi2);
        }
      }
@@ -554,13 +551,10 @@ function sammenlign_click() {
       }
     }
 
-    console.log(høyestVekstMenn);
-    console.log(høyestVekstKvinner);
-
     //Lager tabeller
    for (kommune in sysselsatte_master) {
       //Tabell1
-    if (sysselsatte_master[kommune].kommunenummer==="0101") {
+    if (sysselsatte_master[kommune].kommunenummer===input1) {
        var kommune1_navn = document.createElement('h2');
        kommune1_navn.innerText = sysselsatte_master[kommune].navn;
        k1_table.id = "k1_table";
@@ -581,19 +575,26 @@ function sammenlign_click() {
          celle_menn1.innerText = sysselsatte_master[kommune].informasjon.Menn[år];
          celle_kvinner1.innerText = sysselsatte_master[kommune].informasjon.Kvinner[år];
          celle_år.innerText = år;
-         celle_år.classList.add("highest");
-         if (høyestVekstMenn[count]===0){
-           console.log("ok");
+
+         if (høyestVekstMenn[count]===1){
            celle_menn1.classList.add("highest")
          }
-         console.log(høyestVekstMenn[0]);
-         //console.log(count);
+         if (høyestVekstMenn[count]==="like"){
+           celle_menn1.classList.add("like")
+         }
+         if (høyestVekstKvinner[count]===1){
+           celle_kvinner1.classList.add("highest")
+         }
+         if (høyestVekstKvinner[count]==="like"){
+           celle_kvinner1.classList.add("like")
+         }
+
          count = count+1;
        }
       }
 
     //Tabell2
-    if (sysselsatte_master[kommune].kommunenummer==="0104") {
+    if (sysselsatte_master[kommune].kommunenummer===input2) {
        var kommune2_navn = document.createElement('h2');
        kommune2_navn.innerText = sysselsatte_master[kommune].navn;
        k2_table.id = "k2_table";
@@ -601,18 +602,35 @@ function sammenlign_click() {
        row.insertCell().innerText = "År";
        row.insertCell().innerText = "Menn";
        row.insertCell().innerText = "Kvinner";
+       let count = 0;
        for (år in sysselsatte_master[kommune].informasjon.Menn) {
+
          var row = k2_table.insertRow();
+         let celle_år = row.insertCell();
+         let celle_menn2 = row.insertCell();
+         let celle_kvinner2 = row.insertCell();
 
-
-         row.insertCell().innerText = år;
-         row.insertCell().innerText = sysselsatte_master[kommune].informasjon.Menn[år];
-         row.insertCell().innerText = sysselsatte_master[kommune].informasjon.Kvinner[år];
+         celle_menn2.innerText = sysselsatte_master[kommune].informasjon.Menn[år];
+         celle_kvinner2.innerText = sysselsatte_master[kommune].informasjon.Kvinner[år];
+         celle_år.innerText = år;
+         console.log(høyestVekstMenn);
+         if (høyestVekstMenn[count]===0){
+           celle_menn2.classList.add("highest")
+         }
+         if (høyestVekstKvinner[count]===0){
+           celle_kvinner2.classList.add("highest")
+         }
+         if (høyestVekstMenn[count]==="like"){
+           celle_menn2.classList.add("like")
+         }
+         if (høyestVekstKvinner[count]==="like"){
+           celle_kvinner2.classList.add("like")
+         }
+         count = count+1;
 
        }
      }
   }
-
 
   document.getElementById("kommune1").appendChild(k1_table);
   document.getElementById("kommune1_navn").appendChild(kommune1_navn);
@@ -621,9 +639,7 @@ function sammenlign_click() {
   })
 }
 
-
 function detaljerClick() {
-
   load(Befolkning_url, function (array1) {
     let befolkning_master = [];
     for (x in array1) {
@@ -649,30 +665,29 @@ function detaljerClick() {
 
 
 
-  load(Befolkning_url, function (array1) {
-    let befolkning_master = [];
-    for (x in array1) {
-      let kommune = new Konstruktor(array1, x)
-      befolkning_master.push(kommune);}
-    load(Utdanning_url, function(array2) {
-      let utdanning_master = [];
-      for (x in array2) {
-        let kommune = new Konstruktor(array2, x)
-        utdanning_master.push(kommune);}
+load(Befolkning_url, function (array1) {
+  let befolkning_master = [];
+  for (x in array1) {
+    let kommune = new Konstruktor(array1, x)
+    befolkning_master.push(kommune);}
+  load(Utdanning_url, function(array2) {
+    let utdanning_master = [];
+    for (x in array2) {
+      let kommune = new Konstruktor(array2, x)
+      utdanning_master.push(kommune);}
 
-      load(Sysselsatte_url, function(array3) {
-        let sysselsatte_master = [];
-        for (x in array3) {
-          let kommune = new Konstruktor(array3, x)
-          sysselsatte_master.push(kommune);}
-        f_sammenlign(utdanning_master,befolkning_master,sysselsatte_master);
-        f_oversikt (befolkning_master)
+    load(Sysselsatte_url, function(array3) {
+      let sysselsatte_master = [];
+      for (x in array3) {
+        let kommune = new Konstruktor(array3, x)
+        sysselsatte_master.push(kommune);}
+      f_sammenlign(utdanning_master,befolkning_master,sysselsatte_master);
+      f_oversikt (befolkning_master)
 
-      })
     })
-
   })
 
+})
 
 //Button funksjoner som viser/gjemmer divs
 function show(button) {

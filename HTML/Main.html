@@ -17,7 +17,7 @@
     <button class="button button2" onclick="show(2)" >Oversikt</button>
     <button class="button button3" onclick="show(3)">Detaljer</button>
     <button class="button button4" onclick="show(4)">Sammenlign</button>
-    <div id="S_table"></div>
+
     <div id="Introduksjon_div" class="Introduksjon_div">
       <h3>Introduksjon</h3>
       <p>
@@ -41,67 +41,59 @@
     <div id="Detaljer_div" class="Detaljer_div">
 
       <div id="knapp" class="knapp">
-
         <p>Her kan du skrive inn ett kommunenummer for å få detaljert oversikt.</p>
-
-
         <input type="text" id="Detaljer_input"placeholder="Kommunenummer"></input>
-
         <button id="Detaljer_button" onclick="detaljerClick()">Last inn</button>
       </div>
+      <div id="kommunenavn" class="kommunenavn">
+      </div>
+      <div id="detaljer_oversikt" class="detaljer_oversikt">
+      </div>
+      <div id="historisk_utvikling" class="historisk_utvikling">
+        <div id="navn_historisk" class="navn_historisk">
+        </div>
+      </div>
 
-      <br>
+      <div id="historisk_sysselsatte" class="historisk_sysselsatte">
+        <div id="navn_historisk_syssel" class="navn_historisk_syssel">
+        </div>
+      </div>
 
-
-
-        <div id="kommunenavn" class="kommunenavn">
+      <div id="historisk_utdanning" class="historisk_utdanning">
+        <div id="navn_historisk_utdanning" class="navn_historisk_utdanning">
+        </div>
+      </div>
         </div>
 
-
-        <div id="detaljer_oversikt" class="detaljer_oversikt">
-        </div>
-
-        <div id="historisk_utvikling" class="historisk_utvikling">
-          <div id="navn_historisk" class="navn_historisk">
+        <div id="Detaljer_oversikt_MOBIL" class="Detaljer_oversikt_MOBIL">
+          <div id="detaljer_oversikt_MOBIL" class="detaljer_oversikt_MOBIL">
           </div>
+      <div id="historisk_utvikling_MOBIL" class="historisk_utvikling_MOBIL">
+        <div id="navn_historisk_MOBIL" class="navn_historisk_MOBIL">
         </div>
+      </div>
 
-        <div id="historisk_sysselsatte" class="historisk_sysselsatte">
-          <div id="navn_historisk_syssel" class="navn_historisk_syssel">
-          </div>
+      <div id="historisk_sysselsatte_MOBIL" class="historisk_sysselsatte_MOBIL">
+        <div id="navn_historisk_syssel_MOBIL" class="navn_historisk_syssel_MOBIL">
         </div>
+      </div>
 
-        <div id="historisk_utdanning" class="historisk_utdanning">
-          <div id="navn_historisk_utdanning" class="navn_historisk_utdanning">
-          </div>
+      <div id="historisk_utdanning_MOBIL" class="historisk_utdanning_MOBIL">
+        <div id="navn_historisk_utdanning_MOBIL" class="navn_historisk_utdanning_MOBIL">
         </div>
-          </div>
-
-          <div id="Detaljer_oversikt_MOBIL" class="Detaljer_oversikt_MOBIL">
-            <div id="detaljer_oversikt_MOBIL" class="detaljer_oversikt_MOBIL">
-            </div>
-        <div id="historisk_utvikling_MOBIL" class="historisk_utvikling_MOBIL">
-          <div id="navn_historisk_MOBIL" class="navn_historisk_MOBIL">
-          </div>
-        </div>
-
-        <div id="historisk_sysselsatte_MOBIL" class="historisk_sysselsatte_MOBIL">
-          <div id="navn_historisk_syssel_MOBIL" class="navn_historisk_syssel_MOBIL">
-          </div>
-        </div>
-
-        <div id="historisk_utdanning_MOBIL" class="historisk_utdanning_MOBIL">
-          <div id="navn_historisk_utdanning_MOBIL" class="navn_historisk_utdanning_MOBIL">
-          </div>
-        </div>
-        </div>
+      </div>
+      </div>
 
       </div>
-    <div id="Sammenligning_div" class="Sammenligning_div">Her kan du sammenligne uviklingen i to kommuner.
+    <div id="Sammenligning_div" class="Sammenligning_div">Her kan du sammenligne uviklingen i to kommuner. Kommunen som har hatt størst
+      prosentvis økning i sysselsetting har en grønn bakgrunnsfarge. Hvis økningen var lik er det grå bakgrunssfarge.
 
-      <input type="text" id="Sammenlign1_input"> Kommune nummer en  </input>
-      <input type="text" id="Sammenlign2_input"> Kommune nummer to  </input>
+      <p>
+      <input type="text" id="Sammenlign1_input"> Kommune en </input>
+      <input type="text" id="Sammenlign2_input">Kommune to</input>
       <button onclick="sammenlign_click()">Sammenlign</button>
+      </p>
+
       <div id ="kommune1_navn" class="kommune1_navn">
       </div>
       <div id ="kommune1" class="kommune1">
@@ -110,8 +102,6 @@
       </div>
       <div id ="kommune2" class="kommune2">
       </div>
-      <div id="hide" class="highest"></div>
-
     </div>
 
     <footer id="footer">
