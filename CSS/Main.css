@@ -8,7 +8,7 @@ body {
 * {
     box-sizing: inherit;
 }
-/*
+
 .row {
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@ body {
   background-color: #9fb;
   font-size: 15px;
 }
-*/
+
 
 h1 {
   color:Black;
