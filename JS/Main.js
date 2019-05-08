@@ -7,6 +7,7 @@ var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
 var sammenlign_table = document.getElementById("S_table");
+var footer = document.getElementById("footer")
 
 //Jeg har endret noe mer
 
@@ -688,6 +689,7 @@ function show(button) {
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
     sammenlign_table.style.display = "none";
+    footer.style.display = "block"
   };
 
   if (button === 2) {
@@ -698,6 +700,7 @@ function show(button) {
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
     sammenlign_table.style.display = "none";
+    footer.style.display = "block"
   };
 
   if (button === 3) {
@@ -708,6 +711,7 @@ function show(button) {
     detaljer.style.display = "block";
     sammenligning.style.display = "none";
     sammenlign_table.style.display = "none";
+    footer.style.display = "block"
   };
 
   if (button === 4) {
@@ -718,6 +722,7 @@ function show(button) {
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
     sammenlign_table.style.display = "block";
+    footer.style.display = "block"
   };
 };
 
