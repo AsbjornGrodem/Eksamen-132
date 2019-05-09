@@ -1,0 +1,22 @@
+4. Rapport og øvrige filer.
+
+Mains.js - Javascript-filen vår legger til funksjonalitet til nettsiden. Det er også her vi henter og laster ned datasett.
+Main.html -
+Main.css -
+normalize.css -
+responsive.css -
+
+
+I rapporten skal dere også besvare følgende spørsmål:
+1. Lastes datasettene ned samtidig eller etter hverandre av deres program? Begrunn svaret ditt. Henvis
+gjerne til koden og forklar når de tre forespørslene blir sendt. (Du trenger ikke å rettferdiggjøre hvorfor
+deres program laster inn dataene på denne måten.)
+2. Hvordan vet programmet deres når det tredje (siste) datasettet er lastet ned. Begrunn svaret deres. (Henvis
+gjerne til en variabel, eller et sted i koden der dette er sikkert.)
+3. På små skjermer skal de historiske dataene presenteres vertikalt. På store skjermer skal de presenteres
+horisontalt. Forklar hvordan dere har løst dette. (Henvis gjerne til CSS-koden deres.)
+4. Har alle tre datasett nøyaktig de samme kommunene? Forklar kort hvordan dere fant dette svaret. Dere
+trenger ikke å legge ved ekstra kode hvis dere har skrevet kode for å svare på dette spørsmålet, men bare
+forklare fremgangsmåten deres.
+Rapporten sammen med HTML-dokumentet og alle de nødvendige CSS- og JavaScript-filene skal leveres
+i én zip-fil via Inspera (https://vurdering.uib.no/). Det vil bli publisert informasjon om fremgansmåte på mittuib. Dere kan levere mer enn en gang. Bare siste innlevering vil bli vurdert.

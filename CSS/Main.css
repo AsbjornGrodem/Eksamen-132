@@ -8,53 +8,43 @@ body {
     font-size: : 95%;
     height: 100%;
 }
-
 * {
     box-sizing: inherit;
 }
-
 div {
   padding-left: :5px;
   padding-right: 5px;
   padding-top: 5px;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
 }
-
 .row {
     display: flex;
     flex-direction: column;
 }
-
 .cell {
     flex-basis: 20%;
     text-align: center;
     margin: 0.5em;
 }
-
 .title-cell {
     flex-basis: 40%;
 }
-
 .highest {
   font-weight: bold;
   background-color: #9fb;
 }
-
 .like {
   font-weight: bold;
-  background-color: #dbdbdb;
+  background-color: #E4FF00;
 }
-
 h1 {
   color:Black;
   text-align: center;
   font-size: 60px;
 }
-
 table {
   width: 95%;
 }
-
 tr, td {
   border: 1px solid black;
   padding-left: :1px;
@@ -64,27 +54,16 @@ tr, td {
   font-size: 15px;
   text-align: center;
 }
-
 th{
   float:top;
 }
 
-#kommuneNavn {
-  color: red;
-}
-
-.detaljer_oversikt {
-  color: red;
-}
-
 .div1 {
-  /*overflow-x: auto;*/
   margin: 2px;
   height: 300px;
   width: 300px;
   float: left;
 }
-
 .Introduksjon_div {
   display: none;
   width: 70%;
@@ -94,7 +73,6 @@ th{
   margin: auto;
   font-size: 20px;
 }
-
 .Oversikt_div {
   display: none;
   font-size: 20px;
@@ -121,7 +99,6 @@ th{
   margin: auto;
   padding-bottom: 2.5rem;
 }
-
 .Sammenligning_div {
   display: none;
   width : 80%;
@@ -129,7 +106,6 @@ th{
   margin: auto;
   float: top;
 }
-
 .button {
   background-color: #4CAF50; /* Green */
   border: none;
