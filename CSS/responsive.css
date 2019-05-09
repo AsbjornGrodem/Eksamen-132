@@ -1,3 +1,35 @@
+@media screen and ( min-width: 700px) {
+
+.Sammenligning_div table {
+	width: 450%;
+}
+
+.Sammenligning_div tr {
+	display: block;
+	float: left;
+	border: none;
+	text-align: center;
+}
+.Sammenligning_div td{
+	display: block;
+	border: 1px solid black;
+	white-space: normal;
+	text-align: center;
+	font-size: 25px;
+}
+
+.Sammenligning_div {
+  display: none;
+  width : 80%;
+  text-align: center;
+  margin: auto;
+  float: top;
+	padding: 10%;
+}
+
+}
+
+
 @media screen and (max-width: 700px) {
 
  h1 {
@@ -23,9 +55,34 @@
 		text-align: center;
 	}
 
-.Detaljer_oversikt_MOBIL{
-	display: none;
-}
+
+	.Detaljer_div {
+	  display: none;
+	  width: auto;
+	  height: auto;
+	  padding: 2%;
+	  margin: auto;
+	}
+
+
+	.button {
+	  background-color: #4CAF50; /* Green */
+	  border: none;
+	  color: white;
+	  padding: 3px 9px;
+
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 2px 1px;
+	  cursor: pointer;
+	}
+
+	.button2 {background-color: #008CBA;} /* Blue */
+	.button3 {background-color: #f44336;} /* Red */
+	.button4 {background-color: #e7e7e7; color: black;} /* Gray */
+	.button5 {background-color: #555555;} /* Black */
 
 @media screen and (max-width: 400px) {
 
@@ -34,8 +91,6 @@
 		font-size: 15px;
 	}
 
-	.Detaljer_oversikt_MOBIL{
-		display: none;
-	}
+
 
 )
