@@ -6,7 +6,6 @@ var intro = document.getElementById("Introduksjon_div");
 var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
-var sammenlign_table = document.getElementById("S_table");
 var footer = document.getElementById("footer")
 
 //Jeg har endret noe mer
@@ -162,17 +161,12 @@ function f_oversikt (oversikt) {
   document.getElementById("Oversikt_div").innerHTML += tabellHTML;
 
 }
-function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
-
-};
-
 function setContents(elementId, childNode) {
   console.log(elementId);
   let element = document.getElementById(elementId);
   element.innerHTML = '';
   element.appendChild(childNode);
 }
-
 function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
   let input = document.getElementById("Detaljer_input").value;
   for (kommunenummer in befolkning_master){
@@ -312,21 +306,21 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall prosent kvinner med høyere utdanning:"
+      row.insertCell().innerText = "Kvinner med høyere utdanning:"
       for (var i = 2007; i <= 2017; i++) {
          var antall_kvinner = Math.round(uni_kort_kvinner2[i]+uni_lang_kvinner2[i]+fagskole_kvinner2[i]);
          row.insertCell().innerText = antall_kvinner + "%";
       }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall prosent menn med høyere utdanning:"
+      row.insertCell().innerText = "Menn med høyere utdanning:"
       for (var i = 2007; i <= 2017; i++) {
          var antall_menn = Math.round(uni_kort_menn2[i]+uni_lang_menn2[i]+fagskole_menn2[i]);
          row.insertCell().innerText = antall_menn + "%";
       }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall kvinner med høyere utdanning:"
+      row.insertCell().innerText = "Antall kvinner :"
       var antall_kvinner = [];
       for (var i = 2007; i <= 2017; i++) {
          antall_kvinner.push(befolkning_master[kommunenummer].informasjon.Kvinner[i]);
@@ -337,7 +331,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
         }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall menn med høyere utdanning:"
+      row.insertCell().innerText = "Antall menn :"
       var antall_menn = [];
       for (var i = 2007; i <= 2017; i++) {
          antall_menn.push(befolkning_master[kommunenummer].informasjon.Menn[i]);
@@ -359,7 +353,6 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       setContents("historisk_utdanning", tabellHistorisk_utdanning);
     }
   }
-<<<<<<< HEAD
 
 
 //MOBIL VERSJON
@@ -489,10 +482,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       setContents("historisk_utdanning_MOBIL", tabellHistorisk_utdanning);
     }
   }
-=======
->>>>>>> a1668c5813d64386d48ae6a6a35d3df1d5c3187b
 }
-
 function sammenlign_click() {
  //Load lager master-array som vi looper gjennom for å finne inputs
  load(Sysselsatte_url, function(array) {
@@ -670,7 +660,6 @@ function sammenlign_click() {
   setContents("kommune2_navn", kommune2_navn);
   })
 }
-
 function detaljerClick() {
   load(Befolkning_url, function (array1) {
     let befolkning_master = [];
@@ -682,7 +671,6 @@ function detaljerClick() {
       for (x in array2) {
         let kommune = new Konstruktor(array2, x)
         utdanning_master.push(kommune);}
-
       load(Sysselsatte_url, function(array3) {
         let sysselsatte_master = [];
         for (x in array3) {
@@ -691,11 +679,8 @@ function detaljerClick() {
           f_detaljer(utdanning_master, befolkning_master, sysselsatte_master);
       })
     })
-
   })
 }
-
-
 
 load(Befolkning_url, function (array1) {
   let befolkning_master = [];
@@ -707,15 +692,12 @@ load(Befolkning_url, function (array1) {
     for (x in array2) {
       let kommune = new Konstruktor(array2, x)
       utdanning_master.push(kommune);}
-
     load(Sysselsatte_url, function(array3) {
       let sysselsatte_master = [];
       for (x in array3) {
         let kommune = new Konstruktor(array3, x)
         sysselsatte_master.push(kommune);}
-      f_sammenlign(utdanning_master,befolkning_master,sysselsatte_master);
       f_oversikt (befolkning_master)
-
     })
   })
 
@@ -735,7 +717,6 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-    sammenlign_table.style.display = "none";
     footer.style.display = "block";
   };
 
@@ -746,7 +727,6 @@ function show(button) {
     oversikt.style.display = "block";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-    sammenlign_table.style.display = "none";
     footer.style.display = "block";
 
   };
@@ -758,7 +738,6 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "block";
     sammenligning.style.display = "none";
-    sammenlign_table.style.display = "none";
     footer.style.display = "block";
 
   };
@@ -770,7 +749,6 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
-    sammenlign_table.style.display = "block";
     footer.style.display = "block";
 
   };

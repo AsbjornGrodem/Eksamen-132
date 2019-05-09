@@ -1,47 +1,43 @@
 @media screen and ( min-width: 700px) {
 
-.Sammenligning_div table {
+	.Sammenligning_div table {
 	width: 450%;
-}
-
-.Sammenligning_div tr {
+	}
+	.Sammenligning_div tr {
 	display: block;
 	float: left;
 	border: none;
 	text-align: center;
-}
-.Sammenligning_div td{
+	}
+	.Sammenligning_div td{
 	display: block;
 	border: 1px solid black;
 	white-space: normal;
 	text-align: center;
 	font-size: 25px;
-}
-
-.Sammenligning_div {
+	}
+	.Sammenligning_div {
   display: none;
   width : 80%;
   text-align: center;
   margin: auto;
   float: top;
-	padding: 10%;
+	padding: 5%;
+	}
 }
-
-}
-
 
 @media screen and (max-width: 700px) {
-
  h1 {
 	  color:Black;
 	  text-align: center;
-	  font-size: 60px;
+	  font-size: 50px;
 	}
-
+	.Detaljer_div h2{
+		font-size: 20px;
+	}
 	.Detaljer_div table {
 		width: 450%;
 	}
-
 	.Detaljer_div tr {
 		display: block;
 		float: left;
@@ -53,9 +49,14 @@
 		border: 1px solid black;
 		white-space: normal;
 		text-align: center;
-	}
+		text-align: center;
+		font-size: 13px;
+		}
+	.Detaljer_div h3{
+		float: left;
+		font-size: 15px;
 
-
+		}
 	.Detaljer_div {
 	  display: none;
 	  width: auto;
@@ -63,14 +64,14 @@
 	  padding: 2%;
 	  margin: auto;
 	}
-
-
+	.Oversikt_div h2{
+		font-size: 20px;
+	}
 	.button {
 	  background-color: #4CAF50; /* Green */
 	  border: none;
 	  color: white;
 	  padding: 3px 9px;
-
 	  text-align: center;
 	  text-decoration: none;
 	  display: inline-block;
@@ -78,19 +79,7 @@
 	  margin: 2px 1px;
 	  cursor: pointer;
 	}
-
 	.button2 {background-color: #008CBA;} /* Blue */
 	.button3 {background-color: #f44336;} /* Red */
 	.button4 {background-color: #e7e7e7; color: black;} /* Gray */
 	.button5 {background-color: #555555;} /* Black */
-
-@media screen and (max-width: 400px) {
-
-	.Detaljer_div td {
-		text-align: center;
-		font-size: 15px;
-	}
-
-
-
-)
