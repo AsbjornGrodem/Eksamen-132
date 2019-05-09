@@ -22,7 +22,6 @@ class Data {
     for (let i in this.data) {
       nummerliste.push(this.data[i].kommunenummer)
     }
-
     return (nummerliste)
   }
 
