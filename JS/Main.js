@@ -153,9 +153,9 @@ utdanning.load();
 sysselsatte.load();
 
 function f_oversikt() {
-  var overskrift = '<h2>'
+  var overskrift = '<h3>'
   overskrift += 'Oversikt over alle kommuner i Norge';
-  overskrift += '</h2>';
+  overskrift += '</h3>';
 
   var tabellHTML = '<table class="total_oversikt">';
   tabellHTML += '<tr>';
