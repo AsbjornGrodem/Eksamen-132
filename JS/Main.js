@@ -299,21 +299,21 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall prosent kvinner med høyere utdanning:"
+      row.insertCell().innerText = "Prosent kvinner:"
       for (var i = 2007; i <= 2017; i++) {
          var antall_kvinner = Math.round(uni_kort_kvinner2[i]+uni_lang_kvinner2[i]+fagskole_kvinner2[i]);
          row.insertCell().innerText = antall_kvinner + "%";
       }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall prosent menn med høyere utdanning:"
+      row.insertCell().innerText = "Prosent menn:"
       for (var i = 2007; i <= 2017; i++) {
          var antall_menn = Math.round(uni_kort_menn2[i]+uni_lang_menn2[i]+fagskole_menn2[i]);
          row.insertCell().innerText = antall_menn + "%";
       }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall kvinner med høyere utdanning:"
+      row.insertCell().innerText = "Antall kvinner:"
       var antall_kvinner = [];
       for (var i = 2007; i <= 2017; i++) {
          antall_kvinner.push(befolkning_master[kommunenummer].informasjon.Kvinner[i]);
@@ -324,7 +324,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
         }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall menn med høyere utdanning:"
+      row.insertCell().innerText = "Antall menn:"
       var antall_menn = [];
       for (var i = 2007; i <= 2017; i++) {
          antall_menn.push(befolkning_master[kommunenummer].informasjon.Menn[i]);
