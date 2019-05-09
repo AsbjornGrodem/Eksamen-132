@@ -24,36 +24,27 @@ function Konstruktor(array, input) {
   };
 
 
-
-  function getIds(array) {
-    let nummerliste = [];
-    for (i in array) {
-      if (i === input) {
-        var kommunenr = array[i].kommunenummer;
-        nummerliste.push(array[i].kommunenummer)
-      } else {
-        nummerliste.push(array[i].kommunenummer);
-      }
-    }
-    this.nummerliste = nummerliste;
-    return (nummerliste)
+function getIds(array) {
+  let nummerliste = [];
+  for (i in array) {
+    nummerliste.push(array[i].kommunenummer)
   }
+  this.nummerliste = nummerliste;
+  return (nummerliste);
+}
 
-  function sysselSetting(sysselsetting) {
-
+function sysselSetting(sysselsetting) {
   var siste_maaling = [];
-
   for(kommune in sysselsetting){
     var menn = sysselsetting[kommune]["Begge kjønn"];
-     for (årstall in menn) {
-       var antall = menn[årstall];
+    for (årstall in menn) {
+      var antall = menn[årstall];
      }
      siste_maaling.push(antall);
      for (var i = 0; i < siste_maaling.length; i++) {
        siste_maaling[i]
      }
   }
-
   return siste_maaling;
 }
 
@@ -700,7 +691,6 @@ load(Befolkning_url, function (array1) {
       f_oversikt (befolkning_master)
     })
   })
-
 })
 
 //Button funksjoner som viser/gjemmer divs
