@@ -18,6 +18,7 @@
 	}
 	.Detaljer_div td{
 		display: block;
+		border: 1px solid black;
 		white-space: normal;
 		text-align: center;
 	}
@@ -28,10 +29,9 @@
 
 @media screen and (max-width: 400px) {
 
-	h1 {
-		color:Red;
+	.Detaljer_div td {
 		text-align: center;
-		font-size: 30px;
+		font-size: 15px;
 	}
 
 	.Detaljer_oversikt_MOBIL{
