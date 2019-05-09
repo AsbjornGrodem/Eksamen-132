@@ -359,6 +359,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       setContents("historisk_utdanning", tabellHistorisk_utdanning);
     }
   }
+<<<<<<< HEAD
 
 
 //MOBIL VERSJON
@@ -488,7 +489,10 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       setContents("historisk_utdanning_MOBIL", tabellHistorisk_utdanning);
     }
   }
+=======
+>>>>>>> a1668c5813d64386d48ae6a6a35d3df1d5c3187b
 }
+
 function sammenlign_click() {
  //Load lager master-array som vi looper gjennom for å finne inputs
  load(Sysselsatte_url, function(array) {

@@ -100,27 +100,25 @@ th{
   margin: auto;
 }
 
-.total_oversikt{
+/*.total_oversikt{
   border: none;
   padding-top: 100px;
   padding-left: 10%;
   padding-right: 10%;
   font-size: 45px;
   margin: auto;
-}
+}*/
 
 .Detaljer_div {
   display: none;
   width: auto;
   height: auto;
   padding: 5%;
-  border: 5px solid gray;
   margin: auto;
 }
 
 .Sammenligning_div {
   display: none;
-  border:solid gray;
   width : 80%;
   text-align: center;
   margin: auto;
