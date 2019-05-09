@@ -1,7 +1,5 @@
 @media screen and (max-width: 700px) {
 
-
-
  h1 {
 	  color:Black;
 	  text-align: center;
@@ -9,7 +7,7 @@
 	}
 
 	.Detaljer_div table {
-		width: 300%;
+		width: 450%;
 	}
 
 	.Detaljer_div tr {
@@ -20,18 +18,9 @@
 	}
 	.Detaljer_div td{
 		display: block;
-		border: 1px solid black;
-		padding-left: :1px;
-		padding-right: 3px;
-		padding-top: 2px;
-		padding-bottom: 5px;
-	  font-size: 15px;
+		white-space: normal;
 		text-align: center;
-
 	}
-
-
-
 
 .Detaljer_oversikt_MOBIL{
 	display: none;

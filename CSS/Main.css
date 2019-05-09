@@ -4,15 +4,18 @@ body {
     text-align: center;
     font-size: : 95%;
 }
+
 * {
     box-sizing: inherit;
 }
+
 div {
   padding-left: :5px;
   padding-right: 5px;
   padding-top: 5px;
   padding-bottom: 50px;
 }
+
 .row {
     display: flex;
     flex-direction: column;
@@ -23,25 +26,31 @@ div {
     text-align: center;
     margin: 0.5em;
 }
+
 .title-cell {
     flex-basis: 40%;
 }
+
 .highest {
   font-weight: bold;
   background-color: #9fb;
 }
+
 .like {
   font-weight: bold;
   background-color: #dbdbdb;
 }
+
 h1 {
   color:Black;
   text-align: center;
   font-size: 60px;
 }
+
 table {
   width: 95%;
 }
+
 tr, td {
   border: 1px solid black;
   padding-left: :1px;
@@ -51,15 +60,19 @@ tr, td {
   font-size: 15px;
   text-align: center;
 }
+
 th{
   float:top;
 }
+
 #kommuneNavn {
   color: red;
 }
+
 .detaljer_oversikt {
   color: red;
 }
+
 .div1 {
   /*overflow-x: auto;*/
   margin: 2px;
@@ -67,6 +80,7 @@ th{
   width: 300px;
   float: left;
 }
+
 .Introduksjon_div {
   display: none;
   width: 70%;
@@ -76,6 +90,7 @@ th{
   margin: auto;
   font-size: 20px;
 }
+
 .Oversikt_div {
   display: none;
   font-size: 20px;
@@ -84,6 +99,7 @@ th{
   height: 90%;
   margin: auto;
 }
+
 .total_oversikt{
   border: none;
   padding-top: 100px;
@@ -92,6 +108,7 @@ th{
   font-size: 45px;
   margin: auto;
 }
+
 .Detaljer_div {
   display: none;
   width: auto;
@@ -100,6 +117,7 @@ th{
   border: 5px solid gray;
   margin: auto;
 }
+
 .Sammenligning_div {
   display: none;
   border:solid gray;
@@ -108,6 +126,7 @@ th{
   margin: auto;
   float: top;
 }
+
 .button {
   background-color: #4CAF50; /* Green */
   border: none;
@@ -120,20 +139,20 @@ th{
   margin: 4px 2px;
   cursor: pointer;
 }
+
 .button2 {background-color: #008CBA;} /* Blue */
 .button3 {background-color: #f44336;} /* Red */
 .button4 {background-color: #e7e7e7; color: black;} /* Gray */
 .button5 {background-color: #555555;} /* Black */
 
-
 #footer {
-
 	font-size: 1em;
 	text-align: center;
 	clear: both;
 	padding-top: 100px;
 	color: #ccc;
 }
+
 .Detaljer_oversikt_MOBIL{
 	display: none;
 }
