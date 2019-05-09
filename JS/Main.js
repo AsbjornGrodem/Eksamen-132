@@ -19,7 +19,12 @@ function Konstruktor(array, input) {
   this.informasjon = getInfo(array);
   this.total_befolkning = befolkning_total(array);
   this.sysselsetting = sysselSetting(array);
-  //this.onload = onload();
+  this.onload = function () {
+    if (typeof this.onload ==='function')
+    this.onload();
+  };
+
+
 
   function getIds(array) {
     let nummerliste = [];
@@ -160,6 +165,14 @@ function f_oversikt (oversikt) {
 function f_sammenlign (utdanning_master, befolkning_master, sysselsatte_master) {
 
 };
+
+function setContents(elementId, childNode) {
+  console.log(elementId);
+  let element = document.getElementById(elementId);
+  element.innerHTML = '';
+  element.appendChild(childNode);
+}
+
 function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
   let input = document.getElementById("Detaljer_input").value;
   for (kommunenummer in befolkning_master){
@@ -299,21 +312,21 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Prosent kvinner:"
+      row.insertCell().innerText = "Antall prosent kvinner med høyere utdanning:"
       for (var i = 2007; i <= 2017; i++) {
          var antall_kvinner = Math.round(uni_kort_kvinner2[i]+uni_lang_kvinner2[i]+fagskole_kvinner2[i]);
          row.insertCell().innerText = antall_kvinner + "%";
       }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Prosent menn:"
+      row.insertCell().innerText = "Antall prosent menn med høyere utdanning:"
       for (var i = 2007; i <= 2017; i++) {
          var antall_menn = Math.round(uni_kort_menn2[i]+uni_lang_menn2[i]+fagskole_menn2[i]);
          row.insertCell().innerText = antall_menn + "%";
       }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall kvinner:"
+      row.insertCell().innerText = "Antall kvinner med høyere utdanning:"
       var antall_kvinner = [];
       for (var i = 2007; i <= 2017; i++) {
          antall_kvinner.push(befolkning_master[kommunenummer].informasjon.Kvinner[i]);
@@ -324,7 +337,7 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
         }
 
       row = tabellHistorisk_utdanning .insertRow();
-      row.insertCell().innerText = "Antall menn:"
+      row.insertCell().innerText = "Antall menn med høyere utdanning:"
       var antall_menn = [];
       for (var i = 2007; i <= 2017; i++) {
          antall_menn.push(befolkning_master[kommunenummer].informasjon.Menn[i]);
@@ -336,14 +349,14 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
         }
     }
   }
-      document.getElementById("detaljer_oversikt").appendChild(tabellHTML);
-      document.getElementById("kommunenavn").appendChild(kommuneNavn);
-      document.getElementById("navn_historisk").appendChild(utvikling_navn);
-      document.getElementById("historisk_utvikling").appendChild(tabellHistorisk);
-      document.getElementById("navn_historisk_syssel").appendChild(utvikling_navn_syssel);
-      document.getElementById("historisk_sysselsatte").appendChild(tabellHistorisk_sysselsatte);
-      document.getElementById("navn_historisk_utdanning").appendChild(utvikling_navn_utdanning);
-      document.getElementById("historisk_utdanning").appendChild(tabellHistorisk_utdanning);
+      setContents("detaljer_oversikt", tabellHTML);
+      setContents("kommunenavn", kommuneNavn);
+      setContents("navn_historisk", utvikling_navn);
+      setContents("historisk_utvikling", tabellHistorisk);
+      setContents("navn_historisk_syssel", utvikling_navn_syssel);
+      setContents("historisk_sysselsatte", tabellHistorisk_sysselsatte);
+      setContents("navn_historisk_utdanning", utvikling_navn_utdanning);
+      setContents("historisk_utdanning", tabellHistorisk_utdanning);
     }
   }
 
@@ -465,14 +478,14 @@ function f_detaljer (utdanning_master, befolkning_master, sysselsatte_master) {
       }
     }
   }
-      document.getElementById("detaljer_oversikt_MOBIL").appendChild(tabellHTML);
-      document.getElementById("kommunenavn").appendChild(kommuneNavn);
-      document.getElementById("navn_historisk_MOBIL").appendChild(utvikling_navn);
-      document.getElementById("historisk_utvikling_MOBIL").appendChild(tabellHistorisk);
-      document.getElementById("navn_historisk_syssel_MOBIL").appendChild(utvikling_navn_syssel);
-      document.getElementById("historisk_sysselsatte_MOBIL").appendChild(tabellHistorisk_sysselsatte);
-      document.getElementById("navn_historisk_utdanning_MOBIL").appendChild(utvikling_navn_utdanning);
-      document.getElementById("historisk_utdanning_MOBIL").appendChild(tabellHistorisk_utdanning);
+      setContents("detaljer_oversikt_MOBIL", tabellHTML);
+      setContents("kommunenavn", kommuneNavn);
+      setContents("navn_historisk_MOBIL", utvikling_navn);
+      setContents("historisk_utvikling_MOBIL", tabellHistorisk);
+      setContents("navn_historisk_syssel_MOBIL", utvikling_navn_syssel);
+      setContents("historisk_sysselsatte_MOBIL", tabellHistorisk_sysselsatte);
+      setContents("navn_historisk_utdanning_MOBIL", utvikling_navn_utdanning);
+      setContents("historisk_utdanning_MOBIL", tabellHistorisk_utdanning);
     }
   }
 }
@@ -647,10 +660,10 @@ function sammenlign_click() {
      }
   }
 
-  document.getElementById("kommune1").appendChild(k1_table);
-  document.getElementById("kommune1_navn").appendChild(kommune1_navn);
-  document.getElementById("kommune2").appendChild(k2_table);
-  document.getElementById("kommune2_navn").appendChild(kommune2_navn);
+  setContents("kommune1", k1_table);
+  setContents("kommune1_navn", kommune1_navn);
+  setContents("kommune2", k2_table);
+  setContents("kommune2_navn", kommune2_navn);
   })
 }
 
