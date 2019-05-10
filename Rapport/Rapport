@@ -22,8 +22,8 @@ denne da være 0, og setTimeout og dens funksjoner blir kjørt.
 3. Ved å bruke @Media screen i css kan vi forandre ting når skjermen endrer seg. Når skjermen er mindre enn 700px, kjøres kode som
 forandrer tabellene. "display: block;" "deler" opp tabellen, og float:left lar innholdet i cellene flyte til venstre. Sammenlign-tabellene
 ble laget på motsatt måte av detaljer, noe som ikke er veldig optimalt, og derfor har vi enda en @Media screen som gjør det motsatte.
-Sammenlignings-tabellene blir laget som vertikale, og blir derfor endret når skjermer er større enn 700px til horisontal, og tilbake til "standard" når
-skjermen den er mindre enn 700px.
+Sammenlignings-tabellene blir laget som vertikale, og blir derfor endret når skjermer er større enn 1250px til horisontal, og tilbake til "standard" når
+skjermen den er mindre enn 1250px.
 
 
 4. For å finne ut om alle datasettene inneholder de samme kommunene kan man bruke en enkel for-loop i de forskjellige datasettene.
