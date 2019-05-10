@@ -13,7 +13,6 @@ var b2 = document.getElementById("button2");
 var b1 = document.getElementById("button1");
 
 
-
 function Loadingmessage() {
   loading.innerText = "Vennligst vent, laster data...";
 }
@@ -522,7 +521,6 @@ function sammenlign_click() {
       celle_kvinner2.classList.add("like")
     }
     count = count + 1;
-
   }
 
   setContents("kommune1", k1_table);
@@ -540,7 +538,6 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-    // footer.style.display = "block";
   };
 
   if (button === 2) {
@@ -549,8 +546,6 @@ function show(button) {
     oversikt.style.display = "block";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-    // footer.style.display = "block";
-
   };
 
   if (button === 3) {
@@ -559,8 +554,6 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "block";
     sammenligning.style.display = "none";
-    // footer.style.display = "block";
-
   };
 
   if (button === 4) {
@@ -569,7 +562,5 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
-    // footer.style.display = "block";
-
-    };
+  };
 };
