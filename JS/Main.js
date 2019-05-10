@@ -521,7 +521,6 @@ function sammenlign_click() {
       celle_kvinner2.classList.add("like")
     }
     count = count + 1;
-
   }
 
   setContents("kommune1", k1_table);
