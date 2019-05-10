@@ -1,34 +1,13 @@
 html {
-  height: 87%
+  height: 80%
 }
 body {
     box-sizing: border-box;
     background-color: #95E8DE;
     text-align: center;
-    font-size: : 95%;
     height: 100%;
 }
-* {
-    box-sizing: inherit;
-}
-div {
-  padding-left: :5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  padding-bottom: 10px;
-}
-.row {
-    display: flex;
-    flex-direction: column;
-}
-.cell {
-    flex-basis: 20%;
-    text-align: center;
-    margin: 0.5em;
-}
-.title-cell {
-    flex-basis: 40%;
-}
+
 .highest {
   font-weight: bold;
   background-color: #9fb;
@@ -42,18 +21,21 @@ h1 {
   text-align: center;
   font-size: 60px;
 }
+
 table {
   width: 95%;
 }
+
 tr, td {
   border: 1px solid black;
   padding-left: :1px;
   padding-right: 3px;
   padding-top: 2px;
   padding-bottom: 5px;
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
 }
+
 th{
   float:top;
 }
@@ -64,6 +46,7 @@ th{
   width: 300px;
   float: left;
 }
+
 .Introduksjon_div {
   display: none;
   width: 70%;
@@ -71,15 +54,17 @@ th{
   padding: 10%;
   margin: auto;
   font-size: 20px;
+  padding-bottom: 100px;
 }
+
 .Oversikt_div {
   display: none;
   font-size: 20px;
-  border: 100px, solid gray;
   width: 60%;
   height: 90%;
   margin: auto;
   padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .total_oversikt{
@@ -97,7 +82,7 @@ th{
   height: auto;
   padding: 5%;
   margin: auto;
-  padding-bottom: 2.5rem;
+  padding-bottom: 100px;
 }
 .Sammenligning_div {
   display: none;
@@ -105,6 +90,7 @@ th{
   text-align: center;
   margin: auto;
   float: top;
+  padding-bottom: 100px;
 }
 .button {
   background-color: #4CAF50; /* Green */
@@ -140,7 +126,6 @@ th{
   height: 40px;
   bottom: 0px;
   left: 0px;
-  padding-top: 100px
 }
 
 #footer p {
