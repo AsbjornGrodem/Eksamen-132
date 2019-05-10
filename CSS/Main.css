@@ -51,7 +51,7 @@ th{
   display: none;
   width: 70%;
   height: auto;
-  padding: 10%;
+  padding: 10px;
   margin: auto;
   font-size: 20px;
   padding-bottom: 100px;
@@ -99,20 +99,21 @@ th{
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: none;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+
 }
 
 .button:visited {
   color: black;
 }
 
-.button2 {background-color: #008CBA;} /* Blue */
-.button3 {background-color: #f44336;} /* Red */
-.button4 {background-color: #e7e7e7; color: black;} /* Gray */
-.button5 {background-color: #555555;} /* Black */
+.button2 {background-color: #008CBA; display: none;} /* Blue */
+.button3 {background-color: #f44336; display: none;} /* Red */
+.button4 {background-color: #e7e7e7; color: black; display: none;} /* Gray */
+.button5 {background-color: #555555; display: none;} /* Black */
 
 #page-wrapper {
   min-height: 100%;

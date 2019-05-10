@@ -6,9 +6,21 @@ var intro = document.getElementById("Introduksjon_div");
 var oversikt = document.getElementById("Oversikt_div");
 var detaljer = document.getElementById("Detaljer_div");
 var sammenligning = document.getElementById("Sammenligning_div");
-// NOTE: Jeg kommenterte ut disse. Ser ikke ut som de brukes?
-// var sammenlign_table = document.getElementById("S_table");
-// var footer = document.getElementById("footer")
+var loading = document.getElementById('loading_div')
+var b4 = document.getElementById("button4");
+var b3 = document.getElementById("button3");
+var b2 = document.getElementById("button2");
+var b1 = document.getElementById("button1");
+
+
+
+function Loadingmessage() {
+  loading.innerText = "Vennligst vent, laster data...";
+}
+Loadingmessage();
+function removeLoadingMessage() {
+  loading.style.display = "none";
+}
 
 class Data {
   constructor(URL) {
@@ -18,7 +30,6 @@ class Data {
 
   getIDs() {
     let nummerliste = [];
-
     for (let i in this.data) {
       nummerliste.push(this.data[i].kommunenummer)
     }
@@ -34,27 +45,16 @@ class Data {
   }
 
   getInfo(kommunenummer) {
-    // NOTE: Kan du forskjellen på for..in og for..of? For..in itererer over
-    // nøklene til objektet. For..of itererer over verdiene direkte, slik
-    // at du slipper å slå opp nøkkelen manuelt i loopen.
+
     for (let kommuneNavn in this.data) {
-      let info = this.data[kommuneNavn]; // Dette steget slipper du med for..of
-      if (info.kommunenummer === kommunenummer) {
-        return info;
-      }
-    }
-
-    // NOTE: Velg selv hvilken du vil bruke ^ eller v
-
-    for (let info of this.data) {
+      let info = this.data[kommuneNavn];
       if (info.kommunenummer === kommunenummer) {
         return info;
       }
     }
   }
 
-  // Legger til kommunenavnet blant resten av informasjonen til hver kommune,
-  // slik at det blir lett tilgjengelig.
+  // Legger til kommunenavnet blant resten av informasjonen til hver kommune
   appendNames() {
     for (let name in this.data) {
       this.data[name].kommunenavn = name;
@@ -85,10 +85,7 @@ function befolkning_total(data) {
   var total_kvinner = [];
   var menn = data.Menn;
   var kvinner = data.Kvinner
-  // NOTE: Hvis du bare er ute etter det siste året for hver liste, så kan
-  // du hente det siste elementet direkte:
-  // let antall = menn[menn.length - 1];
-  // i stedet for å kjøre en for-loop.
+
   for (årstall in menn) {
     var antall = menn[årstall];
   }
@@ -110,41 +107,32 @@ function befolkning_total(data) {
 }
 
 function sysselSetting(data) {
-  var siste_maaling = [];
-  // NOTE: Menn? Misvisende variabelnavn :D
-  var menn = data["Begge kjønn"];
-  for (årstall in menn) {
-    var antall = menn[årstall];
-  }
-  siste_maaling.push(antall);
-  // NOTE: Hva gjør denne for-loopen?
-  for (var i = 0; i < siste_maaling.length; i++) {
-    siste_maaling[i]
-  }
-  // NOTE: Her returnerer du en array med ETT tall. Hvorfor?
-  return siste_maaling;
 }
 
 let befolkning = new Data(Befolkning_url);
 let utdanning = new Data(Utdanning_url);
 let sysselsatte = new Data(Sysselsatte_url);
 
-let gjenstående = 3;
+let left = 3;
 
 function callback() {
-  gjenstående -= 1;
-  if (gjenstående === 0) {
-    // NOTE: Her kopierte jeg bare de 2 tingene som står i oppgaven. Du kan med
-    // fordel gjøre navigasjonsknappene "disabled" i starten, og så enable de her
-    // når datasettene er klare. En loading-melding ("Laster data...") kan også
-    // vises når siden først lastes, så fjernes her når lastingen er ferdig.
-    // enableNavigationButtons();
-    // removeLoadingMessage();
-
-
-    f_oversikt(befolkning);
+  left -= 1;
+  if (left === 0) {
+    setTimeout (function () {
+      removeLoadingMessage();
+      enableNavigationButtons();
+      f_oversikt(befolkning);
+      ;},1000);
   }
 }
+
+function enableNavigationButtons() {
+  b1.style.display="inline";
+  b2.style.display="inline";
+  b3.style.display="inline";
+  b4.style.display="inline";
+}
+
 
 befolkning.onload = utdanning.onload = sysselsatte.onload = callback;
 
@@ -194,6 +182,7 @@ function f_oversikt() {
 
 }
 
+
 function setContents(elementId, childNode) {
   let element = document.getElementById(elementId);
   element.innerHTML = '';
@@ -206,6 +195,10 @@ function detaljerClick() {
   let utdanningsInfo = utdanning.getInfo(input);
   let befolkningsInfo = befolkning.getInfo(input);
   let sysselsatteInfo = sysselsatte.getInfo(input);
+  let ids = befolkning.getIDs();
+  if (ids.includes(input)){}
+  else {alert("Beklager, kommunenummeret "+input+" var ikke godkjent")}
+
 
   let uni_kort_menn = utdanningsInfo["03a"].Menn[2017];
   let uni_kort_kvinner = utdanningsInfo["03a"].Kvinner[2017];
@@ -239,9 +232,7 @@ function detaljerClick() {
   let total = befolkning_total(befolkningsInfo);
   row.insertCell().innerText = total[total.length - 1];
 
-  let sysselsetting = sysselSetting(sysselsatteInfo)
-  row.insertCell().innerText = JSON.stringify(sysselsetting[0]) + "%";
-
+  row.insertCell().innerText = JSON.stringify(sysselsatteInfo["Begge kjønn"]["2018"]) + "%";
   row.insertCell().innerText = u_kvinner + " prosent av kvinner og " + u_menn + " prosent av menn";
   row.insertCell().innerText = Math.round(befolkningsInfo.Kvinner["2017"] * u_kvinner / 100) + " kvinner og " + Math.round(befolkningsInfo.Menn["2017"] / 100 * u_menn) + " menn";
 
@@ -278,7 +269,6 @@ function detaljerClick() {
   utvikling_navn_syssel.innerText = "Historisk utvikling av sysselsetting i " + sysselsatteInfo.kommunenavn + " kommune";
   var tabellHistorisk_sysselsatte = document.createElement('table');
   tabellHistorisk_sysselsatte.id = "historisk_sysselsatte";
-
 
   var row = tabellHistorisk_sysselsatte.insertRow();
   row.insertCell().innerText = "År:"
@@ -381,6 +371,14 @@ function sammenlign_click() {
   let input2 = document.getElementById("Sammenlign2_input").value;
   var k1_table = document.createElement('table');
   var k2_table = document.createElement('table');
+  let ids = befolkning.getIDs();
+  if (ids.includes(input1)){}
+  else {alert("Beklager, kommunenummeret "+input1+" var ikke godkjent")}
+  if (ids.includes(input2)){}
+  else {alert("Beklager, kommunenummeret "+input2+" var ikke godkjent")}
+
+
+
 
   var kvinner1 = [];
   var kvinner2 = [];
@@ -536,13 +534,7 @@ function sammenlign_click() {
 //Button funksjoner som viser/gjemmer divs
 function show(button) {
 
-  // NOTE: Hva er denne for-loopen for?
-  while (button === true) {
-    console.log("du printer ut");
-  }
-
   if (button === 1) {
-
 
     intro.style.display = "block";
     oversikt.style.display = "none";
@@ -552,7 +544,6 @@ function show(button) {
   };
 
   if (button === 2) {
-
 
     intro.style.display = "none";
     oversikt.style.display = "block";
@@ -564,7 +555,6 @@ function show(button) {
 
   if (button === 3) {
 
-
     intro.style.display = "none";
     oversikt.style.display = "none";
     detaljer.style.display = "block";
@@ -575,12 +565,11 @@ function show(button) {
 
   if (button === 4) {
 
-
     intro.style.display = "none";
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
     // footer.style.display = "block";
 
-  };
+    };
 };
