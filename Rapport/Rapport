@@ -6,7 +6,8 @@ Main.html - Selve nettsiden hvor vi legger til forskjellige knapper og avsnitt.
 
 Main.css - Her endrer vi det estetiske. Farger og størrelser på forskjellige ting blant annet.
 
-responsive.css - Her har vi funksjonalitet som registrerer skjermstørrelsen til brukeren, og lar oss endre på ting når skjermen er mindre. I dette tilfellet, å la historisk data ligge vertikalt på mindre skjermer.
+responsive.css - Her har vi funksjonalitet som registrerer skjermstørrelsen til brukeren, og lar oss endre på ting når skjermen er mindre.
+  I dette tilfellet, å la historisk data ligge vertikalt på mindre skjermer.
 
 
 1. I vårt program bruker vi funksjonen "callback" til å telle hvor mange sett som er ferdige. De blir lastet en etter en.
@@ -25,5 +26,5 @@ Sammenlignings-tabellene blir laget som vertikale, og blir derfor endret når sk
 skjermen den er mindre enn 700px.
 
 
-4. For å finne ut om alle datasettene inneholder de samme kommunene kan man bruke en enkel for-loop i de forskjellige datasettene. 
+4. For å finne ut om alle datasettene inneholder de samme kommunene kan man bruke en enkel for-loop i de forskjellige datasettene.
 For oss har ikke det vært nødvendig å finne ut, da vi advarer mot at noe av dataen kan inneholder feil.

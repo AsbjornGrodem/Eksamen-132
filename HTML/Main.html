@@ -25,12 +25,12 @@
         kommunene sitt navn, kommunenummer og hvor mange som er sysselsatt.
 
         All informasjon er hentet fra Statistisk sentralbyrå. Noe av dataen kan inneholde feil.
-          <p>
-            <a href="http://data.ssb.no/api/v0/dataset/104857?lang=no">Befolkning - SSB</a>
-            <a href="http://data.ssb.no/api/v0/dataset/100145?lang=no">Sysselsatte - SSB</a>
-            <a href="http://data.ssb.no/api/v0/dataset/85432?lang=no">Utdanning - SSB</a>
-          </p>
-      </p>
+        </p>
+      <p>
+        <a href="http://data.ssb.no/api/v0/dataset/104857?lang=no">Befolkning - SSB</a>
+        <a href="http://data.ssb.no/api/v0/dataset/100145?lang=no">Sysselsatte - SSB</a>
+        <a href="http://data.ssb.no/api/v0/dataset/85432?lang=no">Utdanning - SSB</a>
+        </p>
     </div>
     <div id="loading_div">
      </div>
@@ -42,8 +42,6 @@
       <div id="knapp" class="knapp">
         <p>Her kan du skrive inn ett kommunenummer for å få detaljert oversikt.</p>
         <input type="text" id="Detaljer_input"placeholder="Kommunenummer"></input>
-        <br>
-        <br>
         <button id="Detaljer_button" onclick="detaljerClick()">Last inn</button>
       </div>
       <div id="kommunenavn" class="kommunenavn">
@@ -64,13 +62,12 @@
       </div>
     </div>
     <div id="Sammenligning_div" class="Sammenligning_div">
-      <p>Her kan du sammenligne uviklingen i to kommuner.
+      <p> Her kan du sammenligne uviklingen i to kommuner.
       Kommunen som har hatt størst prosentvis økning i sysselsetting har en grønn bakgrunnsfarge.
-       Hvis økningen var lik er det gul bakgrunssfarge.</p>
-      <input type="text" id="Sammenlign1_input" placeholder="Kommune en">  </input>
+       Hvis økningen var lik er det gul bakgrunssfarge.
+      </p>
+      <input type="text" id="Sammenlign1_input" placeholder="Kommune en"></input>
       <input type="text" id="Sammenlign2_input" placeholder="Kommune to"></input>
-      <br>
-      <br>
       <button onclick="sammenlign_click()">Sammenlign</button>
 
       <div id ="kommune1_navn" class="kommune1_navn">
@@ -87,7 +84,6 @@
 		    <p>&copy; 2019 Emnebesvarelse i INFO134
       </p>
 		 </footer>
-
    </div>
   </body>
 </html>
