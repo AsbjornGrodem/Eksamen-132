@@ -106,32 +106,18 @@ function befolkning_total(data) {
   return total
 }
 
-//Puss her ///////////////////////////////////////////////////////////////////////////////////////
 function sysselSetting(data) {
-  var siste_maaling = [];
-
-  var info = data["Begge kjønn"];
-  for (årstall in info) {
-    var antall = info[årstall];
-  }
-  siste_maaling.push(antall);
-  // NOTE: Hva gjør denne for-loopen?
-  for (var i = 0; i < siste_maaling.length; i++) {
-    siste_maaling[i]
-  }
-  // NOTE: Her returnerer du en array med ETT tall. Hvorfor
-  return siste_maaling;
 }
 
 let befolkning = new Data(Befolkning_url);
 let utdanning = new Data(Utdanning_url);
 let sysselsatte = new Data(Sysselsatte_url);
 
-let gjenstående = 3;
+let left = 3;
 
 function callback() {
-  gjenstående -= 1;
-  if (gjenstående === 0) {
+  left -= 1;
+  if (left === 0) {
     setTimeout (function () {
       removeLoadingMessage();
       enableNavigationButtons();
@@ -196,6 +182,7 @@ function f_oversikt() {
 
 }
 
+
 function setContents(elementId, childNode) {
   let element = document.getElementById(elementId);
   element.innerHTML = '';
@@ -208,6 +195,10 @@ function detaljerClick() {
   let utdanningsInfo = utdanning.getInfo(input);
   let befolkningsInfo = befolkning.getInfo(input);
   let sysselsatteInfo = sysselsatte.getInfo(input);
+  let ids = befolkning.getIDs();
+  if (ids.includes(input)){}
+  else {alert("Beklager, kommunenummeret "+input+" var ikke godkjent")}
+
 
   let uni_kort_menn = utdanningsInfo["03a"].Menn[2017];
   let uni_kort_kvinner = utdanningsInfo["03a"].Kvinner[2017];
@@ -241,9 +232,7 @@ function detaljerClick() {
   let total = befolkning_total(befolkningsInfo);
   row.insertCell().innerText = total[total.length - 1];
 
-  let sysselsetting = sysselSetting(sysselsatteInfo)
-  row.insertCell().innerText = JSON.stringify(sysselsetting[0]) + "%";
-
+  row.insertCell().innerText = JSON.stringify(sysselsatteInfo["Begge kjønn"]["2018"]) + "%";
   row.insertCell().innerText = u_kvinner + " prosent av kvinner og " + u_menn + " prosent av menn";
   row.insertCell().innerText = Math.round(befolkningsInfo.Kvinner["2017"] * u_kvinner / 100) + " kvinner og " + Math.round(befolkningsInfo.Menn["2017"] / 100 * u_menn) + " menn";
 
@@ -280,7 +269,6 @@ function detaljerClick() {
   utvikling_navn_syssel.innerText = "Historisk utvikling av sysselsetting i " + sysselsatteInfo.kommunenavn + " kommune";
   var tabellHistorisk_sysselsatte = document.createElement('table');
   tabellHistorisk_sysselsatte.id = "historisk_sysselsatte";
-
 
   var row = tabellHistorisk_sysselsatte.insertRow();
   row.insertCell().innerText = "År:"
@@ -383,6 +371,14 @@ function sammenlign_click() {
   let input2 = document.getElementById("Sammenlign2_input").value;
   var k1_table = document.createElement('table');
   var k2_table = document.createElement('table');
+  let ids = befolkning.getIDs();
+  if (ids.includes(input1)){}
+  else {alert("Beklager, kommunenummeret "+input1+" var ikke godkjent")}
+  if (ids.includes(input2)){}
+  else {alert("Beklager, kommunenummeret "+input2+" var ikke godkjent")}
+
+
+
 
   var kvinner1 = [];
   var kvinner2 = [];
