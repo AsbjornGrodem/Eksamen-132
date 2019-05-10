@@ -1,10 +1,12 @@
 4. Rapport og øvrige filer.
 
 Mains.js - Javascript-filen vår legger til funksjonalitet til nettsiden. Det er også her vi henter og laster ned datasett.
+
 Main.html - Selve nettsiden hvor vi legger til forskjellige knapper og avsnitt.
+
 Main.css - Her endrer vi det estetiske. Farger og størrelser på forskjellige ting blant annet.
-responsive.css - Her har vi funksjonalitet som registrerer skjermstørrelsen til brukeren, og lar oss endre på ting når skjermen er mindre.
-I dette tilfellet, å la historisk data ligge vertikalt på mindre skjermer.
+
+responsive.css - Her har vi funksjonalitet som registrerer skjermstørrelsen til brukeren, og lar oss endre på ting når skjermen er mindre. I dette tilfellet, å la historisk data ligge vertikalt på mindre skjermer.
 
 
 1. I vårt program bruker vi funksjonen "callback" til å telle hvor mange sett som er ferdige. De blir lastet en etter en.
@@ -16,9 +18,12 @@ denne da være 0, og setTimeout og dens funksjoner blir kjørt.
 
 2. Me vet at når left === 0, har callback blitt kjørt 3 ganger og alle datasettene er klare.
 
-3. Ved å bruke border
-4. Har alle tre datasett nøyaktig de samme kommunene? Forklar kort hvordan dere fant dette svaret. Dere
-trenger ikke å legge ved ekstra kode hvis dere har skrevet kode for å svare på dette spørsmålet, men bare
-forklare fremgangsmåten deres.
-Rapporten sammen med HTML-dokumentet og alle de nødvendige CSS- og JavaScript-filene skal leveres
-i én zip-fil via Inspera (https://vurdering.uib.no/). Det vil bli publisert informasjon om fremgansmåte på mittuib. Dere kan levere mer enn en gang. Bare siste innlevering vil bli vurdert.
+3. Ved å bruke @Media screen i css kan vi forandre ting når skjermen endrer seg. Når skjermen er mindre enn 700px, kjøres kode som
+forandrer tabellene. "display: block;" "deler" opp tabellen, og float:left lar innholdet i cellene flyte til venstre. Sammenlign-tabellene
+ble laget på motsatt måte av detaljer, noe som ikke er veldig optimalt, og derfor har vi enda en @Media screen som gjør det motsatte.
+Sammenlignings-tabellene blir laget som vertikale, og blir derfor endret når skjermer er større enn 700px til horisontal, og tilbake til "standard" når
+skjermen den er mindre enn 700px.
+
+
+4. For å finne ut om alle datasettene inneholder de samme kommunene kan man bruke en enkel for-loop i de forskjellige datasettene. 
+For oss har ikke det vært nødvendig å finne ut, da vi advarer mot at noe av dataen kan inneholder feil.

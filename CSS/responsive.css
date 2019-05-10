@@ -27,16 +27,18 @@
 }
 
 @media screen and (max-width: 700px) {
+
  h1 {
 	  color:Black;
 	  text-align: center;
 	  font-size: 50px;
 	}
+
 	.Detaljer_div h2{
 		font-size: 20px;
 	}
 	.Detaljer_div table {
-		width: 450%;
+		width: 100%;
 	}
 	.Detaljer_div tr {
 		display: block;
@@ -55,15 +57,8 @@
 	.Detaljer_div h3{
 		float: left;
 		font-size: 15px;
-
 		}
-	.Detaljer_div {
-	  display: none;
-	  width: auto;
-	  height: auto;
-	  padding: 2%;
-	  margin: auto;
-	}
+
 	.Oversikt_div h2{
 		font-size: 20px;
 	}

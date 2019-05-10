@@ -13,7 +13,6 @@ var b2 = document.getElementById("button2");
 var b1 = document.getElementById("button1");
 
 
-
 function Loadingmessage() {
   loading.innerText = "Vennligst vent, laster data...";
 }
@@ -79,6 +78,7 @@ class Data {
   }
 }
 
+
 function befolkning_total(data) {
   var total = [];
   var total_menn = [];
@@ -106,8 +106,7 @@ function befolkning_total(data) {
   return total
 }
 
-function sysselSetting(data) {
-}
+function sysselSetting(data) {}
 
 let befolkning = new Data(Befolkning_url);
 let utdanning = new Data(Utdanning_url);
@@ -233,7 +232,7 @@ function detaljerClick() {
   row.insertCell().innerText = total[total.length - 1];
 
   row.insertCell().innerText = JSON.stringify(sysselsatteInfo["Begge kjønn"]["2018"]) + "%";
-  row.insertCell().innerText = u_kvinner + " prosent av kvinner og " + u_menn + " prosent av menn";
+  row.insertCell().innerText = u_kvinner + " prosent av kvinner," + u_menn + " prosent av menn";
   row.insertCell().innerText = Math.round(befolkningsInfo.Kvinner["2017"] * u_kvinner / 100) + " kvinner og " + Math.round(befolkningsInfo.Menn["2017"] / 100 * u_menn) + " menn";
 
 
@@ -321,21 +320,21 @@ function detaljerClick() {
   }
 
   row = tabellHistorisk_utdanning.insertRow();
-  row.insertCell().innerText = "Antall prosent kvinner med høyere utdanning:"
+  row.insertCell().innerText = "Prosent kvinner :"
   for (var i = 2007; i <= 2017; i++) {
     var antall_kvinner = Math.round(uni_kort_kvinner2[i] + uni_lang_kvinner2[i] + fagskole_kvinner2[i]);
     row.insertCell().innerText = antall_kvinner + "%";
   }
 
   row = tabellHistorisk_utdanning.insertRow();
-  row.insertCell().innerText = "Antall prosent menn med høyere utdanning:"
+  row.insertCell().innerText = "Prosent menn :"
   for (var i = 2007; i <= 2017; i++) {
     var antall_menn = Math.round(uni_kort_menn2[i] + uni_lang_menn2[i] + fagskole_menn2[i]);
     row.insertCell().innerText = antall_menn + "%";
   }
 
   row = tabellHistorisk_utdanning.insertRow();
-  row.insertCell().innerText = "Antall kvinner med høyere utdanning:"
+  row.insertCell().innerText = "Antall kvinner:"
   var antall_kvinner = [];
   for (var i = 2007; i <= 2017; i++) {
     antall_kvinner.push(befolkningsInfo.Kvinner[i]);
@@ -346,7 +345,7 @@ function detaljerClick() {
   }
 
   row = tabellHistorisk_utdanning.insertRow();
-  row.insertCell().innerText = "Antall menn med høyere utdanning:"
+  row.insertCell().innerText = "Antall menn :"
   var antall_menn = [];
   for (var i = 2007; i <= 2017; i++) {
     antall_menn.push(befolkningsInfo.Menn[i]);
@@ -385,8 +384,8 @@ function sammenlign_click() {
   var menn1 = [];
   var menn2 = [];
 
-  let høyestVekstMenn = [null];
-  let høyestVekstKvinner = [null];
+  let hoyestVekstMenn = [null];
+  let hoyestVekstKvinner = [null];
 
   let info1 = sysselsatte.getInfo(input1);
   let info2 = sysselsatte.getInfo(input2);
@@ -431,20 +430,20 @@ function sammenlign_click() {
   // Noter hvem som har høyest vekst per år
   for (i in kvinner1) {
     if (kvinner1[i] > kvinner2[i]) {
-      høyestVekstKvinner.push(0);
+      hoyestVekstKvinner.push(0);
     } else if (kvinner1[i] < kvinner2[i]) {
-      høyestVekstKvinner.push(1);
+      hoyestVekstKvinner.push(1);
     } else {
-      høyestVekstKvinner.push("like");
+      hoyestVekstKvinner.push("like");
     }
   }
   for (y in menn1) {
     if (menn1[y] > menn2[y]) {
-      høyestVekstMenn.push(0);
+      hoyestVekstMenn.push(0);
     } else if (menn1[y] < menn2[y]) {
-      høyestVekstMenn.push(1);
+      hoyestVekstMenn.push(1);
     } else {
-      høyestVekstMenn.push("like");
+      hoyestVekstMenn.push("like");
     }
   }
 
@@ -472,16 +471,16 @@ function sammenlign_click() {
       celle_kvinner1.innerText = info1.Kvinner[år];
       celle_år.innerText = år;
 
-      if (høyestVekstMenn[count] === 0) {
+      if (hoyestVekstMenn[count] === 0) {
         celle_menn1.classList.add("highest")
       }
-      if (høyestVekstMenn[count] === "like") {
+      if (hoyestVekstMenn[count] === "like") {
         celle_menn1.classList.add("like")
       }
-      if (høyestVekstKvinner[count] === 0) {
+      if (hoyestVekstKvinner[count] === 0) {
         celle_kvinner1.classList.add("highest")
       }
-      if (høyestVekstKvinner[count] === "like") {
+      if (hoyestVekstKvinner[count] === "like") {
         celle_kvinner1.classList.add("like")
       }
 
@@ -508,17 +507,17 @@ function sammenlign_click() {
     celle_menn2.innerText = info2.Menn[år];
     celle_kvinner2.innerText = info2.Kvinner[år];
     celle_år.innerText = år;
-    //  console.log(høyestVekstMenn);
-    if (høyestVekstMenn[count] === 1) {
+
+    if (hoyestVekstMenn[count] === 1) {
       celle_menn2.classList.add("highest")
     }
-    if (høyestVekstKvinner[count] === 1) {
+    if (hoyestVekstKvinner[count] === 1) {
       celle_kvinner2.classList.add("highest")
     }
-    if (høyestVekstMenn[count] === "like") {
+    if (hoyestVekstMenn[count] === "like") {
       celle_menn2.classList.add("like")
     }
-    if (høyestVekstKvinner[count] === "like") {
+    if (hoyestVekstKvinner[count] === "like") {
       celle_kvinner2.classList.add("like")
     }
     count = count + 1;
@@ -540,7 +539,6 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-    // footer.style.display = "block";
   };
 
   if (button === 2) {
@@ -549,7 +547,7 @@ function show(button) {
     oversikt.style.display = "block";
     detaljer.style.display = "none";
     sammenligning.style.display = "none";
-    // footer.style.display = "block";
+
 
   };
 
@@ -559,7 +557,7 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "block";
     sammenligning.style.display = "none";
-    // footer.style.display = "block";
+
 
   };
 
@@ -569,7 +567,7 @@ function show(button) {
     oversikt.style.display = "none";
     detaljer.style.display = "none";
     sammenligning.style.display = "block";
-    // footer.style.display = "block";
+
 
     };
 };
